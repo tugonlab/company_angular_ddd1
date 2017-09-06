@@ -1,9 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  
   "project": {
-    "name": "company",
-    "ejected": true
+    "name": "template"
   },
   "apps": [
     {
@@ -14,7 +12,7 @@
         "favicon.ico"
       ],
       "index": "index.html",
-      "main": "boot-client.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -23,8 +21,7 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -58,7 +55,6 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {
-    }
+    "component": {}
   }
 }

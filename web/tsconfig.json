@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "baseUrl": "ClientApp",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -12,11 +11,9 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "exclude": [ "bin", "node_modules" ],
     "lib": [
       "es2016",
       "dom"
     ]
   }
 }
-
