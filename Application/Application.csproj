@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F738A338-5745-435A-9DCF-BAEBA9743D87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Application</RootNamespace>
+    <AssemblyName>Application</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapper\AutoMapperExtensions.cs" />
+    <Compile Include="AutoMapper\EntityToModel.cs">
+      <DependentUpon>4.3-AppAutoMapper.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMapper\MapperConfig.cs" />
+    <Compile Include="AutoMapper\ModelToEntity.cs">
+      <DependentUpon>4.3-AppAutoMapper.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IBaseAppService.cs" />
+    <Compile Include="Interfaces\_generated\IContactAppService.cs">
+      <DependentUpon>4.1-AppInterfaces.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseAppService.cs" />
+    <Compile Include="Services\_generated\ContactAppService.cs">
+      <DependentUpon>4.2-App.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ContactViewModel.cs">
+      <DependentUpon>4.4-AppViewModel .txt4</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Common\FileViewModel.cs" />
+    <Compile Include="ViewModels\Common\PagingViewModel.cs" />
+    <Compile Include="ViewModels\Common\UploadViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AutoMapper\4.3-AppAutoMapper.txt4" />
+    <None Include="Interfaces\_generated\4.1-AppInterfaces.txt4" />
+    <None Include="packages.config" />
+    <None Include="Services\_generated\4.2-App.txt4" />
+    <None Include="ViewModels\4.4-AppViewModel .txt4" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{1b5d1e59-fa0c-4b72-aa6c-dde76a92ef6c}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{738c0217-ce85-4643-ad02-d56a24821669}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

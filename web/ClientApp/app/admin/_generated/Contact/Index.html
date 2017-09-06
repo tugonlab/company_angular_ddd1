@@ -1,0 +1,50 @@
+﻿<h4  class="page-title">{{'CONTACT.TITLE' | translate }}</h4>   
+                
+                   
+                
+            <div class="block-area">
+				<a class="button-icon"  tooltip-placement="right" (click)="openEdit()" style="cursor:pointer" ><i class="fa fa-file fa-2x"></i></a><br/><br/>
+                <table class="table table-bordered table-hover tile">
+                    <tr>
+                        <th>
+                            {{'CONTACT.GRID.COLUMN.NAME' | translate }}
+                        </th>   
+						<th>{{'CONTACT.GRID.COLUMN.ACTIONS' | translate }}</th>                      
+                    </tr>
+                    <tr *ngFor="let contact of contactList; let index=index">
+                        <td>
+                            {{contact.name}}
+                        </td>
+                        <td>
+                            <div class="panel-ctrls">
+                                <a style="cursor:pointer" class="button-icon" style="color:green;cursor:pointer"  (click)="openEdit(contact)">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a style="cursor:pointer" class="button-icon" style="color:red;cursor:pointer" (click)="remove(contact,index)">
+                                    <i class="fa fa-trash-o danger"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </table>
+				<!--<pre>{{page|json}}</pre>-->
+				<ngb-pagination *ngIf="page.totalCount > page.size" [pageSize]="page.size" [boundaryLinks]="true" [maxSize]="page.maxSize" [collectionSize]="page.totalCount" [(page)]="page.number" class="pagination-sm" (pageChange)="pageChanged($event)" [rotate]="false"   previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></ngb-pagination>
+</div>
+
+<!--modal edit -->
+<ng-template #contactModal let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title">{{'CONTACT.TITLE' | translate }}</h4>
+		<button type="button" class="close" (click)="hideModal()">×</button>		
+	</div>
+	<div class="modal-body">
+		<form-Contact [modal]="contactModal" [(contact)]="contact" [obj]="this" (onSave)="save(contact,this)" ></form-Contact>
+	</div>
+	<div class="modal-footer">
+		<button type="button" (click)="save(contact)" class="btn btn-success">{{'CONTACT.FORM.BUTTON.SAVE' | translate }}</button>
+		<button type="button" (click)="hideModal()" class="btn btn-default">{{'CONTACT.FORM.BUTTON.CANCEL' | translate }}</button>
+	</div>
+
+</ng-template>

@@ -1,0 +1,73 @@
+﻿<#@ template language="C#" hostSpecific="true" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="../main.ttinclude" #>
+<#//@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="../ClassModel.ttinclude" #>
+<#@ output extension=".txt"  #><#
+var manager = TemplateFileManager.Create(this);
+var classSet = new ClassSet();
+var classes = new ClassSet().Load().Classes.OrderBy(u => u.Name);
+var languages = new string[]{"pt","en"};
+foreach(var lang in languages){
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\wwwroot\\assets\\i18n\\");
+manager.StartNewFile("wwwroot\\assets\\i18n\\"+lang+".json","web","",null); 
+#>
+{
+<#
+foreach(var classModel in classes){
+
+var spacedName = classSet.ToSpacedName(classModel.Name).ToUpper();
+var classUnderscore = classSet.ToUnderscore(classModel.Name).ToUpper();
+#>
+	"<#=classUnderscore#>":{
+		"TITLE" : "<#=spacedName#>",
+		"GRID" : {
+			"COLUMN" : {		
+<# foreach(var field in classModel.Fields){
+	    if(!field.IsClass) {
+		var fieldSpaced = classSet.ToSpacedName(field.Name).ToUpper();
+	   var fieldUnderscore = classSet.ToUnderscore(field.Name).ToUpper();
+#>
+				"<#=fieldUnderscore#>":"<#=fieldSpaced#>",
+<#}#>
+<#}#>
+				"ACTIONS":"Actions"
+			},
+			"BUTTON": {
+				"EDIT":"Edit",
+				"REMOVE":"Remove",
+				"NEW": "new <#=spacedName#>"
+			},
+			"CONFIRM_DELETE":"Do you really want to remove this item?"
+		},
+		"FORM" : {
+			"LABEL" : {	
+<# foreach(var field in classModel.Fields){
+	   if(field.Name!="Id"){
+		var fieldSpaced = classSet.ToSpacedName(field.Name).ToUpper();
+	   var fieldUnderscore = classSet.ToUnderscore(field.Name).ToUpper();
+#>
+				"<#=fieldUnderscore#>":"<#=fieldSpaced#>",
+<#}}#>
+				"ID":"Id"
+			},
+			"BUTTON": {
+				"SAVE":"Save",
+				"CANCEL":"Cancel"
+			}
+		}
+	},
+<#}#>
+  "APP":{"NAME":""}
+}
+<# 
+manager.EndBlock();
+#>
+<#}#>
+<#
+manager.Process(false);
+#>

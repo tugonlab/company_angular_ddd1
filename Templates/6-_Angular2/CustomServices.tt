@@ -1,0 +1,58 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\main.ttinclude" #>
+<#@ include file="..\ClassModel.ttinclude" #>
+<#@ output extension=".txt"  #><#
+//System.Diagnostics.Debugger.Launch();
+var manager = TemplateFileManager.Create(this);
+manager.CanOverrideExistingFile = false;
+//manager.IsAutoIndentEnabled=true;
+var classSet = new ClassSet();
+var classes = new ClassSet().Load(true).Classes.OrderBy(u => u.Name);
+
+foreach(var classModel in classes){
+
+		var camelCaseName = classSet.ToCamelCase(classModel.Name);
+		var service = classSet.ToCamelCase(classModel.Name)+"Service";
+		var controller = classSet.ToCamelCase(classModel.Name)+"Controller";
+		var spacedName = classSet.ToSpacedName(classModel.Name);
+		var underscoreName = classSet.ToUnderscore(classModel.Name).ToUpper();
+		var parents = classModel.Fields?.Where(x=>x.IsParent);
+		var classChild = classModel.Fields?.Where(x=>x.IsCollection);	
+
+#>
+<#	
+///////////////////////////////////////////////////////
+//Service
+///////////////////////////////////////////////////////
+		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\services\\custom\\");	
+		manager.StartNewFile("ClientApp/app/services/custom/"+classModel.Name+".ts","web","");
+
+#>
+import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
+import { HttpService } from '../services';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+//////
+
+import { <#=classModel.Name#> } from '../../models/<#=classModel.Name#>';
+import { <#=classModel.Name#>Service } from '../generated/<#=classModel.Name#>Service';
+
+@Injectable()
+export class <#=classModel.Name#>CustomService extends <#=classModel.Name#>Service {
+
+    constructor(protected _http: HttpService) {
+        super(_http);
+    }  
+}
+<#
+manager.EndBlock();
+}
+manager.Process(false);
+#>

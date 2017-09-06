@@ -1,0 +1,717 @@
+﻿
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  About
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Address
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  City
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Contact
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Country
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Dentist
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Depoiment
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Gallery
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Gallery Photo
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  News
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Patient
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Phone
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Position
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Schedule
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Service
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Site Info
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Social Network
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Staff
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  State
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Treatment
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Value
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Work Hour
+//////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  About
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","TITLE", Title.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","MISSION", Mission.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","VISION", Vision.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Address
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ZIP CODE", ZipCode.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","STREET", Street.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DISTRICT", District.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","CITY ID", CityId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  City
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","STATE ID", StateId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Contact
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","EMAIL", Email.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SUBJECT", Subject.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","MESSAGE", Message.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PHONE", Phone.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Country
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","CODE", Code.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Dentist
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","CRO", CRO.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SPECIALITY", Speciality.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","MINI RESUME TEXT", MiniResumeText.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","POSITION ID", PositionId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Depoiment
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","TEXT", Text.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DATE", Date.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PATIENT ID", PatientId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Gallery
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Gallery Photo
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","GALLERY ID", GalleryId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","FILE NAME", FileName.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  News
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","TITLE", Title.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SHORT TEXT", ShortText.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LONG TEXT", LongText.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DATE", Date.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SOURCE", Source.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SOURCE URL", SourceUrl.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Patient
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","FIRST NAME", FirstName.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LAST NAME", LastName.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","EMAIL", Email.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ADDRESS ID", AddressId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PHONE ID", PhoneId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","BIRTH DATE", BirthDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ORIGIN", Origin.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Phone
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","COUNTRY CODE", CountryCode.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","AREA CODE", AreaCode.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NUMBER", Number.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Position
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Schedule
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DATE", Date.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PATIENT ID", PatientId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","MESSAGE", Message.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Service
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ICON", Icon.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SHORT DESCRIPTION", ShortDescription.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Site Info
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","EMAIL", Email.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","URL", Url.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ADDRESS ID", AddressId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PHONE ID", PhoneId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Social Network
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","URL", Url.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ICON", Icon.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Staff
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","MINI RESUME TEXT", MiniResumeText.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","POSITION ID", PositionId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  State
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","UF", UF.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","COUNTRY ID", CountryId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Treatment
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ICON", Icon.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","IMAGE", Image.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SHORT DESCRIPTION", ShortDescription.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Value
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ABOUT ID", AboutId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Work Hour
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DAY", Day.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","START TIME", StartTime.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","END TIME", EndTime.To<string>());
+
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  About
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Title!=newEntity.Title)
+	currentEntity.Title = newEntity.Title;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.Mission!=newEntity.Mission)
+	currentEntity.Mission = newEntity.Mission;
+
+if(currentEntity.Vision!=newEntity.Vision)
+	currentEntity.Vision = newEntity.Vision;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Address
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.ZipCode!=newEntity.ZipCode)
+	currentEntity.ZipCode = newEntity.ZipCode;
+
+if(currentEntity.Street!=newEntity.Street)
+	currentEntity.Street = newEntity.Street;
+
+if(currentEntity.District!=newEntity.District)
+	currentEntity.District = newEntity.District;
+
+if(currentEntity.CityId!=newEntity.CityId)
+	currentEntity.CityId = newEntity.CityId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  City
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.StateId!=newEntity.StateId)
+	currentEntity.StateId = newEntity.StateId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Contact
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Email!=newEntity.Email)
+	currentEntity.Email = newEntity.Email;
+
+if(currentEntity.Subject!=newEntity.Subject)
+	currentEntity.Subject = newEntity.Subject;
+
+if(currentEntity.Message!=newEntity.Message)
+	currentEntity.Message = newEntity.Message;
+
+if(currentEntity.Phone!=newEntity.Phone)
+	currentEntity.Phone = newEntity.Phone;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Country
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Code!=newEntity.Code)
+	currentEntity.Code = newEntity.Code;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Dentist
+//////////////////////////////////////////////////////////
+if(currentEntity.CRO!=newEntity.CRO)
+	currentEntity.CRO = newEntity.CRO;
+
+if(currentEntity.Speciality!=newEntity.Speciality)
+	currentEntity.Speciality = newEntity.Speciality;
+
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.MiniResumeText!=newEntity.MiniResumeText)
+	currentEntity.MiniResumeText = newEntity.MiniResumeText;
+
+if(currentEntity.PositionId!=newEntity.PositionId)
+	currentEntity.PositionId = newEntity.PositionId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Depoiment
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Text!=newEntity.Text)
+	currentEntity.Text = newEntity.Text;
+
+if(currentEntity.Date!=newEntity.Date)
+	currentEntity.Date = newEntity.Date;
+
+if(currentEntity.PatientId!=newEntity.PatientId)
+	currentEntity.PatientId = newEntity.PatientId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Gallery
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Gallery Photo
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.GalleryId!=newEntity.GalleryId)
+	currentEntity.GalleryId = newEntity.GalleryId;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.FileName!=newEntity.FileName)
+	currentEntity.FileName = newEntity.FileName;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  News
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Title!=newEntity.Title)
+	currentEntity.Title = newEntity.Title;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.ShortText!=newEntity.ShortText)
+	currentEntity.ShortText = newEntity.ShortText;
+
+if(currentEntity.LongText!=newEntity.LongText)
+	currentEntity.LongText = newEntity.LongText;
+
+if(currentEntity.Date!=newEntity.Date)
+	currentEntity.Date = newEntity.Date;
+
+if(currentEntity.Source!=newEntity.Source)
+	currentEntity.Source = newEntity.Source;
+
+if(currentEntity.SourceUrl!=newEntity.SourceUrl)
+	currentEntity.SourceUrl = newEntity.SourceUrl;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Patient
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.FirstName!=newEntity.FirstName)
+	currentEntity.FirstName = newEntity.FirstName;
+
+if(currentEntity.LastName!=newEntity.LastName)
+	currentEntity.LastName = newEntity.LastName;
+
+if(currentEntity.Email!=newEntity.Email)
+	currentEntity.Email = newEntity.Email;
+
+if(currentEntity.AddressId!=newEntity.AddressId)
+	currentEntity.AddressId = newEntity.AddressId;
+
+if(currentEntity.PhoneId!=newEntity.PhoneId)
+	currentEntity.PhoneId = newEntity.PhoneId;
+
+if(currentEntity.BirthDate!=newEntity.BirthDate)
+	currentEntity.BirthDate = newEntity.BirthDate;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.Origin!=newEntity.Origin)
+	currentEntity.Origin = newEntity.Origin;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Phone
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.CountryCode!=newEntity.CountryCode)
+	currentEntity.CountryCode = newEntity.CountryCode;
+
+if(currentEntity.AreaCode!=newEntity.AreaCode)
+	currentEntity.AreaCode = newEntity.AreaCode;
+
+if(currentEntity.Number!=newEntity.Number)
+	currentEntity.Number = newEntity.Number;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Position
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Schedule
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Date!=newEntity.Date)
+	currentEntity.Date = newEntity.Date;
+
+if(currentEntity.PatientId!=newEntity.PatientId)
+	currentEntity.PatientId = newEntity.PatientId;
+
+if(currentEntity.Message!=newEntity.Message)
+	currentEntity.Message = newEntity.Message;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Service
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Icon!=newEntity.Icon)
+	currentEntity.Icon = newEntity.Icon;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.ShortDescription!=newEntity.ShortDescription)
+	currentEntity.ShortDescription = newEntity.ShortDescription;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Site Info
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Email!=newEntity.Email)
+	currentEntity.Email = newEntity.Email;
+
+if(currentEntity.Url!=newEntity.Url)
+	currentEntity.Url = newEntity.Url;
+
+if(currentEntity.AddressId!=newEntity.AddressId)
+	currentEntity.AddressId = newEntity.AddressId;
+
+if(currentEntity.PhoneId!=newEntity.PhoneId)
+	currentEntity.PhoneId = newEntity.PhoneId;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Social Network
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Url!=newEntity.Url)
+	currentEntity.Url = newEntity.Url;
+
+if(currentEntity.Icon!=newEntity.Icon)
+	currentEntity.Icon = newEntity.Icon;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Staff
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.MiniResumeText!=newEntity.MiniResumeText)
+	currentEntity.MiniResumeText = newEntity.MiniResumeText;
+
+if(currentEntity.PositionId!=newEntity.PositionId)
+	currentEntity.PositionId = newEntity.PositionId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  State
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.UF!=newEntity.UF)
+	currentEntity.UF = newEntity.UF;
+
+if(currentEntity.CountryId!=newEntity.CountryId)
+	currentEntity.CountryId = newEntity.CountryId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Treatment
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Icon!=newEntity.Icon)
+	currentEntity.Icon = newEntity.Icon;
+
+if(currentEntity.Image!=newEntity.Image)
+	currentEntity.Image = newEntity.Image;
+
+if(currentEntity.ShortDescription!=newEntity.ShortDescription)
+	currentEntity.ShortDescription = newEntity.ShortDescription;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Value
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.AboutId!=newEntity.AboutId)
+	currentEntity.AboutId = newEntity.AboutId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Work Hour
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Day!=newEntity.Day)
+	currentEntity.Day = newEntity.Day;
+
+if(currentEntity.StartTime!=newEntity.StartTime)
+	currentEntity.StartTime = newEntity.StartTime;
+
+if(currentEntity.EndTime!=newEntity.EndTime)
+	currentEntity.EndTime = newEntity.EndTime;
+

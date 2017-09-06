@@ -1,0 +1,144 @@
+﻿<#@ template language="C#" hostSpecific="true" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ include file="../main.ttinclude" #>
+<#//@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="../ClassModel.ttinclude" #>
+<#@ output extension=".txt"  #><#
+var manager = TemplateFileManager.Create(this);
+var classSet = new ClassSet();
+var classes = new ClassSet().Load().Classes.OrderBy(u => u.Name);
+
+manager.CanOverrideExistingFile=true;
+#>
+<#foreach(var classModel in classes){
+var camelCaseName = classSet.ToCamelCase(classModel.Name);
+
+	var prop="nome";
+if(classModel.Fields.Any(x=>x.Name =="Nome")){
+	prop = "nome";
+}else if(classModel.Fields.Any(x=>x.Name =="UserName")){    
+	prop ="userName";	
+}else if(classModel.Fields.Any(x=>x.Name =="Name")){    
+	prop ="name";
+}else if(classModel.Fields.Any(x=>x.Name.Contains("Nome"))){
+	prop = classModel.Fields.Where(x=>x.Name.Contains("Nome")).FirstOrDefault().Name;
+	prop = classSet.ToCamelCase(prop);
+}else if(classModel.Fields.Any(x=>x.Name.Contains("Name"))){
+	prop = classModel.Fields.Where(x=>x.Name.Contains("Name")).FirstOrDefault().Name;
+	prop = classSet.ToCamelCase(prop);
+}else if(classModel.Fields.Any(x=>x.Name =="ClientName")){    
+	prop ="clientName";
+}else if(classModel.Fields.Any(x=>x.Name =="DisplayName")){    
+	prop ="displayName";
+}else if(classModel.Fields.Any(x=>x.Name =="Description")){    
+	prop ="description";
+}else if(classModel.Fields.Any(x=>x.DataType =="String")){
+	prop = classModel.Fields.Where(x=>x.DataType=="String").FirstOrDefault().Name;
+	prop = classSet.ToCamelCase(prop);
+}else if(classModel.Fields.Any(x=>x.Name.Contains("Description"))){
+	prop = classModel.Fields.Where(x=>x.Name.Contains("Description")).FirstOrDefault().Name;
+	prop = classSet.ToCamelCase(prop);
+}else{
+	prop="id";
+}
+	System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\combos");
+manager.StartNewFile("ClientApp\\app\\combos\\combo."+classSet.ToCamelCase(classModel.Name)+".ts","web","");
+#>
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { <#=classModel.Name#>Service } from '../services/generated/<#=classModel.Name#>Service';
+import { <#=classModel.Name#> } from '../models/<#=classModel.Name#>';
+
+@Component({
+    
+    selector: 'combo-<#=classSet.ToDash(classModel.Name)#>',
+    template: `
+	<select [ngModel]=model (ngModelChange)="updateData($event)"  name="<#=camelCaseName#>" class="{{cssClass}}" >
+		<option *ngFor="let <#=camelCaseName#> of <#=camelCaseName#>List" [value]="<#=camelCaseName#>.id">{{<#=camelCaseName#>.<#=prop#>}}</option>
+	</select>`,
+	providers: [<#=classModel.Name#>Service]
+})
+export class Combo<#=classModel.Name#>Component implements OnInit{
+	errorMessage: string;
+    <#=camelCaseName#>: <#=classModel.Name#>;
+	<#=camelCaseName#>List: <#=classModel.Name#>[];
+
+	@Input() cssClass?:string;
+
+	@Input() 
+	model:any;
+	
+	@Output() modelChange: any = new EventEmitter();   
+
+	constructor(private _service: <#=classModel.Name#>Service) {
+ 
+    }
+
+	updateData(event){
+		this.model = event;
+		this.modelChange.emit(event);
+	}
+
+    ngOnInit() {
+        this.<#=camelCaseName#> = new <#=classModel.Name#>();
+		this.getAll();
+    }
+
+    public getAll() {
+		this._service.getAll()
+		.subscribe(
+			result => {
+				this.<#=camelCaseName#>List = result;
+			},
+			error => {
+				this.errorMessage = error;
+			}
+		);
+    }
+
+}
+<#}
+manager.EndBlock();
+#>
+<#
+manager.StartNewFile("ClientApp\\app\\combos\\combos.module.ts","web","");
+
+
+#>
+
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
+
+<#foreach(var classModel in classes){#>
+import { Combo<#=classModel.Name#>Component } from './combo.<#=classSet.ToCamelCase(classModel.Name)#>';
+<#}#>
+
+@NgModule({
+    declarations: [
+<#foreach(var classModel in classes){#>
+        Combo<#=classModel.Name#>Component,
+<#}#>
+    ],
+	imports:[
+		SharedModule,
+	],
+    exports: [
+<#foreach(var classModel in classes){#>
+        Combo<#=classModel.Name#>Component,
+<#}#>
+    ]
+
+
+})
+export class CombosModule {
+
+}
+
+
+<#
+manager.EndBlock();
+manager.Process(false);
+#>

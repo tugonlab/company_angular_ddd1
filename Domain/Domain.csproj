@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName></SccProjectName>
+    <SccProvider></SccProvider>
+    <SccAuxPath></SccAuxPath>
+    <SccLocalPath></SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net452</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)Templates\$(TargetFileName)&quot;&#xD;&#xA;" />
+  </Target>
+
+  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rem copy $(TargetPath) $(SolutionDir)templates\$(TargetName).$(TargetExt)&#xD;&#xA;#[IO copy.file(&quot;$(TargetPath)&quot;, &quot;$(SolutionDir)Templates\$(TargetFileName)&quot;, true)]" />
+  </Target>-->
+
+</Project>

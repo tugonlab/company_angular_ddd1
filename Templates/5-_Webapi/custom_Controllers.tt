@@ -1,0 +1,39 @@
+﻿<#@ template language="C#" hostspecific="true" debug="True" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\main.ttinclude" #>
+<#//@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="..\ClassModel.ttinclude" #>
+<#@ output extension=".txt"  #><#
+var manager = TemplateFileManager.Create(this);
+manager.CanOverrideExistingFile=false;
+var classSet = new ClassSet();
+var classes = classSet.Load().Classes.OrderBy(u => u.Name);
+var projectName = "api";
+var path="Controllers";
+
+foreach(var classModel in classes){#>
+<#
+		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\"+path+"\\");	
+		manager.StartNewFile(path+"\\"+classModel.Name+ "Controller.cs",projectName,"");
+		var camelCaseName = classSet.ToCamelCase(classModel.Name);
+		var controller = classModel.Name+"Controller";
+		var spacedName = classSet.ToSpacedName(classModel.Name);
+		var parents = classModel.Fields.Where(x=>x.IsParent);
+		//manager.IsAutoIndentEnabled = true;
+#>
+namespace api.Controllers
+{
+    public partial class <#= classModel.Name #>Controller
+    {
+	}
+}
+
+<#
+manager.EndBlock();
+
+}
+manager.Process(false);
+#>

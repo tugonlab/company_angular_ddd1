@@ -1,0 +1,80 @@
+﻿<#@ template language="C#" hostSpecific="true" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="../main.ttinclude" #>
+<#//@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="../ClassModel.ttinclude" #>
+<#@ output extension=".txt"  #><#
+var manager = TemplateFileManager.Create(this);
+var classSet = new ClassSet();
+var classesAll = classSet.Load().Classes;
+var classes = classesAll.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
+		manager.CanOverrideExistingFile = true;
+foreach(var classModel in classes){#>
+<#
+var camelCaseName = classSet.ToCamelCase(classModel.Name);
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\ViewModels\\");	
+manager.StartNewFile("ViewModels\\"+classModel.Name+ "ViewModel.cs","Application","",null);
+#>
+using System;
+namespace Application.ViewModels
+{
+    public class <#=classModel.Name#>ViewModel
+    {
+<# foreach(var field in classModel.Fields){#>
+<#if(!field.IsClass && !field.IsEnum){#>
+		public <#=field.DataType#> <#=field.Name#> { get; set; }
+<#}}#>
+    }
+}
+<#
+manager.EndBlock();
+}
+#>
+<#
+manager.StartNewFile("IoCGenerated.cs","CrossCutting.IoC","",null);
+#>
+using Application.Interfaces;
+using Application.Services;
+using Data.Repositories;
+using Domain.Interfaces;
+using Domain.Services;
+using Domain.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace CrossCutting.IoC
+{
+    public static class IoCGenerated
+    {
+        public static void AddAppServices(this IServiceCollection services)
+        {
+<#foreach(var classModel in classes){#>
+		services.AddTransient<I<#=classModel.Name#>AppService, <#=classModel.Name#>AppService>();
+		services.AddTransient<I<#=classModel.Name#>Repository, <#=classModel.Name#>Repository>();
+		services.AddTransient<I<#=classModel.Name#>Service, <#=classModel.Name#>Service>();
+
+<#}#>
+        }
+    }
+}
+<#
+manager.EndBlock();
+#>
+<#
+
+manager.Process(true);
+#>
+
+//////////////
+<#foreach(var classModel in classes){#>
+            CreateMap<<#=classModel.Name#>, <#=classModel.Name#>ViewModel>();
+<#}#>
+
+////////////////////
+<#foreach(var classModel in classes){#>
+            CreateMap<<#=classModel.Name#>ViewModel, <#=classModel.Name#>>();
+<#}#>
+
+

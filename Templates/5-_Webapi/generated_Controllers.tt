@@ -1,0 +1,163 @@
+﻿<#@ template language="C#" hostspecific="true" debug="True" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\main.ttinclude" #>
+<#//@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="..\ClassModel.ttinclude" #>
+<#@ output extension=".txt"  #><#
+var manager = TemplateFileManager.Create(this);
+var classSet = new ClassSet();
+var classes = classSet.Load().Classes.OrderBy(u => u.Name);
+var projectName="api";
+var path="Controllers\\_generated";
+
+foreach(var classModel in classes){#>
+<#
+		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\"+path);	
+		manager.StartNewFile(path+"\\"+classModel.Name+ "Controller.cs",projectName,"");
+		var camelCaseName = classSet.ToCamelCase(classModel.Name);
+		var controller = classModel.Name+"Controller";
+		var spacedName = classSet.ToSpacedName(classModel.Name);
+		manager.CanOverrideExistingFile=true;
+		var parents = classModel.Fields.Where(x=>x.IsParent);
+		//manager.IsAutoIndentEnabled = true;
+#>
+using api.Models;
+using Application.AutoMapper;
+using Application.Interfaces;
+using Application.ViewModels;
+using Application.ViewModels.Common;
+using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System;
+
+namespace api.Controllers
+{
+	[Authorize]
+    [Route("api/[controller]")]
+    public partial class <#= classModel.Name #>Controller : BaseController
+    {
+        
+		private readonly I<#= classModel.Name #>AppService _service;
+<# foreach(var parent in parents){#>
+		private readonly I<#= parent.DataType #>AppService _<#=classSet.ToCamelCase(parent.DataType)#>AppService;
+<#}#>
+
+        public <#= classModel.Name #>Controller(I<#= classModel.Name #>AppService service<# foreach(var parent in parents){#>, I<#=parent.DataType#>AppService  <#=classSet.ToCamelCase(parent.DataType)#>AppService<#}#>, IHostingEnvironment hostingEnvironment, IOptions<AppSettings> settings)
+			: base(hostingEnvironment, settings)
+        {
+            _service = service;
+<# foreach(var parent in parents){#>
+			_<#=classSet.ToCamelCase(parent.DataType)#>AppService = <#=classSet.ToCamelCase(parent.DataType)#>AppService;
+<#}#>
+        }
+
+		[Route("getById/{id}")]
+        [HttpGet]
+		[AllowAnonymous]
+        public IActionResult GetById(int id)
+        {
+            var model = _service.GetById(id);
+            return Ok(model);
+        }
+
+<# foreach(var parent in parents){#>
+		[Route("getBy<#=parent.Name#>Id/{id}")]
+        [HttpGet]
+		[AllowAnonymous]
+        public IActionResult GetBy<#=parent.Name#>Id(int id)
+        {
+            var model = _service.Find(x=>x.<#=parent.Name#>.Id == id);
+            return Ok(model);
+        }
+
+		[Route("getBy<#=parent.Name#>Id/{id}/{pageNumber}/{pageSize}/{orderBy?}/{orderDirection?}")]
+        [HttpGet]
+		[AllowAnonymous]
+        public IActionResult GetBy<#=parent.Name#>Id(int id,int pageSize, int pageNumber, string orderBy, string orderDirection)
+        {
+            var model = _service.Find(x=>x.<#=parent.Name#>.Id == id).Paging(pageNumber, pageSize, orderBy, orderDirection);
+            return Ok(model);
+        }
+<#}#>
+
+        [Route("getAll")]
+        [HttpGet]
+		[AllowAnonymous]
+        public IActionResult GetByAll()
+        {
+            var model = _service.GetAll();
+            return Ok(model);
+        }
+
+		[Route("getAllPage")]
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult GetByAllPage([FromBody] PagingViewModel<<#= classModel.Name #>ViewModel> page)
+        {
+            var model = _service.GetByAllPage(page);
+            return Ok(model);
+        }
+
+        [Route("save")]
+        [HttpPost]
+        public IActionResult Save([FromBody] <#= classModel.Name #>ViewModel model)
+        {
+			<#= classModel.Name #>ViewModel result;
+            try
+            { 
+<# if(classModel.Fields.Any(x=>x.Name=="Id")){#>
+<# if(classModel.Fields.Where(x=>x.Name=="Id").Select(x=>x.DataType).First()=="String"){#>
+				if(string.IsNullOrWhiteSpace(model.Id))
+<#}else{#>
+				if(model.Id==0)
+<#}#>
+					result = _service.Add(model.MapTo<<#= classModel.Name #>>());
+				else
+					result = _service.Update(model.MapTo<<#= classModel.Name #>>());
+<#}else{#>
+                result = model.MapTo<<#= classModel.Name #>>();
+<#}#>
+                return Ok(result.MapTo<<#= classModel.Name #>ViewModel>());
+            }
+            catch(Exception e)
+            {
+                return BadRequest($"Error while saving <#= spacedName #> {e.Message}");
+            }
+        }
+
+		[Route("remove")]
+        [HttpPost]
+        public IActionResult Remove([FromBody] <#= classModel.Name #>ViewModel model)
+        {
+            try
+            {
+                _service.Remove(model.MapTo<<#= classModel.Name #>>());
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest("Error while deleting <#= spacedName #>");
+            }
+        }
+
+		protected override void Dispose(bool disposing)
+      {
+         //_repository.Dispose();
+         base.Dispose(disposing);
+      }
+
+    }
+}
+
+<#
+manager.EndBlock();
+
+}
+manager.Process(false);
+#>
