@@ -4,16 +4,14 @@ import { ContactComponent, AboutComponent, HomeComponent } from "./pages";
 import { SharedModule } from "../shared/shared.module";
 
 export const routes: Routes = [
-  //{ path:'', redirectTo:'about', pathMatch: 'full'},  
-  //{path: '.', redirectTo: 'about', pathMatch: 'full', children: [
+
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'contato', component: ContactComponent },
   { path: 'about', component: AboutComponent },
   { path: 'quemsomos', component: AboutComponent }
-  //{ path: '**', redirectTo: 'about' }
-  //]}
+
 ];
 
 @NgModule({

@@ -16,10 +16,8 @@ import { CanActivateViaAuthGuard, AuthModule, LoginCallBackComponent, AuthServic
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { PagesModule } from "./pages/pages.module";
 import { AdminModule } from "./admin/admin.module";
 import { ServicesModule } from "./services/services.module";
-import { PagesRoutingModule } from './pages/pages-routing.module';
 
 @NgModule({
     declarations: [
@@ -27,19 +25,19 @@ import { PagesRoutingModule } from './pages/pages-routing.module';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         SharedModule,
         ServicesModule,
-        //AdminModule,
+        RouterModule.forRoot([
+            //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '', loadChildren: 'app/pages/pages.module#PagesModule' }
+        ]),
         AuthModule,
-        PagesModule,
-        PagesRoutingModule,
         NgbModule.forRoot(),
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: translateFactory,//(http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
             deps: [Http]
-        }),      
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]

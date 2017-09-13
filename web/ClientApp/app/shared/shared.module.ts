@@ -16,7 +16,7 @@ import { MyNgbDateParserFormatter } from './util/myNgbDatePickerFormat';
 import { imgResizeComponent } from './imgResize/imgResizeComponent';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
-import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AgmCoreModule } from '@agm/core';
 
 import { AsideToggleDirective } from '../directives/aside.directive';
 import { BreadcrumbsComponent } from '../directives/breadcrumb.component';

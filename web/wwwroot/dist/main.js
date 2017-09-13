@@ -1,39 +1,5 @@
 webpackJsonp([1],{
 
-/***/ "./ClientApp/app/app-routing.module.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-var routes = [];
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
-    }
-    return AppRoutingModule;
-}());
-AppRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule.forRoot(routes)],
-        exports: [router_1.RouterModule]
-    })
-], AppRoutingModule);
-exports.AppRoutingModule = AppRoutingModule;
-function htmlFiles(url) {
-    return url.length === 1 && url[0].path.endsWith('.html') ? ({ consumed: url }) : null;
-}
-
-
-/***/ }),
-
 /***/ "./ClientApp/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -72,19 +38,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'app';
     }
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'app-root',
+            template: __webpack_require__("./ClientApp/app/app.component.html"),
+            styles: [__webpack_require__("./ClientApp/app/app.component.css")]
+        })
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'app-root',
-        template: __webpack_require__("./ClientApp/app/app.component.html"),
-        styles: [__webpack_require__("./ClientApp/app/app.component.css")]
-    })
-], AppComponent);
 exports.AppComponent = AppComponent;
 
 
@@ -104,46 +70,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var http_1 = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 var ng2_translate_1 = __webpack_require__("./node_modules/ng2-translate/index.js");
 var ng_bootstrap_1 = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 var app_component_1 = __webpack_require__("./ClientApp/app/app.component.ts");
 var auth_1 = __webpack_require__("./ClientApp/app/auth/auth.ts");
 var shared_module_1 = __webpack_require__("./ClientApp/app/shared/shared.module.ts");
-var app_routing_module_1 = __webpack_require__("./ClientApp/app/app-routing.module.ts");
-var pages_module_1 = __webpack_require__("./ClientApp/app/pages/pages.module.ts");
 var services_module_1 = __webpack_require__("./ClientApp/app/services/services.module.ts");
-var pages_routing_module_1 = __webpack_require__("./ClientApp/app/pages/pages-routing.module.ts");
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            declarations: [
+                app_component_1.AppComponent
+            ],
+            imports: [
+                platform_browser_1.BrowserModule,
+                shared_module_1.SharedModule,
+                services_module_1.ServicesModule,
+                router_1.RouterModule.forRoot([
+                    //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+                    { path: '', loadChildren: 'app/pages/pages.module#PagesModule' }
+                ]),
+                auth_1.AuthModule,
+                ng_bootstrap_1.NgbModule.forRoot(),
+                ng2_translate_1.TranslateModule.forRoot({
+                    provide: ng2_translate_1.TranslateLoader,
+                    useFactory: translateFactory,
+                    deps: [http_1.Http]
+                }),
+            ],
+            providers: [],
+            bootstrap: [app_component_1.AppComponent]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        declarations: [
-            app_component_1.AppComponent
-        ],
-        imports: [
-            platform_browser_1.BrowserModule,
-            app_routing_module_1.AppRoutingModule,
-            shared_module_1.SharedModule,
-            services_module_1.ServicesModule,
-            //AdminModule,
-            auth_1.AuthModule,
-            pages_module_1.PagesModule,
-            pages_routing_module_1.PagesRoutingModule,
-            ng_bootstrap_1.NgbModule.forRoot(),
-            ng2_translate_1.TranslateModule.forRoot({
-                provide: ng2_translate_1.TranslateLoader,
-                useFactory: translateFactory,
-                deps: [http_1.Http]
-            }),
-        ],
-        providers: [],
-        bootstrap: [app_component_1.AppComponent]
-    })
-], AppModule);
 exports.AppModule = AppModule;
 function translateFactory(http) { return new ng2_translate_1.TranslateStaticLoader(http, 'assets/i18n', '.json'); }
 exports.translateFactory = translateFactory;
@@ -175,7 +139,7 @@ __webpack_require__("./node_modules/rxjs/add/operator/map.js");
 __webpack_require__("./node_modules/rxjs/add/operator/do.js");
 __webpack_require__("./node_modules/rxjs/add/operator/catch.js");
 __webpack_require__("./node_modules/rxjs/add/operator/filter.js");
-var AuthService = (function () {
+var AuthService = /** @class */ (function () {
     function AuthService(_http, _config, _router, securityService) {
         this._http = _http;
         this._config = _config;
@@ -289,12 +253,12 @@ var AuthService = (function () {
     AuthService.prototype.clearLogoutUrl = function () {
         sessionStorage.removeItem("logout_url");
     };
+    AuthService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http, config_1.Config, router_1.Router, oidc_security_service_1.OidcSecurityService])
+    ], AuthService);
     return AuthService;
 }());
-AuthService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, config_1.Config, router_1.Router, oidc_security_service_1.OidcSecurityService])
-], AuthService);
 exports.AuthService = AuthService;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
@@ -320,7 +284,7 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var auth_1 = __webpack_require__("./ClientApp/app/auth/auth.ts");
 var config_1 = __webpack_require__("./ClientApp/app/config.ts");
-var CanActivateViaAuthGuard = (function () {
+var CanActivateViaAuthGuard = /** @class */ (function () {
     function CanActivateViaAuthGuard(authService, _router, config) {
         this.authService = authService;
         this._router = _router;
@@ -339,12 +303,12 @@ var CanActivateViaAuthGuard = (function () {
         }
         return logged;
     };
+    CanActivateViaAuthGuard = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_1.AuthService, router_1.Router, config_1.Config])
+    ], CanActivateViaAuthGuard);
     return CanActivateViaAuthGuard;
 }());
-CanActivateViaAuthGuard = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [auth_1.AuthService, router_1.Router, config_1.Config])
-], CanActivateViaAuthGuard);
 exports.CanActivateViaAuthGuard = CanActivateViaAuthGuard;
 
 
@@ -369,29 +333,29 @@ var AuthService_1 = __webpack_require__("./ClientApp/app/auth/AuthService.ts");
 var CanActivateViaAuthGuard_1 = __webpack_require__("./ClientApp/app/auth/CanActivateViaAuthGuard.ts");
 var oidc_security_service_1 = __webpack_require__("./ClientApp/app/auth/oidc.security.service.ts");
 var callback_1 = __webpack_require__("./ClientApp/app/auth/callback.ts");
-var AuthModule = (function () {
+var AuthModule = /** @class */ (function () {
     function AuthModule() {
     }
+    AuthModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forChild([
+                    { path: 'callback', component: callback_1.LoginCallBackComponent },
+                    {
+                        //path: '', component: StartComponent,
+                        children: [
+                            { path: '**', redirectTo: 'home' },
+                        ]
+                    },
+                ])
+            ],
+            providers: [oidc_security_service_1.OidcSecurityService, AuthService_1.AuthService, CanActivateViaAuthGuard_1.CanActivateViaAuthGuard],
+            declarations: [callback_1.LoginCallBackComponent],
+            exports: [callback_1.LoginCallBackComponent]
+        })
+    ], AuthModule);
     return AuthModule;
 }());
-AuthModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            router_1.RouterModule.forChild([
-                { path: 'callback', component: callback_1.LoginCallBackComponent },
-                {
-                    //path: '', component: StartComponent,
-                    children: [
-                        { path: '**', redirectTo: 'home' },
-                    ]
-                },
-            ])
-        ],
-        providers: [oidc_security_service_1.OidcSecurityService, AuthService_1.AuthService, CanActivateViaAuthGuard_1.CanActivateViaAuthGuard],
-        declarations: [callback_1.LoginCallBackComponent],
-        exports: [callback_1.LoginCallBackComponent]
-    })
-], AuthModule);
 exports.AuthModule = AuthModule;
 
 
@@ -447,12 +411,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var auth_1 = __webpack_require__("./ClientApp/app/auth/auth.ts");
 var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-var User = (function () {
+var User = /** @class */ (function () {
     function User() {
     }
     return User;
 }());
-var LoginCallBackComponent = (function () {
+var LoginCallBackComponent = /** @class */ (function () {
     function LoginCallBackComponent(_auth, _router) {
         this._auth = _auth;
         this._router = _router;
@@ -477,14 +441,14 @@ var LoginCallBackComponent = (function () {
             this._auth.clearLogoutUrl();
         }
     };
+    LoginCallBackComponent = __decorate([
+        core_1.Component({
+            template: __webpack_require__("./ClientApp/app/auth/callback.html"),
+        }),
+        __metadata("design:paramtypes", [auth_1.AuthService, router_1.Router])
+    ], LoginCallBackComponent);
     return LoginCallBackComponent;
 }());
-LoginCallBackComponent = __decorate([
-    core_1.Component({
-        template: __webpack_require__("./ClientApp/app/auth/callback.html"),
-    }),
-    __metadata("design:paramtypes", [auth_1.AuthService, router_1.Router])
-], LoginCallBackComponent);
 exports.LoginCallBackComponent = LoginCallBackComponent;
 
 
@@ -496,13 +460,13 @@ exports.LoginCallBackComponent = LoginCallBackComponent;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var JwtKeys = (function () {
+var JwtKeys = /** @class */ (function () {
     function JwtKeys() {
     }
     return JwtKeys;
 }());
 exports.JwtKeys = JwtKeys;
-var JwtKey = (function () {
+var JwtKey = /** @class */ (function () {
     function JwtKey() {
     }
     return JwtKey;
@@ -535,7 +499,7 @@ var Rx_1 = __webpack_require__("./node_modules/rxjs/Rx.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var config_1 = __webpack_require__("./ClientApp/app/config.ts");
 var oidc_security_validation_1 = __webpack_require__("./ClientApp/app/auth/oidc.security.validation.ts");
-var OidcSecurityService = (function () {
+var OidcSecurityService = /** @class */ (function () {
     function OidcSecurityService(_http, _configuration, _router) {
         var _this = this;
         this._http = _http;
@@ -785,12 +749,12 @@ var OidcSecurityService = (function () {
             this.headers.append('Authorization', 'Bearer ' + token);
         }
     };
+    OidcSecurityService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http, config_1.Config, router_1.Router])
+    ], OidcSecurityService);
     return OidcSecurityService;
 }());
-OidcSecurityService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, config_1.Config, router_1.Router])
-], OidcSecurityService);
 exports.OidcSecurityService = OidcSecurityService;
 
 
@@ -826,7 +790,7 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 //// access_token C1: Hash the octets of the ASCII representation of the access_token with the hash algorithm specified in JWA[JWA] for the alg Header Parameter of the ID Token's JOSE Header. For instance, if the alg is RS256, the hash algorithm used is SHA-256.
 //// access_token C2: Take the left- most half of the hash and base64url- encode it.
 //// access_token C3: The value of at_hash in the ID Token MUST match the value produced in the previous step if at_hash is present in the ID Token.
-var OidcSecurityValidation = (function () {
+var OidcSecurityValidation = /** @class */ (function () {
     function OidcSecurityValidation() {
     }
     // id_token C7: The current time MUST be before the time represented by the exp Claim (possibly allowing for some small leeway to account for clock skew).
@@ -971,11 +935,11 @@ var OidcSecurityValidation = (function () {
         }
         return window.atob(output);
     };
+    OidcSecurityValidation = __decorate([
+        core_1.Injectable()
+    ], OidcSecurityValidation);
     return OidcSecurityValidation;
 }());
-OidcSecurityValidation = __decorate([
-    core_1.Injectable()
-], OidcSecurityValidation);
 exports.OidcSecurityValidation = OidcSecurityValidation;
 
 
@@ -998,7 +962,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 //declare var window: any;
-var Config = (function () {
+var Config = /** @class */ (function () {
     function Config() {
         this.useAuthorityServer = false;
         this.siteUrl = window.location.hostname == "localhost" ? 'http://localhost:50295' : 'http://www.sorrisochic.com.br';
@@ -1022,12 +986,12 @@ var Config = (function () {
     };
     Config.prototype.load = function () {
     };
+    Config = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], Config);
     return Config;
 }());
-Config = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], Config);
 exports.Config = Config;
 
 
@@ -1052,27 +1016,27 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 /**
 * Allows the aside to be toggled via click.
 */
-var AsideToggleDirective = (function () {
+var AsideToggleDirective = /** @class */ (function () {
     function AsideToggleDirective() {
     }
     AsideToggleDirective.prototype.toggleOpen = function ($event) {
         $event.preventDefault();
         document.querySelector('body').classList.toggle('aside-menu-hidden');
     };
+    __decorate([
+        core_1.HostListener('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], AsideToggleDirective.prototype, "toggleOpen", null);
+    AsideToggleDirective = __decorate([
+        core_1.Directive({
+            selector: '[appAsideMenuToggler]',
+        }),
+        __metadata("design:paramtypes", [])
+    ], AsideToggleDirective);
     return AsideToggleDirective;
 }());
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], AsideToggleDirective.prototype, "toggleOpen", null);
-AsideToggleDirective = __decorate([
-    core_1.Directive({
-        selector: '[appAsideMenuToggler]',
-    }),
-    __metadata("design:paramtypes", [])
-], AsideToggleDirective);
 exports.AsideToggleDirective = AsideToggleDirective;
 
 
@@ -1096,7 +1060,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 __webpack_require__("./node_modules/rxjs/add/operator/filter.js");
-var BreadcrumbsComponent = (function () {
+var BreadcrumbsComponent = /** @class */ (function () {
     function BreadcrumbsComponent(router, route) {
         this.router = router;
         this.route = route;
@@ -1124,15 +1088,15 @@ var BreadcrumbsComponent = (function () {
             } while (currentRoute);
         });
     };
+    BreadcrumbsComponent = __decorate([
+        core_1.Component({
+            selector: 'app-breadcrumbs',
+            template: "\n  <ng-template ngFor let-breadcrumb [ngForOf]=\"breadcrumbs\" let-last = last>\n\n    <li class=\"breadcrumb-item\"\n        [ngClass]=\"{active: last}\">\n      <a *ngIf=\"!last\" [routerLink]=\"breadcrumb.url\">{{breadcrumb.label}}</a>\n      <span *ngIf=\"last\" [routerLink]=\"breadcrumb.url\">{{breadcrumb.label}}</span>\n    </li>\n  </ng-template>"
+        }),
+        __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute])
+    ], BreadcrumbsComponent);
     return BreadcrumbsComponent;
 }());
-BreadcrumbsComponent = __decorate([
-    core_1.Component({
-        selector: 'app-breadcrumbs',
-        template: "\n  <ng-template ngFor let-breadcrumb [ngForOf]=\"breadcrumbs\" let-last = last>\n\n    <li class=\"breadcrumb-item\"\n        [ngClass]=\"{active: last}\">\n      <a *ngIf=\"!last\" [routerLink]=\"breadcrumb.url\">{{breadcrumb.label}}</a>\n      <span *ngIf=\"last\" [routerLink]=\"breadcrumb.url\">{{breadcrumb.label}}</span>\n    </li>\n  </ng-template>"
-    }),
-    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute])
-], BreadcrumbsComponent);
 exports.BreadcrumbsComponent = BreadcrumbsComponent;
 
 
@@ -1154,24 +1118,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var claimDirective = (function () {
+var claimDirective = /** @class */ (function () {
     function claimDirective(el) {
         this.el = el;
         if (this.name = "nao")
             this.el.nativeElement.style.display = "none";
     }
+    __decorate([
+        core_1.Input('claim'),
+        __metadata("design:type", String)
+    ], claimDirective.prototype, "name", void 0);
+    claimDirective = __decorate([
+        core_1.Directive({
+            selector: '[claim]',
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
+    ], claimDirective);
     return claimDirective;
 }());
-__decorate([
-    core_1.Input('claim'),
-    __metadata("design:type", String)
-], claimDirective.prototype, "name", void 0);
-claimDirective = __decorate([
-    core_1.Directive({
-        selector: '[claim]',
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
-], claimDirective);
 exports.claimDirective = claimDirective;
 
 
@@ -1193,7 +1157,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var inRoleDirective = (function () {
+var inRoleDirective = /** @class */ (function () {
     function inRoleDirective(el) {
         this.el = el;
         this.userRoles = ["operator"];
@@ -1217,18 +1181,18 @@ var inRoleDirective = (function () {
             el.detach();
         }
     };
+    __decorate([
+        core_1.Input('inRole'),
+        __metadata("design:type", Array)
+    ], inRoleDirective.prototype, "roles", void 0);
+    inRoleDirective = __decorate([
+        core_1.Directive({
+            selector: '[inRole]'
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
+    ], inRoleDirective);
     return inRoleDirective;
 }());
-__decorate([
-    core_1.Input('inRole'),
-    __metadata("design:type", Array)
-], inRoleDirective.prototype, "roles", void 0);
-inRoleDirective = __decorate([
-    core_1.Directive({
-        selector: '[inRole]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
-], inRoleDirective);
 exports.inRoleDirective = inRoleDirective;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
@@ -1251,26 +1215,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var NavDropdownDirective = (function () {
+var NavDropdownDirective = /** @class */ (function () {
     function NavDropdownDirective(el) {
         this.el = el;
     }
     NavDropdownDirective.prototype.toggle = function () {
         this.el.nativeElement.classList.toggle('open');
     };
+    NavDropdownDirective = __decorate([
+        core_1.Directive({
+            selector: '[appNavDropdown]'
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
+    ], NavDropdownDirective);
     return NavDropdownDirective;
 }());
-NavDropdownDirective = __decorate([
-    core_1.Directive({
-        selector: '[appNavDropdown]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
-], NavDropdownDirective);
 exports.NavDropdownDirective = NavDropdownDirective;
 /**
 * Allows the dropdown to be toggled via click.
 */
-var NavDropdownToggleDirective = (function () {
+var NavDropdownToggleDirective = /** @class */ (function () {
     function NavDropdownToggleDirective(dropdown) {
         this.dropdown = dropdown;
     }
@@ -1278,20 +1242,20 @@ var NavDropdownToggleDirective = (function () {
         $event.preventDefault();
         this.dropdown.toggle();
     };
+    __decorate([
+        core_1.HostListener('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], NavDropdownToggleDirective.prototype, "toggleOpen", null);
+    NavDropdownToggleDirective = __decorate([
+        core_1.Directive({
+            selector: '[appNavDropdownToggle]'
+        }),
+        __metadata("design:paramtypes", [NavDropdownDirective])
+    ], NavDropdownToggleDirective);
     return NavDropdownToggleDirective;
 }());
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], NavDropdownToggleDirective.prototype, "toggleOpen", null);
-NavDropdownToggleDirective = __decorate([
-    core_1.Directive({
-        selector: '[appNavDropdownToggle]'
-    }),
-    __metadata("design:paramtypes", [NavDropdownDirective])
-], NavDropdownToggleDirective);
 exports.NavDropdownToggleDirective = NavDropdownToggleDirective;
 exports.NAV_DROPDOWN_DIRECTIVES = [NavDropdownDirective, NavDropdownToggleDirective];
 
@@ -1314,7 +1278,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var replaceDirective = (function () {
+var replaceDirective = /** @class */ (function () {
     function replaceDirective(el) {
         this.el = el;
         this.userRoles = ["operator"];
@@ -1329,14 +1293,14 @@ var replaceDirective = (function () {
         el.detach();
         parent.append(inner);
     };
+    replaceDirective = __decorate([
+        core_1.Directive({
+            selector: '[replace]'
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
+    ], replaceDirective);
     return replaceDirective;
 }());
-replaceDirective = __decorate([
-    core_1.Directive({
-        selector: '[replace]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
-], replaceDirective);
 exports.replaceDirective = replaceDirective;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
@@ -1359,7 +1323,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var scrollTopDirective = (function () {
+var scrollTopDirective = /** @class */ (function () {
     function scrollTopDirective(el) {
         this.el = el;
     }
@@ -1374,18 +1338,18 @@ var scrollTopDirective = (function () {
             return false;
         });
     };
+    __decorate([
+        core_1.Input('scroll-top'),
+        __metadata("design:type", String)
+    ], scrollTopDirective.prototype, "to", void 0);
+    scrollTopDirective = __decorate([
+        core_1.Directive({
+            selector: '[scroll-top]'
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
+    ], scrollTopDirective);
     return scrollTopDirective;
 }());
-__decorate([
-    core_1.Input('scroll-top'),
-    __metadata("design:type", String)
-], scrollTopDirective.prototype, "to", void 0);
-scrollTopDirective = __decorate([
-    core_1.Directive({
-        selector: '[scroll-top]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
-], scrollTopDirective);
 exports.scrollTopDirective = scrollTopDirective;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
@@ -1411,51 +1375,51 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 /**
 * Allows the sidebar to be toggled via click.
 */
-var SidebarToggleDirective = (function () {
+var SidebarToggleDirective = /** @class */ (function () {
     function SidebarToggleDirective() {
     }
     SidebarToggleDirective.prototype.toggleOpen = function ($event) {
         $event.preventDefault();
         document.querySelector('body').classList.toggle('sidebar-hidden');
     };
+    __decorate([
+        core_1.HostListener('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], SidebarToggleDirective.prototype, "toggleOpen", null);
+    SidebarToggleDirective = __decorate([
+        core_1.Directive({
+            selector: '[appSidebarToggler]'
+        }),
+        __metadata("design:paramtypes", [])
+    ], SidebarToggleDirective);
     return SidebarToggleDirective;
 }());
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], SidebarToggleDirective.prototype, "toggleOpen", null);
-SidebarToggleDirective = __decorate([
-    core_1.Directive({
-        selector: '[appSidebarToggler]'
-    }),
-    __metadata("design:paramtypes", [])
-], SidebarToggleDirective);
 exports.SidebarToggleDirective = SidebarToggleDirective;
-var SidebarMinimizeDirective = (function () {
+var SidebarMinimizeDirective = /** @class */ (function () {
     function SidebarMinimizeDirective() {
     }
     SidebarMinimizeDirective.prototype.toggleOpen = function ($event) {
         $event.preventDefault();
         document.querySelector('body').classList.toggle('sidebar-minimized');
     };
+    __decorate([
+        core_1.HostListener('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], SidebarMinimizeDirective.prototype, "toggleOpen", null);
+    SidebarMinimizeDirective = __decorate([
+        core_1.Directive({
+            selector: '[appSidebarMinimizer]'
+        }),
+        __metadata("design:paramtypes", [])
+    ], SidebarMinimizeDirective);
     return SidebarMinimizeDirective;
 }());
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], SidebarMinimizeDirective.prototype, "toggleOpen", null);
-SidebarMinimizeDirective = __decorate([
-    core_1.Directive({
-        selector: '[appSidebarMinimizer]'
-    }),
-    __metadata("design:paramtypes", [])
-], SidebarMinimizeDirective);
 exports.SidebarMinimizeDirective = SidebarMinimizeDirective;
-var MobileSidebarToggleDirective = (function () {
+var MobileSidebarToggleDirective = /** @class */ (function () {
     function MobileSidebarToggleDirective() {
     }
     // Check if element has class
@@ -1466,25 +1430,25 @@ var MobileSidebarToggleDirective = (function () {
         $event.preventDefault();
         document.querySelector('body').classList.toggle('sidebar-mobile-show');
     };
+    __decorate([
+        core_1.HostListener('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], MobileSidebarToggleDirective.prototype, "toggleOpen", null);
+    MobileSidebarToggleDirective = __decorate([
+        core_1.Directive({
+            selector: '[appMobileSidebarToggler]'
+        }),
+        __metadata("design:paramtypes", [])
+    ], MobileSidebarToggleDirective);
     return MobileSidebarToggleDirective;
 }());
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], MobileSidebarToggleDirective.prototype, "toggleOpen", null);
-MobileSidebarToggleDirective = __decorate([
-    core_1.Directive({
-        selector: '[appMobileSidebarToggler]'
-    }),
-    __metadata("design:paramtypes", [])
-], MobileSidebarToggleDirective);
 exports.MobileSidebarToggleDirective = MobileSidebarToggleDirective;
 /**
 * Allows the off-canvas sidebar to be closed via click.
 */
-var SidebarOffCanvasCloseDirective = (function () {
+var SidebarOffCanvasCloseDirective = /** @class */ (function () {
     function SidebarOffCanvasCloseDirective() {
     }
     // Check if element has class
@@ -1510,20 +1474,20 @@ var SidebarOffCanvasCloseDirective = (function () {
             this.toggleClass(document.querySelector('body'), 'sidebar-opened');
         }
     };
+    __decorate([
+        core_1.HostListener('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], SidebarOffCanvasCloseDirective.prototype, "toggleOpen", null);
+    SidebarOffCanvasCloseDirective = __decorate([
+        core_1.Directive({
+            selector: '[appSidebarClose]'
+        }),
+        __metadata("design:paramtypes", [])
+    ], SidebarOffCanvasCloseDirective);
     return SidebarOffCanvasCloseDirective;
 }());
-__decorate([
-    core_1.HostListener('click', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], SidebarOffCanvasCloseDirective.prototype, "toggleOpen", null);
-SidebarOffCanvasCloseDirective = __decorate([
-    core_1.Directive({
-        selector: '[appSidebarClose]'
-    }),
-    __metadata("design:paramtypes", [])
-], SidebarOffCanvasCloseDirective);
 exports.SidebarOffCanvasCloseDirective = SidebarOffCanvasCloseDirective;
 exports.SIDEBAR_TOGGLE_DIRECTIVES = [
     SidebarToggleDirective,
@@ -1531,342 +1495,6 @@ exports.SIDEBAR_TOGGLE_DIRECTIVES = [
     SidebarOffCanvasCloseDirective,
     MobileSidebarToggleDirective
 ];
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/models/Contact.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Contact = (function () {
-    //////////////
-    function Contact() {
-    }
-    return Contact;
-}());
-exports.Contact = Contact;
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/about/about.html":
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/about/about.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var AboutComponent = (function () {
-    function AboutComponent() {
-        this.load();
-    }
-    AboutComponent.prototype.ngOnInit = function () {
-    };
-    AboutComponent.prototype.load = function () {
-    };
-    return AboutComponent;
-}());
-AboutComponent = __decorate([
-    core_1.Component({
-        template: __webpack_require__("./ClientApp/app/pages/about/about.html"),
-        providers: []
-    }),
-    __metadata("design:paramtypes", [])
-], AboutComponent);
-exports.AboutComponent = AboutComponent;
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/contact/contact.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container main-container\">\r\n    <h3 class=\"main-heading-1\">Contatos</h3>\r\n\r\n    <div class=\"row\">   \r\n\r\n        <div id=\"top\"></div>\r\n        <div id=\"contact-form\" class=\"col-sm-12 col-lg-12\">\r\n            <div class=\"status alert alert-success contact-status\"></div>\r\n            <form id=\"main-contact-form\" class=\"contact-form\" name=\"contact-form\" method=\"post\" role=\"form\" ngSubmit=\"SendEmail(contact)\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"name\" class=\"sr-only\">Name: </label>\r\n                            <input type=\"text\" class=\"form-control\" [(ngModel)]=\"contact.name\" name=\"name\" id=\"name\" required=\"required\" placeholder=\"NOME\">\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"email\" class=\"sr-only\">Email: </label>\r\n                            <input type=\"text\" class=\"form-control\" name=\"email\" id=\"email\" [(ngModel)]=\"contact.email\" required=\"required\" placeholder=\"EMAIL\">\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"phoneno\" class=\"sr-only\">Phone No: </label>\r\n                            <input type=\"text\" class=\"form-control\" name=\"phoneno\" [(ngModel)]=\"contact.phoneNumber\" id=\"phoneno\" required=\"required\" placeholder=\"TELEFONE\">\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"subject\" class=\"sr-only\">Subject: </label>\r\n                            <input type=\"text\" class=\"form-control\" name=\"subject\" id=\"subject\" [(ngModel)]=\"contact.subject\" required=\"required\" placeholder=\"ASSUNTO\">\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-12\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"message\" class=\"sr-only\">Message: </label>\r\n                            <textarea class=\"form-control\" rows=\"8\" name=\"message\" [(ngModel)]=\"contact.message\" id=\"message\" required=\"required\" placeholder=\"MENSAGEM\"></textarea>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-12\">\r\n                        <button type=\"submit\" class=\"btn btn-lg btn-block btn-secondary text-uppercase\" value=\"Enviar\" (click)=\"SendEmail(contact)\">Enviar</button>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n\r\n\r\n        \r\n        <div class=\"col-sm-6 hidden-md-down\">\r\n            <sebm-google-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [streetViewControl]=\"true\">\r\n                <sebm-google-map-marker [latitude]=\"lat\" [longitude]=\"lng\"></sebm-google-map-marker>\r\n            </sebm-google-map>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n\r\n<toaster-container></toaster-container>\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Agendamento</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <b>{{name}}</b>, agradecemos sua mensagem<br />\r\n        Em breve entraremos em contato.<br /><br />\r\n\r\n        Atenciosamente,<br />\r\n        Equipe Sorriso Chic\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"c('Close click')\">FECHAR</button>\r\n    </div>\r\n</ng-template>"
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/contact/contact.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var Contact_1 = __webpack_require__("./ClientApp/app/services/custom/Contact.ts");
-var Contact_2 = __webpack_require__("./ClientApp/app/models/Contact.ts");
-var angular2_toaster_1 = __webpack_require__("./node_modules/angular2-toaster/angular2-toaster.js");
-var _1 = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-var ContactComponent = (function () {
-    function ContactComponent(_service, _toasterService, _modalService) {
-        this._service = _service;
-        this._toasterService = _toasterService;
-        this._modalService = _modalService;
-        this.lat = -23.585697;
-        this.lng = -46.569122;
-        this.zoom = 18;
-        this.load();
-    }
-    ContactComponent.prototype.load = function () {
-    };
-    ContactComponent.prototype.map = function () {
-        this.lat = 51.678418;
-        this.lng = 7.809007;
-    };
-    ContactComponent.prototype.ngOnInit = function () {
-        this.contact = new Contact_2.Contact();
-    };
-    ContactComponent.prototype.open = function () {
-        var modalRef = this._modalService.open(this.modalRef);
-        modalRef.componentInstance.name = 'contentModal';
-    };
-    ContactComponent.prototype.validate = function (contact) {
-        if (!contact.name) {
-            this.errorMessage = "Preencha o campo nome";
-            return false;
-        }
-        if (!contact.email) {
-            this.errorMessage = "Preencha o campo email";
-            return false;
-        }
-        if (!contact.message) {
-            this.errorMessage = "Preencha o campo mensagem";
-            return false;
-        }
-        return true;
-    };
-    ContactComponent.prototype.SendEmail = function (contact) {
-        var _this = this;
-        if (this.validate(contact)) {
-            this._service.sendEmail(contact).subscribe(function (result) {
-                _this.name = contact.name;
-                _this.contact = new Contact_2.Contact();
-                _this.open();
-            }, function (error) {
-                _this.errorMessage = "Problema no envio da mensagem, tente novamente";
-                _this._toasterService.pop("error", "Erro", _this.errorMessage);
-            });
-        }
-        else {
-            this._toasterService.pop("error", "Erro", this.errorMessage);
-        }
-    };
-    return ContactComponent;
-}());
-__decorate([
-    core_1.ViewChild('content'),
-    __metadata("design:type", core_1.TemplateRef)
-], ContactComponent.prototype, "modalRef", void 0);
-ContactComponent = __decorate([
-    core_1.Component({
-        styles: ["\n       .sebm-google-map-container {\n         height: 300px;\n          width:100%;\n       }\n    "],
-        template: __webpack_require__("./ClientApp/app/pages/contact/contact.html"),
-        providers: [Contact_1.ContactCustomService]
-    }),
-    __metadata("design:paramtypes", [Contact_1.ContactCustomService,
-        angular2_toaster_1.ToasterService,
-        _1.NgbModal])
-], ContactComponent);
-exports.ContactComponent = ContactComponent;
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/home/home.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/home/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  home works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/home/home.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var HomeComponent = (function () {
-    function HomeComponent() {
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-    };
-    return HomeComponent;
-}());
-HomeComponent = __decorate([
-    core_1.Component({
-        selector: 'app-home',
-        template: __webpack_require__("./ClientApp/app/pages/home/home.component.html"),
-        styles: [__webpack_require__("./ClientApp/app/pages/home/home.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], HomeComponent);
-exports.HomeComponent = HomeComponent;
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/pages-routing.module.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-var pages_1 = __webpack_require__("./ClientApp/app/pages/pages.ts");
-var shared_module_1 = __webpack_require__("./ClientApp/app/shared/shared.module.ts");
-exports.routes = [
-    //{ path:'', redirectTo:'about', pathMatch: 'full'},  
-    //{path: '.', redirectTo: 'about', pathMatch: 'full', children: [
-    { path: '', component: pages_1.HomeComponent },
-    { path: 'home', component: pages_1.HomeComponent },
-    { path: 'contact', component: pages_1.ContactComponent },
-    { path: 'contato', component: pages_1.ContactComponent },
-    { path: 'about', component: pages_1.AboutComponent },
-    { path: 'quemsomos', component: pages_1.AboutComponent }
-    //{ path: '**', redirectTo: 'about' }
-    //]}
-];
-var PagesRoutingModule = (function () {
-    function PagesRoutingModule() {
-    }
-    return PagesRoutingModule;
-}());
-PagesRoutingModule = __decorate([
-    core_1.NgModule({
-        declarations: [
-            pages_1.ContactComponent,
-            pages_1.AboutComponent,
-        ],
-        imports: [router_1.RouterModule.forChild(exports.routes), shared_module_1.SharedModule],
-        exports: [
-            router_1.RouterModule,
-            shared_module_1.SharedModule,
-            pages_1.ContactComponent,
-            pages_1.AboutComponent,
-        ]
-    })
-], PagesRoutingModule);
-exports.PagesRoutingModule = PagesRoutingModule;
-function htmlFiles(url) {
-    return url.length === 1 && url[0].path.endsWith('.html') ? ({ consumed: url }) : null;
-}
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/pages.module.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var pages_routing_module_1 = __webpack_require__("./ClientApp/app/pages/pages-routing.module.ts");
-var shared_module_1 = __webpack_require__("./ClientApp/app/shared/shared.module.ts");
-var home_component_1 = __webpack_require__("./ClientApp/app/pages/home/home.component.ts");
-var PagesModule = (function () {
-    function PagesModule() {
-    }
-    return PagesModule;
-}());
-PagesModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            shared_module_1.SharedModule,
-            pages_routing_module_1.PagesRoutingModule
-        ],
-        exports: [
-            shared_module_1.SharedModule,
-            pages_routing_module_1.PagesRoutingModule
-        ],
-        declarations: [home_component_1.HomeComponent]
-    })
-], PagesModule);
-exports.PagesModule = PagesModule;
-
-
-/***/ }),
-
-/***/ "./ClientApp/app/pages/pages.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var contact_1 = __webpack_require__("./ClientApp/app/pages/contact/contact.ts");
-exports.ContactComponent = contact_1.ContactComponent;
-var about_1 = __webpack_require__("./ClientApp/app/pages/about/about.ts");
-exports.AboutComponent = about_1.AboutComponent;
-var home_component_1 = __webpack_require__("./ClientApp/app/pages/home/home.component.ts");
-exports.HomeComponent = home_component_1.HomeComponent;
 
 
 /***/ }),
@@ -1893,7 +1521,7 @@ __webpack_require__("./node_modules/rxjs/add/operator/map.js");
 __webpack_require__("./node_modules/rxjs/add/operator/do.js");
 __webpack_require__("./node_modules/rxjs/add/operator/catch.js");
 __webpack_require__("./node_modules/rxjs/add/operator/filter.js");
-var BaseService = (function () {
+var BaseService = /** @class */ (function () {
     function BaseService(http) {
         this.http = http;
         this.page = {
@@ -2065,12 +1693,12 @@ var BaseService = (function () {
     BaseService.prototype.removeCache = function (key) {
         sessionStorage.removeItem(key);
     };
+    BaseService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [services_1.HttpService])
+    ], BaseService);
     return BaseService;
 }());
-BaseService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [services_1.HttpService])
-], BaseService);
 exports.BaseService = BaseService;
 
 
@@ -2099,7 +1727,7 @@ var config_1 = __webpack_require__("./ClientApp/app/config.ts");
 var Observable_1 = __webpack_require__("./node_modules/rxjs/Observable.js");
 __webpack_require__("./node_modules/rxjs/add/operator/catch.js");
 __webpack_require__("./node_modules/rxjs/add/observable/throw.js");
-var HttpService = (function () {
+var HttpService = /** @class */ (function () {
     function HttpService(http, config, _auth, _route) {
         var _this = this;
         this.http = http;
@@ -2187,12 +1815,12 @@ var HttpService = (function () {
         }
         return Observable_1.Observable.throw(error);
     };
+    HttpService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http, config_1.Config, auth_1.AuthService, router_1.Router])
+    ], HttpService);
     return HttpService;
 }());
-HttpService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, config_1.Config, auth_1.AuthService, router_1.Router])
-], HttpService);
 exports.HttpService = HttpService;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
@@ -2228,7 +1856,7 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var services_1 = __webpack_require__("./ClientApp/app/services/services.ts");
 __webpack_require__("./node_modules/rxjs/add/operator/map.js");
 var ContactService_1 = __webpack_require__("./ClientApp/app/services/generated/ContactService.ts");
-var ContactCustomService = (function (_super) {
+var ContactCustomService = /** @class */ (function (_super) {
     __extends(ContactCustomService, _super);
     function ContactCustomService(_http) {
         var _this = _super.call(this, _http) || this;
@@ -2239,12 +1867,12 @@ var ContactCustomService = (function (_super) {
         return this._http.post(this._controller + "/sendEmail/", contact);
         // .map((response: Response) => <Contact[]>response.json());
     };
+    ContactCustomService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [services_1.HttpService])
+    ], ContactCustomService);
     return ContactCustomService;
 }(ContactService_1.ContactService));
-ContactCustomService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [services_1.HttpService])
-], ContactCustomService);
 exports.ContactCustomService = ContactCustomService;
 
 
@@ -2278,7 +1906,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var services_1 = __webpack_require__("./ClientApp/app/services/services.ts");
 __webpack_require__("./node_modules/rxjs/add/operator/map.js");
-var ContactService = (function (_super) {
+var ContactService = /** @class */ (function (_super) {
     __extends(ContactService, _super);
     function ContactService(_http) {
         var _this = _super.call(this, _http) || this;
@@ -2286,12 +1914,12 @@ var ContactService = (function (_super) {
         _this._controller = "Contact";
         return _this;
     }
+    ContactService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [services_1.HttpService])
+    ], ContactService);
     return ContactService;
 }(services_1.BaseService));
-ContactService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [services_1.HttpService])
-], ContactService);
 exports.ContactService = ContactService;
 
 
@@ -2312,19 +1940,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //models imports/////////////////////////////////
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var ContactService_1 = __webpack_require__("./ClientApp/app/services/generated/ContactService.ts");
-var ServiceGeneratedModule = (function () {
+var ServiceGeneratedModule = /** @class */ (function () {
     function ServiceGeneratedModule() {
     }
+    ServiceGeneratedModule = __decorate([
+        core_1.NgModule({
+            //provides
+            providers: [
+                ContactService_1.ContactService,
+            ]
+        })
+    ], ServiceGeneratedModule);
     return ServiceGeneratedModule;
 }());
-ServiceGeneratedModule = __decorate([
-    core_1.NgModule({
-        //provides
-        providers: [
-            ContactService_1.ContactService,
-        ]
-    })
-], ServiceGeneratedModule);
 exports.ServiceGeneratedModule = ServiceGeneratedModule;
 
 
@@ -2345,25 +1973,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var servicesGeneratedModule_1 = __webpack_require__("./ClientApp/app/services/generated/servicesGeneratedModule.ts");
 var Contact_1 = __webpack_require__("./ClientApp/app/services/custom/Contact.ts");
-var ServicesModule = (function () {
+var ServicesModule = /** @class */ (function () {
     function ServicesModule() {
     }
+    ServicesModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                servicesGeneratedModule_1.ServiceGeneratedModule
+            ],
+            exports: [
+                servicesGeneratedModule_1.ServiceGeneratedModule
+            ],
+            declarations: [],
+            providers: [
+                Contact_1.ContactCustomService
+            ]
+        })
+    ], ServicesModule);
     return ServicesModule;
 }());
-ServicesModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            servicesGeneratedModule_1.ServiceGeneratedModule
-        ],
-        exports: [
-            servicesGeneratedModule_1.ServiceGeneratedModule
-        ],
-        declarations: [],
-        providers: [
-            Contact_1.ContactCustomService
-        ]
-    })
-], ServicesModule);
 exports.ServicesModule = ServicesModule;
 
 
@@ -2412,7 +2040,7 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var services_1 = __webpack_require__("./ClientApp/app/services/services.ts");
 __webpack_require__("./node_modules/rxjs/add/operator/map.js");
 //////
-var ImgService = (function (_super) {
+var ImgService = /** @class */ (function (_super) {
     __extends(ImgService, _super);
     function ImgService(_http) {
         var _this = _super.call(this, _http) || this;
@@ -2420,12 +2048,12 @@ var ImgService = (function (_super) {
         _this._controller = "";
         return _this;
     }
+    ImgService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [services_1.HttpService])
+    ], ImgService);
     return ImgService;
 }(services_1.BaseService));
-ImgService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [services_1.HttpService])
-], ImgService);
 exports.ImgService = ImgService;
 
 
@@ -2449,7 +2077,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var config_1 = __webpack_require__("./ClientApp/app/config.ts");
 var ImgService_1 = __webpack_require__("./ClientApp/app/shared/imgResize/ImgService.ts");
-var imgResizeComponent = (function () {
+var imgResizeComponent = /** @class */ (function () {
     function imgResizeComponent(_service, _config) {
         this._service = _service;
         this._config = _config;
@@ -2483,44 +2111,44 @@ var imgResizeComponent = (function () {
             _this.path = result;
         });
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], imgResizeComponent.prototype, "controller", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], imgResizeComponent.prototype, "image", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], imgResizeComponent.prototype, "imageChange", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], imgResizeComponent.prototype, "cssClass", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], imgResizeComponent.prototype, "w", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], imgResizeComponent.prototype, "h", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], imgResizeComponent.prototype, "inline", void 0);
+    imgResizeComponent = __decorate([
+        core_1.Component({
+            template: "<img *ngIf=\"path\" [(src)]=\"path\" alt=\"{{image}} \" class=\"{{cssClass}}\" style=\"{{style}}\"/>",
+            selector: 'img-resize',
+            providers: [ImgService_1.ImgService]
+        }),
+        __metadata("design:paramtypes", [ImgService_1.ImgService, config_1.Config])
+    ], imgResizeComponent);
     return imgResizeComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], imgResizeComponent.prototype, "controller", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], imgResizeComponent.prototype, "image", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], imgResizeComponent.prototype, "imageChange", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], imgResizeComponent.prototype, "cssClass", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Number)
-], imgResizeComponent.prototype, "w", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Number)
-], imgResizeComponent.prototype, "h", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], imgResizeComponent.prototype, "inline", void 0);
-imgResizeComponent = __decorate([
-    core_1.Component({
-        template: "<img *ngIf=\"path\" [(src)]=\"path\" alt=\"{{image}} \" class=\"{{cssClass}}\" style=\"{{style}}\"/>",
-        selector: 'img-resize',
-        providers: [ImgService_1.ImgService]
-    }),
-    __metadata("design:paramtypes", [ImgService_1.ImgService, config_1.Config])
-], imgResizeComponent);
 exports.imgResizeComponent = imgResizeComponent;
 
 
@@ -2553,69 +2181,69 @@ var config_1 = __webpack_require__("./ClientApp/app/config.ts");
 var imgResizeComponent_1 = __webpack_require__("./ClientApp/app/shared/imgResize/imgResizeComponent.ts");
 var ng_bootstrap_1 = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 var angular2_toaster_1 = __webpack_require__("./node_modules/angular2-toaster/angular2-toaster.js");
-var core_2 = __webpack_require__("./node_modules/angular2-google-maps/core/index.js");
+var core_2 = __webpack_require__("./node_modules/@agm/core/index.js");
 var aside_directive_1 = __webpack_require__("./ClientApp/app/directives/aside.directive.ts");
 var breadcrumb_component_1 = __webpack_require__("./ClientApp/app/directives/breadcrumb.component.ts");
 var nav_dropdown_directive_1 = __webpack_require__("./ClientApp/app/directives/nav-dropdown.directive.ts");
 var sidebar_directive_1 = __webpack_require__("./ClientApp/app/directives/sidebar.directive.ts");
-var SharedModule = (function () {
+var SharedModule = /** @class */ (function () {
     function SharedModule() {
     }
+    SharedModule = __decorate([
+        core_1.NgModule({
+            declarations: [
+                inRoleDirective_1.inRoleDirective,
+                replaceDirective_1.replaceDirective,
+                claimDirective_1.claimDirective,
+                scrollTopDirective_1.scrollTopDirective,
+                imgResizeComponent_1.imgResizeComponent,
+                breadcrumb_component_1.BreadcrumbsComponent,
+                sidebar_directive_1.SIDEBAR_TOGGLE_DIRECTIVES,
+                nav_dropdown_directive_1.NAV_DROPDOWN_DIRECTIVES,
+                aside_directive_1.AsideToggleDirective,
+            ],
+            providers: [
+                config_1.Config,
+                services_1.HttpService,
+                services_1.BaseService,
+                angular2_toaster_1.ToasterService,
+            ],
+            imports: [
+                platform_browser_1.BrowserModule,
+                router_1.RouterModule,
+                common_1.CommonModule,
+                forms_1.FormsModule,
+                ng_bootstrap_1.NgbModule.forRoot(),
+                core_2.AgmCoreModule.forRoot({
+                    apiKey: 'AIzaSyBwO1dtoYSoiT4TmgNE4983QBOge-Q3II0'
+                }),
+                angular2_toaster_1.ToasterModule
+            ],
+            exports: [
+                platform_browser_1.BrowserModule,
+                router_1.RouterModule,
+                ng_bootstrap_1.NgbModule,
+                router_1.RouterModule,
+                common_1.CommonModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
+                ng2_translate_1.TranslateModule,
+                inRoleDirective_1.inRoleDirective,
+                replaceDirective_1.replaceDirective,
+                claimDirective_1.claimDirective,
+                scrollTopDirective_1.scrollTopDirective,
+                imgResizeComponent_1.imgResizeComponent,
+                angular2_toaster_1.ToasterModule,
+                core_2.AgmCoreModule,
+                breadcrumb_component_1.BreadcrumbsComponent,
+                sidebar_directive_1.SIDEBAR_TOGGLE_DIRECTIVES,
+                nav_dropdown_directive_1.NAV_DROPDOWN_DIRECTIVES,
+                aside_directive_1.AsideToggleDirective,
+            ],
+        })
+    ], SharedModule);
     return SharedModule;
 }());
-SharedModule = __decorate([
-    core_1.NgModule({
-        declarations: [
-            inRoleDirective_1.inRoleDirective,
-            replaceDirective_1.replaceDirective,
-            claimDirective_1.claimDirective,
-            scrollTopDirective_1.scrollTopDirective,
-            imgResizeComponent_1.imgResizeComponent,
-            breadcrumb_component_1.BreadcrumbsComponent,
-            sidebar_directive_1.SIDEBAR_TOGGLE_DIRECTIVES,
-            nav_dropdown_directive_1.NAV_DROPDOWN_DIRECTIVES,
-            aside_directive_1.AsideToggleDirective,
-        ],
-        providers: [
-            config_1.Config,
-            services_1.HttpService,
-            services_1.BaseService,
-            angular2_toaster_1.ToasterService,
-        ],
-        imports: [
-            platform_browser_1.BrowserModule,
-            router_1.RouterModule,
-            common_1.CommonModule,
-            forms_1.FormsModule,
-            ng_bootstrap_1.NgbModule.forRoot(),
-            core_2.AgmCoreModule.forRoot({
-                apiKey: 'AIzaSyBwO1dtoYSoiT4TmgNE4983QBOge-Q3II0'
-            }),
-            angular2_toaster_1.ToasterModule
-        ],
-        exports: [
-            platform_browser_1.BrowserModule,
-            router_1.RouterModule,
-            ng_bootstrap_1.NgbModule,
-            router_1.RouterModule,
-            common_1.CommonModule,
-            forms_1.FormsModule,
-            forms_1.ReactiveFormsModule,
-            ng2_translate_1.TranslateModule,
-            inRoleDirective_1.inRoleDirective,
-            replaceDirective_1.replaceDirective,
-            claimDirective_1.claimDirective,
-            scrollTopDirective_1.scrollTopDirective,
-            imgResizeComponent_1.imgResizeComponent,
-            angular2_toaster_1.ToasterModule,
-            core_2.AgmCoreModule,
-            breadcrumb_component_1.BreadcrumbsComponent,
-            sidebar_directive_1.SIDEBAR_TOGGLE_DIRECTIVES,
-            nav_dropdown_directive_1.NAV_DROPDOWN_DIRECTIVES,
-            aside_directive_1.AsideToggleDirective,
-        ],
-    })
-], SharedModule);
 exports.SharedModule = SharedModule;
 
 
