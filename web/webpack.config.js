@@ -20,7 +20,7 @@ const { AotPlugin } = require('@ngtools/webpack');
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
 const genDirNodeModules = path.join(process.cwd(), 'ClientApp', '$$_gendir', 'node_modules');
-const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
+const entryPoints = ["inline", "polyfills", "sw-register",/* "styles", */"vendor", "admin", "main", "pages"];
 const minimizeCss = false;
 const baseHref = "";
 const deployUrl = "";
@@ -64,7 +64,7 @@ module.exports = (env) => {
     console.log(env || "dev");
     const extractCSS = new ExtractTextPlugin('vendor.css');
     const nodeModules = path.join(process.cwd(), 'node_modules');
-    const clientBundleOutputDir = './wwwroot/dist';
+    const clientBundleOutputDir = './wwwroot/dist/';
 
     const isDevBuild = !(env && env.prod);
     const clientBundleConfig = {
@@ -86,19 +86,26 @@ module.exports = (env) => {
             ]
         },
         "entry": {
+            "admin": [
+                "./ClientApp/app/admin/admin.module.ts"
+            ],
+            "pages": [
+                "./ClientApp/app/pages/pages.module.ts"
+            ],
             "main": [
-                "./ClientApp\\main.ts"
+                "./ClientApp/main.ts"
             ],
             "polyfills": [
-                "./ClientApp\\polyfills.ts"
+                "./ClientApp/polyfills.ts"
             ],
-            "styles": [
-                "./ClientApp\\styles.css"
-            ]
+
+            // "styles": [
+            //     "./ClientApp/styles.css"
+            // ]
         },
         "output": {
             "path": path.join(process.cwd(), clientBundleOutputDir),
-            "publicPath": clientBundleOutputDir,
+            "publicPath": "clientBundleOutputDir",
             "filename": isDevBuild ? "[name].js" : "[name].min.js",
             "chunkFilename": "[id].chunk.js"
         },
@@ -125,232 +132,6 @@ module.exports = (env) => {
                     "loader": "url-loader?name=[name].[hash:20].[ext]&limit=10000"
                 },
                 {
-                    "exclude": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.css$/,
-                    "use": [
-                        "exports-loader?module.exports.toString()",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        }
-                    ]
-                },
-                {
-                    "exclude": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.scss$|\.sass$/,
-                    "use": [
-                        "exports-loader?module.exports.toString()",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        },
-                        {
-                            "loader": "sass-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "precision": 8,
-                                "includePaths": []
-                            }
-                        }
-                    ]
-                },
-                {
-                    "exclude": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.less$/,
-                    "use": [
-                        "exports-loader?module.exports.toString()",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        },
-                        {
-                            "loader": "less-loader",
-                            "options": {
-                                "sourceMap": false
-                            }
-                        }
-                    ]
-                },
-                {
-                    "exclude": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.styl$/,
-                    "use": [
-                        "exports-loader?module.exports.toString()",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        },
-                        {
-                            "loader": "stylus-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "paths": []
-                            }
-                        }
-                    ]
-                },
-                {
-                    "include": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.css$/,
-                    "use": [
-                        "style-loader",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        }
-                    ]
-                },
-                {
-                    "include": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.scss$|\.sass$/,
-                    "use": [
-                        "style-loader",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        },
-                        {
-                            "loader": "sass-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "precision": 8,
-                                "includePaths": []
-                            }
-                        }
-                    ]
-                },
-                {
-                    "include": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.less$/,
-                    "use": [
-                        "style-loader",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        },
-                        {
-                            "loader": "less-loader",
-                            "options": {
-                                "sourceMap": false
-                            }
-                        }
-                    ]
-                },
-                {
-                    "include": [
-                        path.join(process.cwd(), "ClientApp\\styles.css")
-                    ],
-                    "test": /\.styl$/,
-                    "use": [
-                        "style-loader",
-                        {
-                            "loader": "css-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "importLoaders": 1
-                            }
-                        },
-                        {
-                            "loader": "postcss-loader",
-                            "options": {
-                                "ident": "postcss",
-                                "plugins": postcssPlugins
-                            }
-                        },
-                        {
-                            "loader": "stylus-loader",
-                            "options": {
-                                "sourceMap": false,
-                                "paths": []
-                            }
-                        }
-                    ]
-                },
-                {
                     "test": /\.ts?$/,
                     use: isDevBuild ?
                         [
@@ -366,7 +147,11 @@ module.exports = (env) => {
                         ],
                     include: /ClientApp/,
                     exclude: [/wwwroot/]
-                }
+                },
+
+                { test: /\.css$/, include: /ClientApp/, exclude: /node_modules/, use: ['to-string-loader', 'css-loader'] },
+                { test: /\.css(\?|$)/, exclude: /ClientApp/, use: ExtractTextPlugin.extract({ use: ["css-loader"] }) },
+
             ]
         },
         "plugins": [
@@ -383,6 +168,7 @@ module.exports = (env) => {
                 }
             }),
             new ProgressPlugin(),
+            new ExtractTextPlugin("[name].css"),
             new HtmlWebpackPlugin({
                 "template": "./Views/Shared/_Layout.cshtml",
                 "filename": "./Views/Shared/_Layout.cshtml",
@@ -433,7 +219,9 @@ module.exports = (env) => {
                             || module.resource.startsWith(realNodeModules));
                 },
                 "chunks": [
-                    "main"
+                    "main",
+                     "admin",
+                     "pages"
                 ]
             }),
             new SourceMapDevToolPlugin({
@@ -456,7 +244,7 @@ module.exports = (env) => {
             // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({
                 filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(clientBundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
+                moduleFilenameTemplate: path.relative("clientBundleOutputDir", '[resourcePath]') // Point sourcemap entries to the original file locations on disk
             })
         ] : [
                 // Plugins that apply in production builds only

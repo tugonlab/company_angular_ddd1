@@ -15,30 +15,30 @@ import { ContactIndex } from './_generated/Contact/Index';
 	declarations: [
 		ContactEdit,
 		ContactIndex,
-	
+
 	],
-    imports: [
+	imports: [
 		SharedModule,
 		CombosModule,
 		AdminLayoutModule,
-        RouterModule.forChild([
-			{
-			path: 'admin', component: IndexComponent, canActivate: [CanActivateViaAuthGuard],
-				children:[
-					{ path: 'contact', component: ContactIndex, canActivate: [CanActivateViaAuthGuard]},
-					{ path: 'contact/:id', component: ContactEdit, canActivate: [CanActivateViaAuthGuard]},
-					{ path: 'contact/new', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
-                    { path: '', redirectTo: 'admin', pathMatch: 'full' },
-                ]
-            }
-        ])
-    ],
-    exports: [
-        AdminLayoutModule,
-        SharedModule,
+		RouterModule.forChild(
+			[
+				{
+					path: 'admin', component: IndexComponent, canActivate: [CanActivateViaAuthGuard],
+					children: [
+						{ path: 'contact', component: ContactIndex, canActivate: [CanActivateViaAuthGuard] },
+						{ path: 'contact/:id', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
+						{ path: 'contact/new', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
+					]
+				}
+			])
+	],
+	exports: [
+		AdminLayoutModule,
+		SharedModule,
 		ContactEdit,
 		ContactIndex,
-    ]
+	]
 })
 export class GeneratedAdminModule {
 

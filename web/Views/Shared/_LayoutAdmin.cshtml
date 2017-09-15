@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Icons -->
+    <link href="~/admin/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/admin/assets/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="~/admin/assets/css/style.css" rel="stylesheet">
+    <style>
+    </style>
+
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <script>window.__theme = 'bs4';</script>
+    @RenderBody()
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <environment names="Development">
+        <script src="~/dist/inline.js" asp-append-version="true"></script>
+        <script src="~/dist/polyfills.js" asp-append-version="true"></script>
+        <script src="~/dist/vendor.js" asp-append-version="true"></script>
+        <script src="~/dist/main.js" asp-append-version="true"></script>
+        <script src="~/dist/admin.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/dist/inline.min.js" asp-append-version="true"></script>
+        <script src="~/dist/polyfills.min.js.gz" asp-append-version="true"></script>
+        <script src="~/dist/vendor.min.js.gz" asp-append-version="true"></script>
+        <script src="~/dist/main.min.js.gz" asp-append-version="true"></script>
+        <script src="~/dist/admin.min.js.gz" asp-append-version="true"></script>
+    </environment>
+
+
+    <a href="#" class="fa scrollup"></a>
+
+    <!-- Scripts -->
+    <!-- Post Scripts -->
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

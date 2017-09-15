@@ -10,8 +10,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'contato', component: ContactComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'quemsomos', component: AboutComponent }
-
+  { path: 'quemsomos', component: AboutComponent }  
 ];
 
 @NgModule({

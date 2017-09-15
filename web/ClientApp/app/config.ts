@@ -5,8 +5,8 @@ export class Config {
 
     public useAuthorityServer=false;
 
-    siteUrl: string = window.location.hostname == "localhost" ? 'http://localhost:50295' : 'http://www.sorrisochic.com.br';
-    apiAddress: string = window.location.hostname == "localhost" ? 'http://localhost:57391/api/' : 'http://api.sorrisochic.com.br/api/';
+    siteUrl: string = window.location.hostname == "localhost" ? 'http://localhost:52101' : 'http://www.sorrisochic.com.br';
+    apiAddress: string = window.location.hostname == "localhost" ? 'http://localhost:52053/api/' : 'http://api.sorrisochic.com.br/api/';
     authorityAddress: string = window.location.hostname == "localhost" ? 'http://localhost:1941' : 'http://sso.tugon.com.br';
     constructor() {
     }

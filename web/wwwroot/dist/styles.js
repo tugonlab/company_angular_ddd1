@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([3],{
 
 /***/ "./ClientApp/styles.css":
 /***/ (function(module, exports, __webpack_require__) {
@@ -378,7 +378,7 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./node_modules/webpack-hot-middleware/client.js?path=__webpack_hmr&dynamicPublicPath=true");
@@ -387,6 +387,6 @@ module.exports = __webpack_require__("./ClientApp/styles.css");
 
 /***/ })
 
-},[2]);
+},[3]);
 //# sourceMappingURL=styles.js.map
 //# sourceMappingURL=styles.js.map

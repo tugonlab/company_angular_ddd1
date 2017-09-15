@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "webpack-dev-server --port=4500",
+    "start": "webpack-dev-server --port=4200",
     "build": "webpack",
     "test": "karma start ./karma.conf.js",
     "lint": "ng lint",
@@ -86,6 +86,7 @@
     "stylus-loader": "^3.0.1",
     "url-loader": "^0.5.7",
     "awesome-typescript-loader": "3.2.3",
-    "angular2-template-loader": "0.6.2"
+    "angular2-template-loader": "^0.6.2",
+    "to-string-loader": "^1.1.5"
   }
 }

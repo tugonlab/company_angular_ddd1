@@ -14,13 +14,6 @@ import { LoginCallBackComponent } from './callback'
         RouterModule.forChild([
 
             { path: 'callback', component: LoginCallBackComponent },
-            {
-                //path: '', component: StartComponent,
-
-                children: [             
-                    { path: '**', redirectTo: 'home' },
-                ]
-            },
 
         ])
     ],
