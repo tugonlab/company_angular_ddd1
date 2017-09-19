@@ -67,6 +67,7 @@ module.exports = (env) => {
     const clientBundleOutputDir = './wwwroot/dist/';
 
     const isDevBuild = !(env && env.prod);
+    console.log(isDevBuild);
     const clientBundleConfig = {
         "resolve": {
             "extensions": [
@@ -104,8 +105,8 @@ module.exports = (env) => {
             // ]
         },
         "output": {
-            "path": path.join(process.cwd(), clientBundleOutputDir),
-            "publicPath": "clientBundleOutputDir",
+            "path": path.join(__dirname, clientBundleOutputDir),
+            "publicPath":  "/wwwroot/dist/",
             "filename": isDevBuild ? "[name].js" : "[name].min.js",
             "chunkFilename": "[id].chunk.js"
         },
@@ -146,7 +147,7 @@ module.exports = (env) => {
 
                         ],
                     include: /ClientApp/,
-                    exclude: [/wwwroot/]
+                    exclude: [/wwwroot/, /ClientApp\/dist/]
                 },
 
                 { test: /\.css$/, include: /ClientApp/, exclude: /node_modules/, use: ['to-string-loader', 'css-loader'] },
@@ -169,34 +170,6 @@ module.exports = (env) => {
             }),
             new ProgressPlugin(),
             new ExtractTextPlugin("[name].css"),
-            new HtmlWebpackPlugin({
-                "template": "./Views/Shared/_Layout.cshtml",
-                "filename": "./Views/Shared/_Layout.cshtml",
-                "hash": false,
-                "inject": true,
-                "compile": true,
-                "favicon": false,
-                "minify": false,
-                "cache": true,
-                "showErrors": true,
-                "chunks": "all",
-                "excludeChunks": [],
-                "title": "Webpack App",
-                "xhtml": true,
-                "chunksSortMode": function sort(left, right) {
-                    let leftIndex = entryPoints.indexOf(left.names[0]);
-                    let rightindex = entryPoints.indexOf(right.names[0]);
-                    if (leftIndex > rightindex) {
-                        return 1;
-                    }
-                    else if (leftIndex < rightindex) {
-                        return -1;
-                    }
-                    else {
-                        return 0;
-                    }
-                }
-            }),
             new BaseHrefWebpackPlugin({}),
             new CommonsChunkPlugin({
                 "minChunks": 2,
@@ -224,12 +197,6 @@ module.exports = (env) => {
                      "pages"
                 ]
             }),
-            new SourceMapDevToolPlugin({
-                "filename": "[file].map[query]",
-                "moduleFilenameTemplate": "[resource-path]",
-                "fallbackModuleFilenameTemplate": "[resource-path]?[hash]",
-                "sourceRoot": "webpack:///"
-            }),
             new NamedModulesPlugin({}),
             new webpack.ProvidePlugin({
                 $: 'jquery',
@@ -244,17 +211,18 @@ module.exports = (env) => {
             // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({
                 filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative("clientBundleOutputDir", '[resourcePath]') // Point sourcemap entries to the original file locations on disk
+                moduleFilenameTemplate: path.relative(clientBundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
             })
         ] : [
-                // Plugins that apply in production builds only
                 new AotPlugin({
-                    "mainPath": "main.ts",
-                    "hostReplacementPaths": {
-                        "environments\\environment.ts": "environments\\environment.ts"
+                    hostReplacementPaths: {
+                        'environments/environment.ts': 'environments/environment.prod.ts'
                     },
+                    "mainPath": "main.ts",
+                    //"entryModule": path.join(__dirname, 'ClientApp/app/app.module#AppModule'),
                     "exclude": [],
-                    "tsConfigPath": "ClientApp\\tsconfig.app.json"
+                    "tsConfigPath": "ClientApp/tsconfig.app.json",
+                    "skipCodeGeneration": isDevBuild
                 }),
                 new webpack.LoaderOptionsPlugin({
                     minimize: true,

@@ -14,13 +14,15 @@ export class HttpService {
 
     constructor(private http: Http, private config: Config, private _auth: AuthService, private _route: Router) {
         this.setHeader("Content-Type", "application/json");
+        this.setHeader('Access-Control-Allow-Origin', this.config.siteUrl)
         this._auth.onLogout.subscribe(result => {
             this.headers.delete("Authorization");
         });
     }
 
     setHeader(key: string, value: string) {
-        this.headers = new Headers();
+        if (!this.headers)//
+            this.headers = new Headers();
         this.headers.append(key, value);
 
         this.appendToken();
@@ -85,7 +87,7 @@ export class HttpService {
 
     get(url: string, params?: any) {
         this.appendToken();
-        return this.http.get(this.prepareUrl(url + (params ? "?"+$.param(params) : '')), this.options)
+        return this.http.get(this.prepareUrl(url + (params ? "?" + $.param(params) : '')), this.options)
             .map(res => {
                 if (res.url && res.url.toLowerCase().indexOf("login") >= 0) {
                     window.location.href = res.url;

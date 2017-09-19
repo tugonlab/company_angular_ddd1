@@ -9,10 +9,6 @@ namespace Data.EF
     public partial class AppDbContext : DbContext
     {
 
-        public AppDbContext()
-        {
-
-        }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
       : base(options)
@@ -36,12 +32,6 @@ namespace Data.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Data Source=SQL5023.SmarterASP.NET;Initial Catalog=DB_9C51BF_sorrisochic;User Id=DB_9C51BF_sorrisochic_admin;Password=sorrisongr123;
-            //optionsBuilder.UseSqlServer();
-            optionsBuilder.UseSqlServer(
-               //"Data Source=SQL5023.SmarterASP.NET;Initial Catalog=DB_9C51BF_sorrisochic;User Id=DB_9C51BF_sorrisochic_admin;Password=123mudar",
-              "Data Source=.\\sqlexpress;Initial Catalog=tugon2017;Integrated Security=True",
-              options => options.MaxBatchSize(30));
             optionsBuilder.EnableSensitiveDataLogging();
         }
 

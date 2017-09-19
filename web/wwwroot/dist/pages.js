@@ -844,7 +844,7 @@ var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5
 var Config = /** @class */ (function () {
     function Config() {
         this.useAuthorityServer = false;
-        this.siteUrl = window.location.hostname == "localhost" ? 'http://localhost:50295' : 'http://www.sorrisochic.com.br';
+        this.siteUrl = window.location.hostname == "localhost" ? 'http://localhost:52101' : 'http://www.sorrisochic.com.br';
         this.apiAddress = window.location.hostname == "localhost" ? 'http://localhost:52053/api/' : 'http://api.sorrisochic.com.br/api/';
         this.authorityAddress = window.location.hostname == "localhost" ? 'http://localhost:1941' : 'http://sso.tugon.com.br';
         // The Issuer Identifier for the OpenID Provider (which is typically obtained during Discovery) MUST exactly match the value of the iss (issuer) Claim.
@@ -1943,12 +1943,14 @@ var HttpService = /** @class */ (function () {
         this._auth = _auth;
         this._route = _route;
         this.setHeader("Content-Type", "application/json");
+        this.setHeader('Access-Control-Allow-Origin', this.config.siteUrl);
         this._auth.onLogout.subscribe(function (result) {
             _this.headers.delete("Authorization");
         });
     }
     HttpService.prototype.setHeader = function (key, value) {
-        this.headers = new http_1.Headers();
+        if (!this.headers)
+            this.headers = new http_1.Headers();
         this.headers.append(key, value);
         this.appendToken();
         return this.headers;
@@ -2427,5 +2429,4 @@ module.exports = __webpack_require__("./ClientApp/app/pages/pages.module.ts");
 /***/ })
 
 },[1]);
-//# sourceMappingURL=pages.js.map
 //# sourceMappingURL=pages.js.map

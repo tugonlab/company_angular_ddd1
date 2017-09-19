@@ -8,6 +8,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "angular2-toaster/toaster.css"; 
 
+console.log("env", environment);
 if (module['hot']) {
    
     console.log("dev");

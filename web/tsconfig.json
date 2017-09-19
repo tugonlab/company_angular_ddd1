@@ -11,6 +11,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "exclude": [ "bin", "node_modules" ],
     "lib": [
       "es2016",
       "dom"

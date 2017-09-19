@@ -44,11 +44,19 @@ namespace Application.Services
 
         public PagingViewModel<TViewModel> GetByAllPage(PagingViewModel<TViewModel> page, params string[] includeProperties)
         {
-            var model = _service.GetAll(includeProperties).Paging(page.Number, page.Size, page.OrderBy, page.OrderDirection);
+            try
+            {
+                var model = _service.GetAll(includeProperties).Paging(page.Number, page.Size, page.OrderBy, page.OrderDirection);
 
-            page.List = model.Item1.MapTo<List<TViewModel>>();
-            page.TotalCount = model.Item2;
-            return page;
+                page.List = model.Item1.MapTo<List<TViewModel>>();
+                page.TotalCount = model.Item2;
+                return page;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         public TViewModel Add(T model)
