@@ -106,7 +106,7 @@ module.exports = (env) => {
         },
         "output": {
             "path": path.join(__dirname, clientBundleOutputDir),
-            "publicPath":  "/wwwroot/dist/",
+            "publicPath":  "dist/",
             "filename": isDevBuild ? "[name].js" : "[name].min.js",
             "chunkFilename": "[id].chunk.js"
         },
@@ -132,26 +132,8 @@ module.exports = (env) => {
                     "test": /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
                     "loader": "url-loader?name=[name].[hash:20].[ext]&limit=10000"
                 },
-                {
-                    "test": /\.ts?$/,
-                    use: isDevBuild ?
-                        [
-                            { loader: 'awesome-typescript-loader?silent=true' },
-                            { loader: 'angular2-template-loader' }
-                        ] :
-                        [
-                            {
-                                loader: 'babel-loader',
-                            },
-                            { loader: "@ngtools/webpack" },
-
-                        ],
-                    include: /ClientApp/,
-                    exclude: [/wwwroot/, /ClientApp\/dist/]
-                },
-
-                { test: /\.css$/, include: /ClientApp/, exclude: /node_modules/, use: ['to-string-loader', 'css-loader'] },
-                { test: /\.css(\?|$)/, exclude: /ClientApp/, use: ExtractTextPlugin.extract({ use: ["css-loader"] }) },
+                { test: /\.ts$/, include: /ClientApp/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader'] : ['babel-loader','@ngtools/webpack'] },
+                { test: /\.css$/, use: [ 'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] },
 
             ]
         },

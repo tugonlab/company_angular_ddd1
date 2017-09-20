@@ -109,6 +109,8 @@ foreach(var field in classModel.Fields){#>
 				<ngb-pagination *ngIf="page.totalCount > page.size" [pageSize]="page.size" [boundaryLinks]="true" [maxSize]="page.maxSize" [collectionSize]="page.totalCount" [(page)]="page.number" class="pagination-sm" (pageChange)="pageChanged($event)" [rotate]="false"   previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></ngb-pagination>
 </div>
 
+<toaster-container></toaster-container>
+
 <!--modal edit -->
 <ng-template #<#=camelCaseName#>Modal let-c="close" let-d="dismiss">
 <#
@@ -174,6 +176,8 @@ import { <#=classModel.Name#> } from '../../../models/<#=classModel.Name#>';
 import { <#=classModel.Name#>Edit } from './Edit';
 import { PagingModel } from '../../../models/PagingModel';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from 'ng2-translate';
+import { ToasterService } from 'angular2-toaster';
 
 ///child
 <# foreach(var child in fieldChildren){#>
@@ -181,7 +185,6 @@ import { <#=child.DataType #> } from '../../../models/<#=child.DataType #>';
 import { <#=child.DataType #>Index } from '../<#=child.DataType #>/Index';
 <#}#>
 
-import { TranslateService } from 'ng2-translate';
 declare var $:any;
 
 @Component({
@@ -215,7 +218,7 @@ export class <#=classModel.Name#>Index implements OnInit, OnChanges {
 	@ViewChild('<#=classSet.ToCamelCase(field.DataType)#>List') private _<#=classSet.ToCamelCase(field.DataType)#>List: TemplateRef<any>;
 <#}#>
 	
-	constructor( private _service: <#=classModel.Name#>Service, public translate: TranslateService,private _modalService: NgbModal	) {
+	constructor( private _service: <#=classModel.Name#>Service, public translate: TranslateService, private _modalService: NgbModal, private _toasterService: ToasterService	) {
 		this.page = _service.page;
 		this.<#=camelCaseName#> = new <#=classModel.Name#>();
 <# foreach(var field in  fieldChildren){#>
@@ -299,6 +302,8 @@ foreach(var fieldParent in fieldParents){
 			},
 			error => {
 				this.errorMessage = error;
+				this._toasterService.pop('error', 'Error', 'Error while saving');
+				console.log(error)
 			}
 		);
     }

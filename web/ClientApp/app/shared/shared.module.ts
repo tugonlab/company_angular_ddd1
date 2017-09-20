@@ -22,6 +22,7 @@ import { AsideToggleDirective } from '../directives/aside.directive';
 import { BreadcrumbsComponent } from '../directives/breadcrumb.component';
 import { NAV_DROPDOWN_DIRECTIVES } from '../directives/nav-dropdown.directive';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from '../directives/sidebar.directive';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { SIDEBAR_TOGGLE_DIRECTIVES } from '../directives/sidebar.directive';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         RouterModule,
         CommonModule,
         FormsModule,
