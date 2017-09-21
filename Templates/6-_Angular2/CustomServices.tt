@@ -14,6 +14,7 @@ manager.CanOverrideExistingFile = false;
 //manager.IsAutoIndentEnabled=true;
 var classSet = new ClassSet();
 var classes = new ClassSet().Load(true).Classes.OrderBy(u => u.Name);
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\services\\custom\\");	
 
 foreach(var classModel in classes){
 
@@ -30,7 +31,7 @@ foreach(var classModel in classes){
 ///////////////////////////////////////////////////////
 //Service
 ///////////////////////////////////////////////////////
-		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\services\\custom\\");	
+		
 		manager.StartNewFile("ClientApp/app/services/custom/"+classModel.Name+".ts","web","");
 
 #>

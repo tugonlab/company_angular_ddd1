@@ -5,10 +5,11 @@ import { Contact } from '../../../models/Contact';
 import { ContactEdit } from './Edit';
 import { PagingModel } from '../../../models/PagingModel';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from 'ng2-translate';
+import { ToasterService } from 'angular2-toaster';
 
 ///child
 
-import { TranslateService } from 'ng2-translate';
 declare var $:any;
 
 @Component({
@@ -31,7 +32,7 @@ export class ContactIndex implements OnInit, OnChanges {
 	public contactModal:TemplateRef<any>;
 	private modalRef: NgbModalRef;
 	
-	constructor( private _service: ContactService, public translate: TranslateService,private _modalService: NgbModal	) {
+	constructor( private _service: ContactService, public translate: TranslateService, private _modalService: NgbModal, private _toasterService: ToasterService	) {
 		this.page = _service.page;
 		this.contact = new Contact();
     }
@@ -85,6 +86,8 @@ export class ContactIndex implements OnInit, OnChanges {
 			},
 			error => {
 				this.errorMessage = error;
+				this._toasterService.pop('error', 'Error', 'Error while saving');
+				console.log(error)
 			}
 		);
     }

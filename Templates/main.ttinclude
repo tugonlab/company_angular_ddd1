@@ -6,10 +6,11 @@
 <#@ assembly name="System.Windows.Forms" #>
 <#@ assembly name="EnvDTE"#>
 <#@ assembly name="EnvDTE80" #>
-<#@ assembly name="$(SolutionDir)packages\VSSDK.Shell.10.10.0.4\lib\net40\Microsoft.VisualStudio.Shell.10.0.dll" #>
-<#//@ assembly name="Microsoft.VisualStudio.Shell.10.0"#>
-<#@ assembly name="$(SolutionDir)\packages\Microsoft.VisualStudio.Shell.Interop.7.10.6071\lib\Microsoft.VisualStudio.Shell.Interop.dll" #>
-<#//@ assembly name="Microsoft.VisualStudio.Shell.Interop "#>
+<#@ assembly name="Microsoft.VisualStudio.Shell.15.0"#>
+<#@ assembly name="Microsoft.VisualStudio.Shell.Interop "#>
+<#//@ assembly name="$(SolutionDir)packages\VSSDK.Shell.10.10.0.4\lib\net40\Microsoft.VisualStudio.Shell.10.0.dll" #>
+<#//C:\Desenvolvimento\curriculum_adilson\main\packages\Microsoft.VisualStudio.Shell.15.0.15.0.26606\lib #>
+<#//@ assembly name="$(SolutionDir)\packages\Microsoft.VisualStudio.Shell.Interop.7.10.6071\lib\Microsoft.VisualStudio.Shell.Interop.dll" #>
 <#@ import namespace="Microsoft.VisualStudio.Shell.Interop"#>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Data" #>

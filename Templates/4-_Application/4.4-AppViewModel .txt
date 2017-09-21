@@ -2,8 +2,10 @@
 
 //////////////
             CreateMap<Contact, ContactViewModel>();
+            CreateMap<Language, LanguageViewModel>();
 
 ////////////////////
             CreateMap<ContactViewModel, Contact>();
+            CreateMap<LanguageViewModel, Language>();
 
 

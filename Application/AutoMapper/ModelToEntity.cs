@@ -9,6 +9,7 @@ namespace Application.AutoMapper
         public ModelToEntity()
         {
             CreateMap<ContactViewModel, Contact>();
+            CreateMap<LanguageViewModel, Language>();
         }
     }
 }

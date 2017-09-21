@@ -16,6 +16,10 @@ namespace CrossCutting.IoC
 		services.AddTransient<IContactRepository, ContactRepository>();
 		services.AddTransient<IContactService, ContactService>();
 
+		services.AddTransient<ILanguageAppService, LanguageAppService>();
+		services.AddTransient<ILanguageRepository, LanguageRepository>();
+		services.AddTransient<ILanguageService, LanguageService>();
+
         }
     }
 }

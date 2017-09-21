@@ -10,11 +10,11 @@
 var manager = TemplateFileManager.Create(this);
 var classesAll = new ClassSet().Load().Classes;
 var classes = new ClassSet().Load().Classes.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
-manager.CanOverrideExistingFile = true;
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Data\\Repositories\\_generated");
+
 foreach(var classModel in classes){#>
 <#
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Data\\Repositories\\_generated");	
-		manager.StartNewFile("Repositories\\_generated\\"+classModel.Name+ "Repository.cs","Data","",null);
+		manager.StartNewFile("Repositories\\_generated\\"+classModel.Name+ "Repository.cs","Data","");
 #>
 using Data.EF;
 using Domain.Entities;

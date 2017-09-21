@@ -12,11 +12,11 @@ manager.CanOverrideExistingFile=false;
 var classSet = new ClassSet();
 var classesAll = classSet.Load().Classes;
 var classes = classesAll.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\Services\\");
 
 foreach(var classModel in classes){#>
 <#
-var camelCaseName = classSet.ToCamelCase(classModel.Name);
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\Services\\");	
+var camelCaseName = classSet.ToCamelCase(classModel.Name);	
 manager.StartNewFile("Services\\"+classModel.Name+ "AppService.cs","Application","",null);
 #>
 using Application.Interfaces;
@@ -60,5 +60,5 @@ namespace Application.Interfaces
 <#
 manager.EndBlock();
 }
-manager.Process(false);
+manager.Process(true);
 #>

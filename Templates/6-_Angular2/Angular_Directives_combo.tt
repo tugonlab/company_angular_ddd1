@@ -11,8 +11,7 @@
 var manager = TemplateFileManager.Create(this);
 var classSet = new ClassSet();
 var classes = new ClassSet().Load().Classes.OrderBy(u => u.Name);
-
-manager.CanOverrideExistingFile=true;
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\combos");
 #>
 <#foreach(var classModel in classes){
 var camelCaseName = classSet.ToCamelCase(classModel.Name);
@@ -45,7 +44,7 @@ if(classModel.Fields.Any(x=>x.Name =="Nome")){
 }else{
 	prop="id";
 }
-	System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\combos");
+
 manager.StartNewFile("ClientApp\\app\\combos\\combo."+classSet.ToCamelCase(classModel.Name)+".ts","web","");
 #>
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';

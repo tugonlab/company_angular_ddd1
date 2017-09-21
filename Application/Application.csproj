@@ -9,16 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Application</RootNamespace>
     <AssemblyName>Application</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,23 +57,45 @@
       <DependentUpon>4.3-AppAutoMapper.txt4</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBaseAppService.cs" />
+    <Compile Include="Interfaces\IContactAppService.cs">
+      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\ILanguageAppService.cs">
+      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\_generated\IContactAppService.cs">
+      <DependentUpon>4.1-AppInterfaces.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\_generated\ILanguageAppService.cs">
       <DependentUpon>4.1-AppInterfaces.txt4</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseAppService.cs" />
+    <Compile Include="Services\ContactAppService.cs">
+      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Services\LanguageAppService.cs">
+      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
+    </Compile>
     <Compile Include="Services\_generated\ContactAppService.cs">
       <DependentUpon>4.2-App.txt4</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ContactViewModel.cs">
-      <DependentUpon>4.4-AppViewModel .txt4</DependentUpon>
+    <Compile Include="Services\_generated\LanguageAppService.cs">
+      <DependentUpon>4.2-App.txt4</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Common\FileViewModel.cs" />
     <Compile Include="ViewModels\Common\PagingViewModel.cs" />
     <Compile Include="ViewModels\Common\UploadViewModel.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs">
+      <DependentUpon>4.4-AppViewModel .txt4</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\LanguageViewModel.cs">
+      <DependentUpon>4.4-AppViewModel .txt4</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="AutoMapper\4.3-AppAutoMapper.txt4" />
+    <None Include="Interfaces\4.5-CustomApp.txt4" />
     <None Include="Interfaces\_generated\4.1-AppInterfaces.txt4" />
     <None Include="packages.config" />
     <None Include="Services\_generated\4.2-App.txt4" />
@@ -87,10 +106,6 @@
     <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
       <Project>{1b5d1e59-fa0c-4b72-aa6c-dde76a92ef6c}</Project>
       <Name>CrossCutting</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{738c0217-ce85-4643-ad02-d56a24821669}</Project>
-      <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

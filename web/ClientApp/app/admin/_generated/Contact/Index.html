@@ -33,6 +33,8 @@
 				<ngb-pagination *ngIf="page.totalCount > page.size" [pageSize]="page.size" [boundaryLinks]="true" [maxSize]="page.maxSize" [collectionSize]="page.totalCount" [(page)]="page.number" class="pagination-sm" (pageChange)="pageChanged($event)" [rotate]="false"   previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></ngb-pagination>
 </div>
 
+<toaster-container></toaster-container>
+
 <!--modal edit -->
 <ng-template #contactModal let-c="close" let-d="dismiss">
 	<div class="modal-header">

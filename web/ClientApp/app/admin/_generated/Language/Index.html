@@ -1,0 +1,52 @@
+﻿<h4  class="page-title">{{'LANGUAGE.TITLE' | translate }}</h4>   
+                
+                   
+                
+            <div class="block-area">
+				<a class="button-icon"  tooltip-placement="right" (click)="openEdit()" style="cursor:pointer" ><i class="fa fa-file fa-2x"></i></a><br/><br/>
+                <table class="table table-bordered table-hover tile">
+                    <tr>
+                        <th>
+                            {{'LANGUAGE.GRID.COLUMN.NAME' | translate }}
+                        </th>   
+						<th>{{'LANGUAGE.GRID.COLUMN.ACTIONS' | translate }}</th>                      
+                    </tr>
+                    <tr *ngFor="let language of languageList; let index=index">
+                        <td>
+                            {{language.name}}
+                        </td>
+                        <td>
+                            <div class="panel-ctrls">
+                                <a style="cursor:pointer" class="button-icon" style="color:green;cursor:pointer"  (click)="openEdit(language)">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a style="cursor:pointer" class="button-icon" style="color:red;cursor:pointer" (click)="remove(language,index)">
+                                    <i class="fa fa-trash-o danger"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </table>
+				<!--<pre>{{page|json}}</pre>-->
+				<ngb-pagination *ngIf="page.totalCount > page.size" [pageSize]="page.size" [boundaryLinks]="true" [maxSize]="page.maxSize" [collectionSize]="page.totalCount" [(page)]="page.number" class="pagination-sm" (pageChange)="pageChanged($event)" [rotate]="false"   previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></ngb-pagination>
+</div>
+
+<toaster-container></toaster-container>
+
+<!--modal edit -->
+<ng-template #languageModal let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title">{{'LANGUAGE.TITLE' | translate }}</h4>
+		<button type="button" class="close" (click)="hideModal()">×</button>		
+	</div>
+	<div class="modal-body">
+		<form-Language [modal]="languageModal" [(language)]="language" [obj]="this" (onSave)="save(language,this)" ></form-Language>
+	</div>
+	<div class="modal-footer">
+		<button type="button" (click)="save(language)" class="btn btn-success">{{'LANGUAGE.FORM.BUTTON.SAVE' | translate }}</button>
+		<button type="button" (click)="hideModal()" class="btn btn-default">{{'LANGUAGE.FORM.BUTTON.CANCEL' | translate }}</button>
+	</div>
+
+</ng-template>

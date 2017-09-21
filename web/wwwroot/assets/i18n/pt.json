@@ -33,5 +33,33 @@
 			}
 		}
 	},
+	"LANGUAGE":{
+		"TITLE" : "LANGUAGE",
+		"GRID" : {
+			"COLUMN" : {		
+				"ID":"ID",
+				"CODE":"CODE",
+				"NAME":"NAME",
+				"ACTIONS":"Actions"
+			},
+			"BUTTON": {
+				"EDIT":"Edit",
+				"REMOVE":"Remove",
+				"NEW": "new LANGUAGE"
+			},
+			"CONFIRM_DELETE":"Do you really want to remove this item?"
+		},
+		"FORM" : {
+			"LABEL" : {	
+				"CODE":"CODE",
+				"NAME":"NAME",
+				"ID":"Id"
+			},
+			"BUTTON": {
+				"SAVE":"Save",
+				"CANCEL":"Cancel"
+			}
+		}
+	},
   "APP":{"NAME":""}
 }

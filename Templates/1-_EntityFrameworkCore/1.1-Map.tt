@@ -9,12 +9,11 @@
 var manager = TemplateFileManager.Create(this);   
 var classSet = new ClassSet();
 var classes = new ClassSet().Load(true).Classes.OrderBy(u => u.Name).ToList(); 
-manager.IsAutoIndentEnabled=false;
-manager.CanOverrideExistingFile=true;
+
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Data\\EF\\Mappings\\_generated");	
 
 foreach(var classModel in classes){#>
 <#
-		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Data\\EF\\Mappings\\_generated");	
 		manager.StartNewFile("EF\\Mappings\\_generated\\"+classModel.Name+ "Map.cs","Data",""); 
 #>
 using Domain.Entities;
@@ -49,5 +48,5 @@ namespace Data.EF.Mappings
 <#
 manager.EndBlock();
 }
-manager.Process(true);
+manager.Process(false);
 #>

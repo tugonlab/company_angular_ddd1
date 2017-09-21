@@ -12,17 +12,16 @@ var classSet = new ClassSet();
 var classes = classSet.Load().Classes.OrderBy(u => u.Name);
 var projectName="api";
 var path="Controllers\\_generated";
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\"+path);	
 
 foreach(var classModel in classes){#>
 <#
-		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\"+path);	
-		manager.StartNewFile(path+"\\"+classModel.Name+ "Controller.cs",projectName,"");
-		var camelCaseName = classSet.ToCamelCase(classModel.Name);
-		var controller = classModel.Name+"Controller";
-		var spacedName = classSet.ToSpacedName(classModel.Name);
-		manager.CanOverrideExistingFile=true;
-		var parents = classModel.Fields.Where(x=>x.IsParent);
-		//manager.IsAutoIndentEnabled = true;
+	manager.StartNewFile(path+"\\"+classModel.Name+ "Controller.cs",projectName,"");
+	var camelCaseName = classSet.ToCamelCase(classModel.Name);
+	var controller = classModel.Name+"Controller";
+	var spacedName = classSet.ToSpacedName(classModel.Name);
+	manager.CanOverrideExistingFile=true;
+	var parents = classModel.Fields.Where(x=>x.IsParent);
 #>
 using api.Models;
 using Application.AutoMapper;

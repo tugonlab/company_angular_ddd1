@@ -1,5 +1,6 @@
 ﻿
 // Generated helper templates
-// C:\TUGON\tugon 2017\api\Application\Interfaces\_generated\4.1-AppInterfaces.txt4
+// curriculum_adilson\main\Application\Interfaces\_generated\4.1-AppInterfaces.txt4
 // Generated items
-// C:\TUGON\tugon 2017\api\Application\Interfaces\_generated\IContactAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\ILanguageAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IContactAppService.cs

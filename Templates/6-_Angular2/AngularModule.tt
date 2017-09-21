@@ -13,7 +13,7 @@ var manager = TemplateFileManager.Create(this);
 manager.CanOverrideExistingFile = true;
 var classSet = new ClassSet();
 var classes = new ClassSet().Load(true).Classes.OrderBy(u => u.Name);
-
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\services\\generated\\");
 foreach(var classModel in classes){
 
 		var camelCaseName = classSet.ToCamelCase(classModel.Name);
@@ -31,7 +31,7 @@ foreach(var classModel in classes){
 ///////////////////////////////////////////////////////
 //Service
 ///////////////////////////////////////////////////////
-		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\services\\generated\\");	
+			
 		manager.StartNewFile("ClientApp/app/services/generated/"+classModel.Name+"Service.ts","web","");
 
 #>

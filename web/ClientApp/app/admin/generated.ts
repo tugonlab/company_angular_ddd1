@@ -10,35 +10,44 @@ import { Config } from '../config';
 
 import { ContactEdit } from './_generated/Contact/Edit';
 import { ContactIndex } from './_generated/Contact/Index';
+import { LanguageEdit } from './_generated/Language/Edit';
+import { LanguageIndex } from './_generated/Language/Index';
 
 @NgModule({
 	declarations: [
 		ContactEdit,
 		ContactIndex,
-
+		LanguageEdit,
+		LanguageIndex,
+	
 	],
-	imports: [
+    imports: [
 		SharedModule,
 		CombosModule,
 		AdminLayoutModule,
-		RouterModule.forChild(
-			[
-				{
-					path: 'admin', component: IndexComponent, canActivate: [CanActivateViaAuthGuard],
-					children: [
-						{ path: 'contact', component: ContactIndex, canActivate: [CanActivateViaAuthGuard] },
-						{ path: 'contact/:id', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
-						{ path: 'contact/new', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
-					]
-				}
-			])
-	],
-	exports: [
-		AdminLayoutModule,
-		SharedModule,
+        RouterModule.forChild([
+			{
+			path: 'admin', component: IndexComponent, canActivate: [CanActivateViaAuthGuard],
+				children:[
+					{ path: 'contact', component: ContactIndex, canActivate: [CanActivateViaAuthGuard]},
+					{ path: 'contact/:id', component: ContactEdit, canActivate: [CanActivateViaAuthGuard]},
+					{ path: 'contact/new', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
+					{ path: 'language', component: LanguageIndex, canActivate: [CanActivateViaAuthGuard]},
+					{ path: 'language/:id', component: LanguageEdit, canActivate: [CanActivateViaAuthGuard]},
+					{ path: 'language/new', component: LanguageEdit, canActivate: [CanActivateViaAuthGuard] },
+                    { path: '', redirectTo: 'admin', pathMatch: 'full' },
+                ]
+            }
+        ])
+    ],
+    exports: [
+        AdminLayoutModule,
+        SharedModule,
 		ContactEdit,
 		ContactIndex,
-	]
+		LanguageEdit,
+		LanguageIndex,
+    ]
 })
 export class GeneratedAdminModule {
 

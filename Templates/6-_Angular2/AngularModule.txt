@@ -1,10 +1,15 @@
 ﻿
 
 
+
+
 export { ContactEdit } from './Contact/Edit';
 export { ContactIndex } from './Contact/Index';
+export { LanguageEdit } from './Language/Edit';
+export { LanguageIndex } from './Language/Index';
 
 export { ContactService } from './ContactService';
+export { LanguageService } from './LanguageService';
 
 
 
@@ -12,16 +17,22 @@ export { ContactService } from './ContactService';
 <!-- menu items -->
 
 export { ContactService } from './ContactService';
+export { LanguageService } from './LanguageService';
 
 // admin routes
 { path: 'admin/contact', component: ContactIndex, canActivate: [CanActivateViaAuthGuard]},
 { path: 'admin/contact/:id', component: ContactEdit, canActivate: [CanActivateViaAuthGuard]},
 { path: 'admin/contact/new', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/language', component: LanguageIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/language/:id', component: LanguageEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/language/new', component: LanguageEdit, canActivate: [CanActivateViaAuthGuard] },
 
 //admin imports
 import {
 			ContactIndex,
 			ContactEdit,
+			LanguageIndex,
+			LanguageEdit,
 } from '.pages/admin'
 
 
@@ -33,6 +44,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { Contact } from './Contact';
+import { Language } from './Language';
 @NgModule({
     declarations: [
 

@@ -11,11 +11,11 @@ var manager = TemplateFileManager.Create(this);
 var classSet = new ClassSet();
 var classesAll = classSet.Load().Classes;
 var classes = classesAll.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
-		manager.CanOverrideExistingFile = true;
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\ViewModels\\");
+
 foreach(var classModel in classes){#>
 <#
 var camelCaseName = classSet.ToCamelCase(classModel.Name);
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\ViewModels\\");	
 manager.StartNewFile("ViewModels\\"+classModel.Name+ "ViewModel.cs","Application","",null);
 #>
 using System;

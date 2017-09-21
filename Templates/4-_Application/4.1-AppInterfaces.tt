@@ -10,9 +10,9 @@
 var manager = TemplateFileManager.Create(this);
 var classesAll = new ClassSet().Load().Classes;
 var classes = new ClassSet().Load().Classes.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
+System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\Interfaces\\_generated\\");	
 
 foreach(var classModel in classesAll){
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\Interfaces\\_generated\\");	
 manager.StartNewFile("Interfaces\\_generated\\I"+classModel.Name+ "AppService.cs","Application","",null);
 #>
 using Application.ViewModels;

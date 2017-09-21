@@ -2324,6 +2324,7 @@ var aside_directive_1 = __webpack_require__("./ClientApp/app/directives/aside.di
 var breadcrumb_component_1 = __webpack_require__("./ClientApp/app/directives/breadcrumb.component.ts");
 var nav_dropdown_directive_1 = __webpack_require__("./ClientApp/app/directives/nav-dropdown.directive.ts");
 var sidebar_directive_1 = __webpack_require__("./ClientApp/app/directives/sidebar.directive.ts");
+var animations_1 = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser/animations.es5.js");
 var SharedModule = /** @class */ (function () {
     function SharedModule() {
     }
@@ -2348,6 +2349,7 @@ var SharedModule = /** @class */ (function () {
             ],
             imports: [
                 platform_browser_1.BrowserModule,
+                animations_1.BrowserAnimationsModule,
                 router_1.RouterModule,
                 common_1.CommonModule,
                 forms_1.FormsModule,

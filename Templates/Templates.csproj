@@ -11,14 +11,10 @@
     <AssemblyName>Templates</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -428,10 +424,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>1.1-Map.tt</DependentUpon>
     </Content>
+    <Content Include="2-_Repository\2.1-RepositoryInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>2.1-RepositoryInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="2-_Repository\2.2-Repository.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>2.2-Repository.tt</DependentUpon>
+    </Content>
+    <Content Include="3-_Service\3.1-ServiceInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>3.1-ServiceInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="3-_Service\3.2-Service.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>3.2-Service.tt</DependentUpon>
     </Content>
     <Content Include="4-_Application\4.1-AppInterfaces.txt">
       <AutoGen>True</AutoGen>
@@ -458,7 +469,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>4.5-CustomApp.tt</DependentUpon>
     </Content>
-    <Content Include="6-_Angular2\Angular_Directives_combo1.txt">
+    <Content Include="6-_Angular2\Angular_Directives_combo.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Angular_Directives_combo.tt</DependentUpon>
@@ -478,9 +489,8 @@
     </Content>
     <Content Include="6-_Angular2\Angular_Directives_combo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Angular_Directives_combo1.txt</LastGenOutput>
+      <LastGenOutput>Angular_Directives_combo.txt</LastGenOutput>
     </Content>
-    <Content Include="6-_Angular2\Angular_Directives_combo.txt" />
     <Content Include="6-_Angular2\CustomServices.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -548,12 +558,15 @@
     </Content>
     <Content Include="2-_Repository\2.1-RepositoryInterfaces.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>2.1-RepositoryInterfaces.txt</LastGenOutput>
     </Content>
     <Content Include="3-_Service\3.2-Service.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>3.2-Service.txt</LastGenOutput>
     </Content>
     <Content Include="3-_Service\3.1-ServiceInterfaces.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>3.1-ServiceInterfaces.txt</LastGenOutput>
     </Content>
     <Content Include="1-_EntityFrameworkCore\1.1-Map.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

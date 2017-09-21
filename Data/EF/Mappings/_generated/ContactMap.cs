@@ -12,9 +12,9 @@ namespace Data.EF.Mappings
             builder.Property(t => t.Email).HasColumnName("EMAIL");
             builder.Property(t => t.Id).HasColumnName("ID");
             builder.Property(t => t.Message).HasColumnName("MESSAGE");
-            builder.Property(t => t.Name).HasColumnName("NOME");
+            builder.Property(t => t.Name).HasColumnName("NAME");
+            builder.Property(t => t.PhoneNumber).HasColumnName("PHONE_NUMBER");
             builder.Property(t => t.Subject).HasColumnName("SUBJECT");
-            builder.Property(t => t.PhoneNumber).HasColumnName("TELEFONE");
 			builder.ToTable("TB_CONTACT");   
         }
     }
