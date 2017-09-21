@@ -132,6 +132,10 @@
     <Compile Include="Migrations\20170919140903_initial2.designer.cs">
       <DependentUpon>20170919140903_initial2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20170921225529_language.cs" />
+    <Compile Include="Migrations\20170921225529_language.designer.cs">
+      <DependentUpon>20170921225529_language.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />

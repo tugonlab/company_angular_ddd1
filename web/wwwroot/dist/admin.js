@@ -207,6 +207,213 @@ exports.ContactIndex = ContactIndex;
 
 /***/ }),
 
+/***/ "./ClientApp/app/admin/_generated/Language/Edit.html":
+/***/ (function(module, exports) {
+
+module.exports = "\r\n\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\r\n\t\t\t\t\t\t<div class=\" form-group col-md-6\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\">{{'LANGUAGE.FORM.LABEL.CODE' | translate }}</label>\r\n\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" [(ngModel)]=\"language.code\" name=\"language.code\" autofocus />\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\r\n\t\t\t\t\t\t<div class=\" form-group col-md-6\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\">{{'LANGUAGE.FORM.LABEL.NAME' | translate }}</label>\r\n\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" [(ngModel)]=\"language.name\" name=\"language.name\" autofocus />\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./ClientApp/app/admin/_generated/Language/Edit.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var LanguageService_1 = __webpack_require__("./ClientApp/app/services/generated/LanguageService.ts");
+var Language_1 = __webpack_require__("./ClientApp/app/models/Language.ts");
+var ng2_translate_1 = __webpack_require__("./node_modules/ng2-translate/index.js");
+var LanguageEdit = /** @class */ (function () {
+    function LanguageEdit(_service, translate) {
+        this._service = _service;
+        this.translate = translate;
+        this.onSave = new core_1.EventEmitter();
+    }
+    LanguageEdit.prototype.ngOnInit = function () {
+        this.language = this.language || new Language_1.Language();
+    };
+    LanguageEdit.prototype.save = function (language) {
+        this.onSave.emit(language);
+    };
+    LanguageEdit.prototype.closeEdit = function () {
+        this.modal.hide();
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], LanguageEdit.prototype, "obj", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], LanguageEdit.prototype, "modal", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], LanguageEdit.prototype, "onSave", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Language_1.Language)
+    ], LanguageEdit.prototype, "language", void 0);
+    LanguageEdit = __decorate([
+        core_1.Component({
+            selector: 'form-Language',
+            template: __webpack_require__("./ClientApp/app/admin/_generated/Language/Edit.html"),
+            providers: [LanguageService_1.LanguageService]
+        }),
+        __metadata("design:paramtypes", [LanguageService_1.LanguageService, ng2_translate_1.TranslateService])
+    ], LanguageEdit);
+    return LanguageEdit;
+}());
+exports.LanguageEdit = LanguageEdit;
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/admin/_generated/Language/Index.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h4  class=\"page-title\">{{'LANGUAGE.TITLE' | translate }}</h4>   \r\n                \r\n                   \r\n                \r\n            <div class=\"block-area\">\r\n\t\t\t\t<a class=\"button-icon\"  tooltip-placement=\"right\" (click)=\"openEdit()\" style=\"cursor:pointer\" ><i class=\"fa fa-file fa-2x\"></i></a><br/><br/>\r\n                <table class=\"table table-bordered table-hover tile\">\r\n                    <tr>\r\n                        <th>\r\n                            {{'LANGUAGE.GRID.COLUMN.NAME' | translate }}\r\n                        </th>   \r\n\t\t\t\t\t\t<th>{{'LANGUAGE.GRID.COLUMN.ACTIONS' | translate }}</th>                      \r\n                    </tr>\r\n                    <tr *ngFor=\"let language of languageList; let index=index\">\r\n                        <td>\r\n                            {{language.name}}\r\n                        </td>\r\n                        <td>\r\n                            <div class=\"panel-ctrls\">\r\n                                <a style=\"cursor:pointer\" class=\"button-icon\" style=\"color:green;cursor:pointer\"  (click)=\"openEdit(language)\">\r\n                                    <i class=\"fa fa-pencil\"></i>\r\n                                </a>\r\n                                <a style=\"cursor:pointer\" class=\"button-icon\" style=\"color:red;cursor:pointer\" (click)=\"remove(language,index)\">\r\n                                    <i class=\"fa fa-trash-o danger\"></i>\r\n                                </a>\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n\r\n\r\n                </table>\r\n\t\t\t\t<!--<pre>{{page|json}}</pre>-->\r\n\t\t\t\t<ngb-pagination *ngIf=\"page.totalCount > page.size\" [pageSize]=\"page.size\" [boundaryLinks]=\"true\" [maxSize]=\"page.maxSize\" [collectionSize]=\"page.totalCount\" [(page)]=\"page.number\" class=\"pagination-sm\" (pageChange)=\"pageChanged($event)\" [rotate]=\"false\"   previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\"></ngb-pagination>\r\n</div>\r\n\r\n<toaster-container></toaster-container>\r\n\r\n<!--modal edit -->\r\n<ng-template #languageModal let-c=\"close\" let-d=\"dismiss\">\r\n\t<div class=\"modal-header\">\r\n\t\t<h4 class=\"modal-title\">{{'LANGUAGE.TITLE' | translate }}</h4>\r\n\t\t<button type=\"button\" class=\"close\" (click)=\"hideModal()\">×</button>\t\t\r\n\t</div>\r\n\t<div class=\"modal-body\">\r\n\t\t<form-Language [modal]=\"languageModal\" [(language)]=\"language\" [obj]=\"this\" (onSave)=\"save(language,this)\" ></form-Language>\r\n\t</div>\r\n\t<div class=\"modal-footer\">\r\n\t\t<button type=\"button\" (click)=\"save(language)\" class=\"btn btn-success\">{{'LANGUAGE.FORM.BUTTON.SAVE' | translate }}</button>\r\n\t\t<button type=\"button\" (click)=\"hideModal()\" class=\"btn btn-default\">{{'LANGUAGE.FORM.BUTTON.CANCEL' | translate }}</button>\r\n\t</div>\r\n\r\n</ng-template>\r\n"
+
+/***/ }),
+
+/***/ "./ClientApp/app/admin/_generated/Language/Index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var LanguageService_1 = __webpack_require__("./ClientApp/app/services/generated/LanguageService.ts");
+var Language_1 = __webpack_require__("./ClientApp/app/models/Language.ts");
+var ng_bootstrap_1 = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+var ng2_translate_1 = __webpack_require__("./node_modules/ng2-translate/index.js");
+var angular2_toaster_1 = __webpack_require__("./node_modules/angular2-toaster/angular2-toaster.js");
+var LanguageIndex = /** @class */ (function () {
+    function LanguageIndex(_service, translate, _modalService, _toasterService) {
+        this._service = _service;
+        this.translate = translate;
+        this._modalService = _modalService;
+        this._toasterService = _toasterService;
+        this.autoLoad = true;
+        this.page = _service.page;
+        this.language = new Language_1.Language();
+    }
+    LanguageIndex.prototype.ngOnInit = function () {
+        this.load();
+    };
+    LanguageIndex.prototype.ngOnChanges = function (changes) {
+        console.log(changes);
+    };
+    LanguageIndex.prototype.hideModal = function () {
+        this.modalRef.close();
+    };
+    LanguageIndex.prototype.openModal = function (modal) {
+        this.modalRef = this._modalService.open(modal);
+    };
+    LanguageIndex.prototype.pageChanged = function (event) {
+        this.autoLoad = true;
+        this.load();
+    };
+    LanguageIndex.prototype.load = function () {
+        if (!this.autoLoad)
+            return;
+        this.getAll();
+    };
+    LanguageIndex.prototype.save = function (language, modal) {
+        var _this = this;
+        var $this = this;
+        this._service.save(language, $("input[type=file]")).subscribe(function (result) {
+            _this.language = result;
+            if (!_this.languageList)
+                _this.languageList = [];
+            if (!language.id)
+                _this.languageList.push(result);
+            else {
+                var f = _this.languageList.filter(function (x) { return x.id == result.id; });
+                if (f)
+                    f[0] = result;
+            }
+            _this.modalRef.close();
+        }, function (error) {
+            _this.errorMessage = error;
+            _this._toasterService.pop('error', 'Error', 'Error while saving');
+            console.log(error);
+        });
+    };
+    LanguageIndex.prototype.getAll = function () {
+        var _this = this;
+        this._service.getPage(this.page)
+            .subscribe(function (result) {
+            _this.page.totalCount = result.totalCount;
+            _this.languageList = result.list;
+        }, function (error) {
+            _this.errorMessage = error;
+        });
+    };
+    LanguageIndex.prototype.openEdit = function (entity, modal) {
+        this.language = entity || new Language_1.Language();
+        //this._service.emit("onOpenEdit",entity);
+        if (entity) {
+        }
+        this.openModal(this.languageModal);
+    };
+    LanguageIndex.prototype.remove = function (language, index) {
+        var _this = this;
+        var msg = this.translate.instant('LANGUAGE.GRID.CONFIRM_DELETE');
+        if (confirm(msg)) {
+            this._service.remove(language).subscribe(function (result) {
+                //this.language = result;
+                _this.languageList.splice(index, 1);
+            }, function (error) {
+                _this.errorMessage = error;
+            });
+        }
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], LanguageIndex.prototype, "autoLoad", void 0);
+    __decorate([
+        core_1.ViewChild('languageModal'),
+        __metadata("design:type", core_1.TemplateRef)
+    ], LanguageIndex.prototype, "languageModal", void 0);
+    LanguageIndex = __decorate([
+        core_1.Component({
+            selector: 'list-Language',
+            template: __webpack_require__("./ClientApp/app/admin/_generated/Language/Index.html"),
+            providers: [
+                LanguageService_1.LanguageService
+            ]
+        }),
+        __metadata("design:paramtypes", [LanguageService_1.LanguageService, ng2_translate_1.TranslateService, ng_bootstrap_1.NgbModal, angular2_toaster_1.ToasterService])
+    ], LanguageIndex);
+    return LanguageIndex;
+}());
+exports.LanguageIndex = LanguageIndex;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./ClientApp/app/admin/_layout/adminLayoutModule.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -529,7 +736,7 @@ exports.NavMenuAdminComponent = NavMenuAdminComponent;
 /***/ "./ClientApp/app/admin/_layout/navmenu/navmenuGenerated.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\t<li class=\"nav-item\">\r\n\t\t<a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/admin/contact']\">\r\n\t\t\t<i class=\"fa fa-database\"></i> Contact\r\n\t\t</a>\r\n\t</li>\r\n\r\n\r\n"
+module.exports = "\r\n\t<li class=\"nav-item\">\r\n\t\t<a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/admin/contact']\">\r\n\t\t\t<i class=\"fa fa-database\"></i> Contact\r\n\t\t</a>\r\n\t</li>\r\n\r\n\t<li class=\"nav-item\">\r\n\t\t<a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/admin/language']\">\r\n\t\t\t<i class=\"fa fa-database\"></i> Language\r\n\t\t</a>\r\n\t</li>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -727,6 +934,8 @@ var shared_module_1 = __webpack_require__("./ClientApp/app/shared/shared.module.
 var combos_module_1 = __webpack_require__("./ClientApp/app/combos/combos.module.ts");
 var Edit_1 = __webpack_require__("./ClientApp/app/admin/_generated/Contact/Edit.ts");
 var Index_1 = __webpack_require__("./ClientApp/app/admin/_generated/Contact/Index.ts");
+var Edit_2 = __webpack_require__("./ClientApp/app/admin/_generated/Language/Edit.ts");
+var Index_2 = __webpack_require__("./ClientApp/app/admin/_generated/Language/Index.ts");
 var GeneratedAdminModule = /** @class */ (function () {
     function GeneratedAdminModule() {
     }
@@ -735,6 +944,8 @@ var GeneratedAdminModule = /** @class */ (function () {
             declarations: [
                 Edit_1.ContactEdit,
                 Index_1.ContactIndex,
+                Edit_2.LanguageEdit,
+                Index_2.LanguageIndex,
             ],
             imports: [
                 shared_module_1.SharedModule,
@@ -747,6 +958,10 @@ var GeneratedAdminModule = /** @class */ (function () {
                             { path: 'contact', component: Index_1.ContactIndex, canActivate: [auth_1.CanActivateViaAuthGuard] },
                             { path: 'contact/:id', component: Edit_1.ContactEdit, canActivate: [auth_1.CanActivateViaAuthGuard] },
                             { path: 'contact/new', component: Edit_1.ContactEdit, canActivate: [auth_1.CanActivateViaAuthGuard] },
+                            { path: 'language', component: Index_2.LanguageIndex, canActivate: [auth_1.CanActivateViaAuthGuard] },
+                            { path: 'language/:id', component: Edit_2.LanguageEdit, canActivate: [auth_1.CanActivateViaAuthGuard] },
+                            { path: 'language/new', component: Edit_2.LanguageEdit, canActivate: [auth_1.CanActivateViaAuthGuard] },
+                            { path: '', redirectTo: 'admin', pathMatch: 'full' },
                         ]
                     }
                 ])
@@ -756,6 +971,8 @@ var GeneratedAdminModule = /** @class */ (function () {
                 shared_module_1.SharedModule,
                 Edit_1.ContactEdit,
                 Index_1.ContactIndex,
+                Edit_2.LanguageEdit,
+                Index_2.LanguageIndex,
             ]
         })
     ], GeneratedAdminModule);
@@ -1657,6 +1874,73 @@ exports.ComboContactComponent = ComboContactComponent;
 
 /***/ }),
 
+/***/ "./ClientApp/app/combos/combo.language.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var LanguageService_1 = __webpack_require__("./ClientApp/app/services/generated/LanguageService.ts");
+var Language_1 = __webpack_require__("./ClientApp/app/models/Language.ts");
+var ComboLanguageComponent = /** @class */ (function () {
+    function ComboLanguageComponent(_service) {
+        this._service = _service;
+        this.modelChange = new core_1.EventEmitter();
+    }
+    ComboLanguageComponent.prototype.updateData = function (event) {
+        this.model = event;
+        this.modelChange.emit(event);
+    };
+    ComboLanguageComponent.prototype.ngOnInit = function () {
+        this.language = new Language_1.Language();
+        this.getAll();
+    };
+    ComboLanguageComponent.prototype.getAll = function () {
+        var _this = this;
+        this._service.getAll()
+            .subscribe(function (result) {
+            _this.languageList = result;
+        }, function (error) {
+            _this.errorMessage = error;
+        });
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ComboLanguageComponent.prototype, "cssClass", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ComboLanguageComponent.prototype, "model", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ComboLanguageComponent.prototype, "modelChange", void 0);
+    ComboLanguageComponent = __decorate([
+        core_1.Component({
+            selector: 'combo-language',
+            template: "\n\t<select [ngModel]=model (ngModelChange)=\"updateData($event)\"  name=\"language\" class=\"{{cssClass}}\" >\n\t\t<option *ngFor=\"let language of languageList\" [value]=\"language.id\">{{language.name}}</option>\n\t</select>",
+            providers: [LanguageService_1.LanguageService]
+        }),
+        __metadata("design:paramtypes", [LanguageService_1.LanguageService])
+    ], ComboLanguageComponent);
+    return ComboLanguageComponent;
+}());
+exports.ComboLanguageComponent = ComboLanguageComponent;
+
+
+/***/ }),
+
 /***/ "./ClientApp/app/combos/combos.module.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1672,6 +1956,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var shared_module_1 = __webpack_require__("./ClientApp/app/shared/shared.module.ts");
 var combo_contact_1 = __webpack_require__("./ClientApp/app/combos/combo.contact.ts");
+var combo_language_1 = __webpack_require__("./ClientApp/app/combos/combo.language.ts");
 var CombosModule = /** @class */ (function () {
     function CombosModule() {
     }
@@ -1679,12 +1964,14 @@ var CombosModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 combo_contact_1.ComboContactComponent,
+                combo_language_1.ComboLanguageComponent,
             ],
             imports: [
                 shared_module_1.SharedModule,
             ],
             exports: [
                 combo_contact_1.ComboContactComponent,
+                combo_language_1.ComboLanguageComponent,
             ]
         })
     ], CombosModule);
@@ -2266,6 +2553,23 @@ exports.Contact = Contact;
 
 /***/ }),
 
+/***/ "./ClientApp/app/models/Language.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Language = /** @class */ (function () {
+    //////////////
+    function Language() {
+    }
+    return Language;
+}());
+exports.Language = Language;
+
+
+/***/ }),
+
 /***/ "./ClientApp/app/services/BaseService.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2639,6 +2943,53 @@ var ContactService = /** @class */ (function (_super) {
     return ContactService;
 }(services_1.BaseService));
 exports.ContactService = ContactService;
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/services/generated/LanguageService.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var services_1 = __webpack_require__("./ClientApp/app/services/services.ts");
+__webpack_require__("./node_modules/rxjs/add/operator/map.js");
+var LanguageService = /** @class */ (function (_super) {
+    __extends(LanguageService, _super);
+    function LanguageService(_http) {
+        var _this = _super.call(this, _http) || this;
+        _this._http = _http;
+        _this._controller = "Language";
+        return _this;
+    }
+    LanguageService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [services_1.HttpService])
+    ], LanguageService);
+    return LanguageService;
+}(services_1.BaseService));
+exports.LanguageService = LanguageService;
 
 
 /***/ }),
