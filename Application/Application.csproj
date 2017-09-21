@@ -57,12 +57,7 @@
       <DependentUpon>4.3-AppAutoMapper.txt4</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBaseAppService.cs" />
-    <Compile Include="Interfaces\IContactAppService.cs">
-      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\ILanguageAppService.cs">
-      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
-    </Compile>
+    
     <Compile Include="Interfaces\_generated\IContactAppService.cs">
       <DependentUpon>4.1-AppInterfaces.txt4</DependentUpon>
     </Compile>
@@ -72,10 +67,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseAppService.cs" />
     <Compile Include="Services\ContactAppService.cs">
-      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
     </Compile>
     <Compile Include="Services\LanguageAppService.cs">
-      <DependentUpon>4.5-CustomApp.txt4</DependentUpon>
     </Compile>
     <Compile Include="Services\_generated\ContactAppService.cs">
       <DependentUpon>4.2-App.txt4</DependentUpon>
