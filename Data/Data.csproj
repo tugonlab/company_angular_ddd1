@@ -139,6 +139,15 @@
   <ItemGroup>
     <Compile Include="EF\AppDbContext.cs" />
     <Compile Include="EF\Mappings\MappingConfig.cs" />
+    <Compile Include="EF\Mappings\_generated\ContactMap.cs">
+      <DependentUpon>1.1-Map.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Mappings\_generated\LanguageMap.cs">
+      <DependentUpon>1.1-Map.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="EF\_generated\AppDbContext.cs">
+      <DependentUpon>1.2-Context.txt4</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20170918171942_initial.cs" />
     <Compile Include="Migrations\20170918171942_initial.designer.cs">
       <DependentUpon>20170918171942_initial.cs</DependentUpon>
@@ -160,11 +169,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="EF\Mappings\_generated\1.1-Map.txt4" />
     <None Include="EF\Mappings\_generated\Map.txt4" />
     <None Include="EF\_generated\1.1-Context.txt4" />
+    <None Include="EF\_generated\1.2-Context.txt4" />
     <None Include="packages.config" />
     <None Include="Repositories\_generated\2.2-Repository.txt4" />
     <None Include="Repositories\_generated\Repository.txt4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{220443cd-2c69-4e72-b453-bc1dc5114abc}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />

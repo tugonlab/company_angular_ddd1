@@ -48,5 +48,5 @@ namespace Data.EF.Mappings
 <#
 manager.EndBlock();
 }
-manager.Process(false);
+manager.Process(true);
 #>

@@ -4,18 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E8515A8-452E-4E41-8D67-C713040B6878}</ProjectGuid>
+    <ProjectGuid>{220443CD-2C69-4E72-B453-BC1DC5114ABC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Domain</RootNamespace>
     <AssemblyName>Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
@@ -71,6 +67,7 @@
       <DependentUpon>3.2-Service.txt4</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Interfaces\_generated\2.1-RepositoryInterfaces.txt4" />
     <None Include="Services\Interfaces\_generated\3.1-ServiceInterfaces.txt4" />
@@ -78,6 +75,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)Templates\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)Templates\$(TargetFileName)"	</PostBuildEvent>
   </PropertyGroup>
 </Project>

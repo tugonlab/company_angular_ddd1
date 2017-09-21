@@ -35,5 +35,5 @@ namespace Data.EF
 }
 <#
 manager.EndBlock();
-manager.Process(false);
+manager.Process(true);
 #>
