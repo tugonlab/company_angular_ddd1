@@ -14,17 +14,17 @@ export class imgResizeComponent implements OnInit, OnChanges {
     public style: string;
     @Input() public controller: string;
     @Input() public image: string;
-    @Output() imageChange: EventEmitter<string> = new EventEmitter<string>()
+    @Output() imageChange: EventEmitter<string> = new EventEmitter<string>();
     @Input() public cssClass: string;
     @Input() public w: number;
     @Input() public h: number;
-    @Input() public inline: boolean = false;
+    @Input() public inline = false;
 
     constructor(private _service: ImgService, private _config: Config) {
 
     }
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes)
+        console.log(changes);
         if (changes['image']) {
             this.load();
         }
@@ -39,13 +39,13 @@ export class imgResizeComponent implements OnInit, OnChanges {
         else
             this.getPath();
 
-        this.style = "min-width:" + this.w + "px; min-height:" + this.h + "px;";
+        this.style = 'min-width:' + this.w + 'px; min-height:' + this.h + 'px;';
     }
 
     getPath() {
         this._service.controller = this.controller;
 
-        this.path = this._config.apiAddress + "/" + this.controller + "/image/" + this.image + "?w=" + this.w + "&h=" + this.h;
+        this.path = this._config.apiAddress + '/' + this.controller + '/image/' + this.image + '?w=' + this.w + '&h=' + this.h;
     }
 
     getImagData() {

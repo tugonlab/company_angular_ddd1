@@ -1,7 +1,7 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    
+
     selector: 'admin-notification',
     templateUrl: './notification.html'
 })

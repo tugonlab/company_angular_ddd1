@@ -169,6 +169,7 @@ public class ClassSet{
 
 		if(
 			name.Contains("description") ||
+			name.Contains("content") ||
 			name.Contains("descricao") ||
 			name.EndsWith("text") ||
 			name.StartsWith("text") 
@@ -268,5 +269,10 @@ bool DoesFileExist(string filename)
 string GetCurrentDirectory()
 {
     return System.IO.Path.GetDirectoryName(Host.TemplateFile);
+}
+
+void CreateDirectory(string path){
+	if(!System.IO.Directory.Exists(path))
+		System.IO.Directory.CreateDirectory(GetCurrentDirectory()+path);	
 }
 #>

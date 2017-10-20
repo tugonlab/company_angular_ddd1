@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -88,11 +88,11 @@ export class OidcSecurityService {
         this.getUserData()
             .subscribe(data => {
                 this.UserData = data;
-                this.store("userData", this.UserData);
+                this.store('userData', this.UserData);
             },
             error => this.HandleError(error),
             () => {
-                this.store("userData", this.UserData);
+                this.store('userData', this.UserData);
                 if (this.UserData && this.UserData.role) {
                     for (let i = 0; i < this.UserData.role.length; i++) {
                         if (this.UserData.role[i] === 'dataEventRecords.admin') {
@@ -106,7 +106,7 @@ export class OidcSecurityService {
                     }
                 }
                 //this._router.navigate([sessionStorage.getItem("callback_url") || './']);
-                window.location.href = sessionStorage.getItem("callback_url") || './';
+                window.location.href = sessionStorage.getItem('callback_url') || './';
             });
     }
 
@@ -115,19 +115,19 @@ export class OidcSecurityService {
 
         console.log('BEGIN Authorize, no auth data');
 
-        let authorizationUrl = this._configuration.server + '/connect/authorize';
-        let client_id = this._configuration.client_id;
-        let redirect_uri = this._configuration.redirect_url;
-        let response_type = this._configuration.response_type;
-        let scope = this._configuration.scope;
-        let nonce = 'N' + Math.random() + '' + Date.now();
-        let state = Date.now() + '' + Math.random();
+        const authorizationUrl = this._configuration.server + '/connect/authorize';
+        const client_id = this._configuration.client_id;
+        const redirect_uri = this._configuration.redirect_url;
+        const response_type = this._configuration.response_type;
+        const scope = this._configuration.scope;
+        const nonce = 'N' + Math.random() + '' + Date.now();
+        const state = Date.now() + '' + Math.random();
 
         this.store('authStateControl', state);
         this.store('authNonce', nonce);
         console.log('AuthorizedController created. adding myautostate: ' + this.retrieve('authStateControl'));
 
-        let url =
+        const url =
             authorizationUrl + '?' +
             'response_type=' + encodeURI(response_type) + '&' +
             'client_id=' + encodeURI(client_id) + '&' +
@@ -143,10 +143,10 @@ export class OidcSecurityService {
         console.log('BEGIN AuthorizedCallback, no auth data');
         this.ResetAuthorizationData();
 
-        let hash = window.location.hash.substr(1);
+        const hash = window.location.hash.substr(1);
 
-        let result: any = hash.split('&').reduce(function (result: any, item: string) {
-            let parts = item.split('=');
+        const result: any = hash.split('&').reduce(function (result: any, item: string) {
+            const parts = item.split('=');
             result[parts[0]] = parts[1];
             return result;
         }, {});
@@ -211,7 +211,7 @@ export class OidcSecurityService {
                 if (authResponseIsValid) {
                     this.SetAuthorizationData(token, id_token);
                     console.log(this.retrieve('authorizationData'));
-                    
+
                 } else {
                     this.ResetAuthorizationData();
                     this._router.navigate(['/Unauthorized']);
@@ -223,12 +223,12 @@ export class OidcSecurityService {
         // /connect/endsession?id_token_hint=...&post_logout_redirect_uri=https://myapp.com
         console.log('BEGIN Authorize, no auth data');
 
-        let authorizationEndsessionUrl = this._configuration.server + '/connect/endsession';
+        const authorizationEndsessionUrl = this._configuration.server + '/connect/endsession';
 
-        let id_token_hint = this.retrieve('authorizationDataIdToken');
-        let post_logout_redirect_uri = this._configuration.post_logout_redirect_uri;
+        const id_token_hint = this.retrieve('authorizationDataIdToken');
+        const post_logout_redirect_uri = this._configuration.post_logout_redirect_uri;
 
-        let url =
+        const url =
             authorizationEndsessionUrl + '?' +
             'id_token_hint=' + encodeURI(id_token_hint) + '&' +
             'post_logout_redirect_uri=' + encodeURI(post_logout_redirect_uri);
@@ -252,7 +252,7 @@ export class OidcSecurityService {
     }
 
     private extractData(res: Response) {
-        let body = res.json();
+        const body = res.json();
         return body;
     }
 
@@ -281,7 +281,7 @@ export class OidcSecurityService {
     }
 
     private retrieve(key: string): any {
-        let item = this.storage.getItem(key);
+        const item = this.storage.getItem(key);
 
         if (item && item !== 'undefined') {
             return JSON.parse(this.storage.getItem(key));
@@ -307,7 +307,7 @@ export class OidcSecurityService {
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
 
-        let token = this.GetToken();
+        const token = this.GetToken();
 
         if (token !== '') {
             this.headers.append('Authorization', 'Bearer ' + token);

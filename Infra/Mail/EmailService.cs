@@ -1,23 +1,28 @@
 ﻿using System.Linq;
 using System.Net.Mail;
 
-namespace Application.Services
+namespace CrossCutting.Services
 {
     public class EmailService : IEmailService
     {
-        private string _appMailAddress = "contato@company.com.br";
-        private string _appMailUser = "contato@company.com.br";
-        private string _appMailServer = "mail.company.com.br";
-        private string _appMailPassword = "company!";
+        private string _mailAddress = "contato@company.com.br";
+        private string _user = "contato@company.com.br";
+        private string _server = "mail.company.com.br";
+        private string _password = "company!";
+
+        public string MailAddress { get => _mailAddress; set => _mailAddress = value; }
+        public string User { get => _user; set => _user = value; }
+        public string Server { get => _server; set => _server = value; }
+        public string Password { get => _password; set => _password = value; }
 
         private SmtpClient MailClient
         {
             get
             {
-                var client = new SmtpClient(_appMailServer);
+                var client = new SmtpClient(_server);
 
                 client.Port = 587;
-                client.Credentials = new System.Net.NetworkCredential(_appMailUser, _appMailPassword);
+                client.Credentials = new System.Net.NetworkCredential(_user, _password);
                 client.EnableSsl = false;
                 return client;
             }
@@ -37,32 +42,27 @@ namespace Application.Services
 
         public void SendEmail(string destinatary, string subject, string content, bool asHtml = true)
         {
-            SendEmail(new MailAddress(_appMailAddress), new MailAddress(destinatary), subject, content, asHtml);
-
+            SendEmail(new MailAddress(_mailAddress), new MailAddress(destinatary), subject, content, asHtml);
         }
 
         public void SendEmail(string destinatary, string destinataryName, string subject, string content, bool asHtml = true)
         {
-            SendEmail(new MailAddress(_appMailAddress), new MailAddress(destinatary, destinatary + " " + destinataryName), subject, content, asHtml);
-
+            SendEmail(new MailAddress(_mailAddress), new MailAddress(destinatary, destinatary + " " + destinataryName), subject, content, asHtml);
         }
 
         public void SendEmail(string sender, string senderName, string destinatary, string destinataryName, string subject, string content, bool asHtml = true)
         {
-            SendEmail(new MailAddress(_appMailAddress, sender + " " + senderName), new MailAddress(destinatary, destinatary + " " + destinataryName), subject, content, asHtml);
-
+            SendEmail(new MailAddress(_mailAddress, sender + " " + senderName), new MailAddress(destinatary, destinatary + " " + destinataryName), subject, content, asHtml);
         }
 
         public void SendEmail(string sender, string destinatary, string destinataryName, string subject, string content, bool asHtml = true)
         {
-            SendEmail(new MailAddress(_appMailAddress, sender + " " + destinataryName), new MailAddress(destinatary), subject, content, asHtml);
-
+            SendEmail(new MailAddress(_mailAddress, sender + " " + destinataryName), new MailAddress(destinatary), subject, content, asHtml);
         }
 
         public void SendEmail(MailAddress destinatary, string subject, string content, bool asHtml = true)
         {
-            SendEmail(new MailAddress(_appMailAddress), destinatary, subject, content, asHtml);
-
+            SendEmail(new MailAddress(_mailAddress), destinatary, subject, content, asHtml);
         }
 
         public void SendEmail(MailMessage message)

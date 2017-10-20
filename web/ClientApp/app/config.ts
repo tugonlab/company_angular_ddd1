@@ -5,14 +5,14 @@ export class Config {
 
     public useAuthorityServer=false;
 
-    siteUrl: string = window.location.hostname == "localhost" ? 'http://localhost:52101' : 'http://www.sorrisochic.com.br';
-    apiAddress: string = window.location.hostname == "localhost" ? 'http://localhost:52053/api/' : 'http://api.sorrisochic.com.br/api/';
-    authorityAddress: string = window.location.hostname == "localhost" ? 'http://localhost:1941' : 'http://sso.tugon.com.br';
+    siteUrl: string = window.location.hostname == 'localhost' ? 'http://localhost:52101' : 'http://www.yourdomain.com.br';
+    apiAddress: string = window.location.hostname == 'localhost' ? 'http://localhost:52053/api/' : 'http://api.yourdomain.com.br/api/';
+    authorityAddress: string = window.location.hostname == 'localhost' ? 'http://localhost:1941' : 'http://sso.yourdomain.com.br';
     constructor() {
     }
 
     ngOnInit() {
-        this.load()
+        this.load();
     }
 
     load() {

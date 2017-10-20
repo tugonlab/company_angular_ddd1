@@ -3,16 +3,18 @@ using Application.AutoMapper;
 using Application.Interfaces;
 using Application.ViewModels;
 using Application.ViewModels.Common;
+using CrossCutting.Extensions;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
+using System.Threading.Tasks;
 
 namespace api.Controllers
 {
-	[Authorize]
+	//[Authorize]
     [Route("api/[controller]")]
     public partial class LanguageController : BaseController
     {
@@ -28,9 +30,9 @@ namespace api.Controllers
 		[Route("getById/{id}")]
         [HttpGet]
 		[AllowAnonymous]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var model = _service.GetById(id);
+            var model = await Task.FromResult(_service.GetById(id));
             return Ok(model);
         }
 
@@ -38,32 +40,32 @@ namespace api.Controllers
         [Route("getAll")]
         [HttpGet]
 		[AllowAnonymous]
-        public IActionResult GetByAll()
+        public async Task<IActionResult> GetByAll()
         {
-            var model = _service.GetAll();
+            var model = await Task.FromResult(_service.GetAll());
             return Ok(model);
         }
 
 		[Route("getAllPage")]
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult GetByAllPage([FromBody] PagingViewModel<LanguageViewModel> page)
+        public async Task<IActionResult> GetByAllPage([FromBody] PagingViewModel<LanguageViewModel> page)
         {
-            var model = _service.GetByAllPage(page);
+            var model = await Task.FromResult(_service.GetByAllPage(page));
             return Ok(model);
         }
 
         [Route("save")]
         [HttpPost]
-        public IActionResult Save([FromBody] LanguageViewModel model)
+        public async Task<IActionResult> Save([FromBody] LanguageViewModel model)
         {
 			LanguageViewModel result;
             try
             { 
 				if(model.Id==0)
-					result = _service.Add(model.MapTo<Language>());
+					result = await Task.FromResult(_service.Add(model.MapTo<Language>()));
 				else
-					result = _service.Update(model.MapTo<Language>());
+					result = await Task.FromResult(_service.Update(model.MapTo<Language>()));
                 return Ok(result.MapTo<LanguageViewModel>());
             }
             catch(Exception e)
@@ -74,11 +76,11 @@ namespace api.Controllers
 
 		[Route("remove")]
         [HttpPost]
-        public IActionResult Remove([FromBody] LanguageViewModel model)
+        public async Task<IActionResult> Remove([FromBody] LanguageViewModel model)
         {
             try
             {
-                _service.Remove(model.MapTo<Language>());
+                await Task.Run(() => _service.Remove(model.MapTo<Language>()));
                 return Ok();
             }
             catch
@@ -89,7 +91,7 @@ namespace api.Controllers
 
 		protected override void Dispose(bool disposing)
       {
-         //_repository.Dispose();
+			_service.Dispose();
          base.Dispose(disposing);
       }
 

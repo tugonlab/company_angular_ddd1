@@ -54,7 +54,7 @@ foreach(var classModel in classes){
 		prop="id";
 	}
 
-	System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\ClientApp\\app\\admin\\_generated\\"+classModel.Name+"\\");
+	CreateDirectory("..\\..\\..\\"+projectName+"\\ClientApp\\app\\admin\\_generated\\"+classModel.Name+"\\");
 			manager.StartNewFile("ClientApp/app/admin/_generated/"+classModel.Name+"/Index.html",projectName,"");
 	//manager.StartNewFile("Host/Views/"+classModel.Name+"/Index.html","web","");
 #>
@@ -127,14 +127,14 @@ foreach(var field in classModel.Fields){#>
 							<ngb-tab>
 								<ng-template ngbTabTitle><#=classModel.Name#></ng-template>
 								<ng-template ngbTabContent>
-								<form-<#=classSet.ToUnderscore(classModel.Name)#> [modal]="<#=camelCaseName#>Modal" [(<#=camelCaseName#>)]="<#=camelCaseName#>" [obj]="this" (onSave)="save(<#=camelCaseName#>,this)" ></form-<#=classSet.ToUnderscore(classModel.Name)#>>
+								<app-form-<#=classSet.ToDash(classModel.Name)#> [modal]="<#=camelCaseName#>Modal" [(<#=camelCaseName#>)]="<#=camelCaseName#>" [obj]="this" (onSave)="save(<#=camelCaseName#>,this)" ></app-form-<#=classSet.ToDash(classModel.Name)#>>
 								</ng-template>
 							</ngb-tab>
 <#foreach(var field in fieldChildren){#>
 							<ngb-tab>
 								<ng-template ngbTabTitle><#=classSet.ToSpacedName(field.Name)#></ng-template>
 								<ng-template #<#=classSet.ToCamelCase(field.DataType)#>List ngbTabContent>
-								<list-<#=classSet.ToUnderscore(field.DataType)#> #<#=classSet.ToCamelCase(field.DataType)#>ChildList [autoLoad]="false" [<#=classSet.ToCamelCase(classModel.Name)#>Id]="<#=classSet.ToCamelCase(classModel.Name)#>.id" ></list-<#=classSet.ToUnderscore(field.DataType)#>>								
+								<app-list-<#=classSet.ToDash(field.DataType)#> #<#=classSet.ToCamelCase(field.DataType)#>ChildList [autoLoad]="false" [<#=classSet.ToCamelCase(classModel.Name)#>Id]="<#=classSet.ToCamelCase(classModel.Name)#>.id" ></app-list-<#=classSet.ToDash(field.DataType)#>>								
 								</ng-template>
 							</ngb-tab>
 <#}#>
@@ -150,7 +150,7 @@ foreach(var field in classModel.Fields){#>
 		<button type="button" class="close" (click)="hideModal()">×</button>		
 	</div>
 	<div class="modal-body">
-		<form-<#=classSet.ToUnderscore(classModel.Name)#> [modal]="<#=camelCaseName#>Modal" [(<#=camelCaseName#>)]="<#=camelCaseName#>" [obj]="this" (onSave)="save(<#=camelCaseName#>,this)" ></form-<#=classSet.ToUnderscore(classModel.Name)#>>
+		<app-form-<#=classSet.ToDash(classModel.Name)#> [modal]="<#=camelCaseName#>Modal" [(<#=camelCaseName#>)]="<#=camelCaseName#>" [obj]="this" (onSave)="save(<#=camelCaseName#>,this)" ></app-form-<#=classSet.ToDash(classModel.Name)#>>
 	</div>
 	<div class="modal-footer">
 		<button type="button" (click)="save(<#=camelCaseName#>)" class="btn btn-success">{{'<#=underscoreName#>.FORM.BUTTON.SAVE' | translate }}</button>
@@ -170,32 +170,31 @@ manager.StartNewFile("ClientApp/app/admin/_generated/"+classModel.Name+"/Index.t
 
 #>
 import { Component, NgModule, Input, Output, OnInit, ViewChild, EventEmitter, TemplateRef, OnChanges, SimpleChanges } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { <#=classModel.Name#>Service } from '../../../services/generated/<#=classModel.Name#>Service';
 import { <#=classModel.Name#> } from '../../../models/<#=classModel.Name#>';
-import { <#=classModel.Name#>Edit } from './Edit';
+import { <#=classModel.Name#>EditComponent } from './Edit';
 import { PagingModel } from '../../../models/PagingModel';
 import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { ToasterService } from 'angular2-toaster';
 
 ///child
 <# foreach(var child in fieldChildren){#>
 import { <#=child.DataType #> } from '../../../models/<#=child.DataType #>';
-import { <#=child.DataType #>Index } from '../<#=child.DataType #>/Index';
+import { <#=child.DataType #>IndexComponent } from '../<#=child.DataType #>/Index';
 <#}#>
 
-declare var $:any;
+declare var $: any;
 
 @Component({
-    
-	selector: 'list-<#=classSet.ToUnderscore(classModel.Name)#>',
+	selector: 'app-list-<#=classSet.ToDash(classModel.Name)#>',
     templateUrl: './Index.html',
     providers: [
 		<#=classModel.Name#>Service
 	]
 })
-export class <#=classModel.Name#>Index implements OnInit, OnChanges {
+export class <#=classModel.Name#>IndexComponent implements OnInit, OnChanges {
 
 	page: PagingModel<<#=classModel.Name#>>;
 	errorMessage: string;
@@ -204,21 +203,22 @@ export class <#=classModel.Name#>Index implements OnInit, OnChanges {
 <# foreach(var field in  fieldChildren){#>
 	<#=classSet.ToCamelCase(field.DataType)#>: <#=field.DataType#>;
 <#}#>
-	@Input()
-	autoLoad=true;
+	@Input() autoLoad = true;
 <# foreach(var field in fieldParents){#>
-	//@Input() <#=classSet.ToCamelCase(field.Name)#>: <#= field.Name#>;
 	@Input() <#=classSet.ToCamelCase(field.Name)#>Id: any;
 <#}#>
-	@ViewChild('<#=camelCaseName#>Modal') 
-	public <#=camelCaseName#>Modal:TemplateRef<any>;
+	@ViewChild('<#=camelCaseName#>Modal')
+	public <#=camelCaseName#>Modal: TemplateRef<any>;
 	private modalRef: NgbModalRef;
 <# foreach(var field in  fieldChildren){#>
-	@ViewChild('<#=classSet.ToCamelCase(field.DataType)#>ChildList') private _<#=classSet.ToCamelCase(field.DataType)#>ChildList: <#=field.DataType#>Index;
+	@ViewChild('<#=classSet.ToCamelCase(field.DataType)#>ChildList') private _<#=classSet.ToCamelCase(field.DataType)#>ChildList: <#=field.DataType#>IndexComponent;
 	@ViewChild('<#=classSet.ToCamelCase(field.DataType)#>List') private _<#=classSet.ToCamelCase(field.DataType)#>List: TemplateRef<any>;
 <#}#>
-	
-	constructor( private _service: <#=classModel.Name#>Service, public translate: TranslateService, private _modalService: NgbModal, private _toasterService: ToasterService	) {
+
+	constructor( private _service: <#=classModel.Name#>Service,
+		public translate: TranslateService,
+		private _modalService: NgbModal,
+		private _toasterService: ToasterService	) {
 		this.page = _service.page;
 		this.<#=camelCaseName#> = new <#=classModel.Name#>();
 <# foreach(var field in  fieldChildren){#>
@@ -231,7 +231,7 @@ export class <#=classModel.Name#>Index implements OnInit, OnChanges {
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
-        console.log(changes)
+        console.log(changes);
 <# foreach(var fieldParent in fieldParents){#>
         if (changes['<#=classSet.ToCamelCase(fieldParent.DataType)#>Id']) {
             this.getBy<#=fieldParent.Name#>IdPage(this.<#=classSet.ToCamelCase(fieldParent.DataType)#>Id);
@@ -239,11 +239,11 @@ export class <#=classModel.Name#>Index implements OnInit, OnChanges {
 <#}#>
     }
 
-	hideModal(){
+	hideModal() {
 		this.modalRef.close();
 	}
 
-	private openModal(modal){		
+	private openModal(modal) {
 		this.modalRef = this._modalService.open(modal);
 	}
 
@@ -253,8 +253,9 @@ export class <#=classModel.Name#>Index implements OnInit, OnChanges {
 	}
 
     load() {
-		if(!this.autoLoad)
+		if (!this.autoLoad) {
 			return;
+		}
 
 <# 
 if(fieldParents.Count()>0){
@@ -282,20 +283,22 @@ foreach(var fieldParent in fieldParents){
 
 
 	public save(<#=camelCaseName#>, modal) {
-		var $this = this;
+		const $this = this;
 
-        this._service.save(<#=camelCaseName#>, $("input[type=file]")).subscribe(
+        this._service.save(<#=camelCaseName#>, $('input[type=file]')).subscribe(
 			result => {
 <#if(classModel.Fields.Any(x=>x.Name=="Id")){#>
 				this.<#=camelCaseName#> = result;
-				if(!this.<#=camelCaseName#>List)
+				if (!this.<#=camelCaseName#>List) {
 					this.<#=camelCaseName#>List = [];
-				if(!<#=camelCaseName#>.id)
+				}
+				if (!<#=camelCaseName#>.id) {
 					this.<#=camelCaseName#>List.push(result);
-				else {
-                    var f = this.<#=camelCaseName#>List.filter(x => x.id == result.id);
-					if(f)
-						f[0] = result;
+				} else {
+                    const filter = this.<#=camelCaseName#>List.filter(x => x.id === result.id);
+					if (filter) {
+						filter[0] = result;
+					}
                 }
 <#}#>
 				this.modalRef.close();
@@ -303,7 +306,7 @@ foreach(var fieldParent in fieldParents){
 			error => {
 				this.errorMessage = error;
 				this._toasterService.pop('error', 'Error', 'Error while saving');
-				console.log(error)
+				console.log(error);
 			}
 		);
     }
@@ -339,7 +342,7 @@ foreach(var fieldParent in fieldParents){
 		this._service.getPage(this.page)
 		.subscribe(
 			result => {
-				this.page.totalCount = result.totalCount; 
+				this.page.totalCount = result.totalCount;
 				this.<#=camelCaseName#>List = result.list;
 			},
 			error => {
@@ -348,12 +351,12 @@ foreach(var fieldParent in fieldParents){
 		);
     }
 
-	public openEdit(entity?: <#=classModel.Name#>, modal?:any ){
+	public openEdit(entity?: <#=classModel.Name#>, modal?: any) {
 <#if(fieldParents.Count()>0){#>
-		if(entity){
+		if (entity) {
 			this.<#=camelCaseName#> = entity || new <#=classModel.Name#>();
 
-		}else{
+		} else {
 			this.<#=camelCaseName#> = <<#=classModel.Name#>>{
 <# foreach(var parent in  fieldParents){#>
 				<#=classSet.ToCamelCase(parent.DataType)#>Id: this.<#=classSet.ToCamelCase(parent.DataType)#>Id,
@@ -364,23 +367,17 @@ foreach(var fieldParent in fieldParents){
 <#}else{#>
 		this.<#=camelCaseName#> = entity || new <#=classModel.Name#>();
 <#}#>
-		//this._service.emit("onOpenEdit",entity);
-		if(entity){
-<# foreach(var child in  fieldChildren){#>
-			//this._<#=classSet.ToCamelCase(child.DataType)#>ChildList.getBy<#=classModel.Name#>IdPage(entity.id);
-<#}#>
-		}
+
 		this.openModal(this.<#=camelCaseName#>Modal);
 	}
 
 
-	public remove(<#=camelCaseName#>:<#=classModel.Name#>, index:number) {
-		var msg = this.translate.instant('<#=underscoreName#>.GRID.CONFIRM_DELETE');
-		if(confirm(msg)){
+	public remove(<#=camelCaseName#>: <#=classModel.Name#>, index: number) {
+		const msg = this.translate.instant('<#=underscoreName#>.GRID.CONFIRM_DELETE');
+		if (confirm(msg)) {
 			this._service.remove(<#=camelCaseName#>).subscribe(
 				result => {
-					//this.<#=camelCaseName#> = result;
-					this.<#=camelCaseName#>List.splice(index,1)
+					this.<#=camelCaseName#>List.splice(index,1);
 				},
 				error => {
 					this.errorMessage = error;

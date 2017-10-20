@@ -10,7 +10,7 @@ var manager = TemplateFileManager.Create(this);
 var classSet = new ClassSet();
 var classes = new ClassSet().Load().Classes.OrderBy(u => u.Name); 
 
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Data\\EF\\_generated");	
+CreateDirectory("..\\..\\..\\Data\\EF\\_generated");	
 manager.StartNewFile("EF\\_generated\\AppDbContext.cs","Data",""); 
 #>
 using Data.EF.Mappings;

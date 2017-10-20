@@ -29,9 +29,9 @@ export class BreadcrumbsComponent implements OnInit {
           if (route.outlet === 'primary') {
             const routeSnapshot = route.snapshot;
             url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');
-            var arr = routeSnapshot.url.map(segment => segment.path);
+            const arr = routeSnapshot.url.map(segment => segment.path);
             this.breadcrumbs.push({
-                label: arr[arr.length-1],
+                label: arr[arr.length - 1],
                 url:   url
             });
             currentRoute = route;

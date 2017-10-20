@@ -1,14 +1,98 @@
 ﻿
 
 //////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  About
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Certificate
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
 /// STRING BUILDER HTML FOR  Contact
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Course
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Education
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Expected Salary
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Experience
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Feedback
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Goals
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Hobby
 //////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
 /// STRING BUILDER HTML FOR  Language
 //////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Language Skill
+//////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Mailing
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Personal Info
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Personal Quality
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Resume
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Skill
+//////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Social Network
+//////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  About
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","TITLE", Title.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Certificate
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","EMISSION", Emission.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
 
 //////////////////////////////////////////////////////////
 /// STRING BUILDER HTML FOR  Contact
@@ -21,12 +105,204 @@ sb.AppendFormat("<b>{0}</b>:{1}<br />","SUBJECT", Subject.To<string>());
 sb.AppendFormat("<b>{0}</b>:{1}<br />","MESSAGE", Message.To<string>());
 
 //////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Course
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","START DATE", StartDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","END DATE", EndDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Education
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","INSTITUITION", Instituition.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","GRADE", Grade.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","START DATE", StartDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","END DATE", EndDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Expected Salary
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","TYPE", Type.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","OBSERVATION", Observation.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","AMOUNT", Amount.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PERIDICITY", Peridicity.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Experience
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","COMPANY NAME", CompanyName.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PICTURE", Picture.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","JOB TITLE", JobTitle.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","JOB DESCRIPTION", JobDescription.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","START DATE", StartDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","END DATE", EndDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Feedback
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","COMPANY", Company.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PICTURE", Picture.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","MESSAGE", Message.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Goals
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","TITLE", Title.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","CONTENT", Content.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Hobby
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
 /// STRING BUILDER HTML FOR  Language
 //////////////////////////////////////////////////////////
 sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
 sb.AppendFormat("<b>{0}</b>:{1}<br />","CODE", Code.To<string>());
 sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
 
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Language Skill
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PROFIENCY", Profiency.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Mailing
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","EMAIL", Email.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Personal Info
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","BIRTH DATE", BirthDate.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ADDRESS", Address.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","EMAIL", Email.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PHONE NUMBER", PhoneNumber.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","SITE", Site.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Personal Quality
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","CSS ICON", CssIcon.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Resume
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","PERSONAL INFO ID", PersonalInfoId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ABOUT ID", AboutId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","GOALS ID", GoalsId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Skill
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LEVEL", Level.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","DESCRIPTION", Description.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","RESUME ID", ResumeId.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","LANGUAGE ID", LanguageId.To<string>());
+
+//////////////////////////////////////////////////////////
+/// STRING BUILDER HTML FOR  Social Network
+//////////////////////////////////////////////////////////
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ID", Id.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","NAME", Name.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","CSS ICON", CssIcon.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","URL", Url.To<string>());
+sb.AppendFormat("<b>{0}</b>:{1}<br />","ACTIVE", Active.To<string>());
+
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  About
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Title!=newEntity.Title)
+	currentEntity.Title = newEntity.Title;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Certificate
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.Emission!=newEntity.Emission)
+	currentEntity.Emission = newEntity.Emission;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
 
 
 //////////////////////////////////////////////////////////
@@ -52,6 +328,187 @@ if(currentEntity.Message!=newEntity.Message)
 
 
 //////////////////////////////////////////////////////////
+/// UPDATE CHECK  Course
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.StartDate!=newEntity.StartDate)
+	currentEntity.StartDate = newEntity.StartDate;
+
+if(currentEntity.EndDate!=newEntity.EndDate)
+	currentEntity.EndDate = newEntity.EndDate;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Education
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Instituition!=newEntity.Instituition)
+	currentEntity.Instituition = newEntity.Instituition;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.Grade!=newEntity.Grade)
+	currentEntity.Grade = newEntity.Grade;
+
+if(currentEntity.StartDate!=newEntity.StartDate)
+	currentEntity.StartDate = newEntity.StartDate;
+
+if(currentEntity.EndDate!=newEntity.EndDate)
+	currentEntity.EndDate = newEntity.EndDate;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Expected Salary
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Type!=newEntity.Type)
+	currentEntity.Type = newEntity.Type;
+
+if(currentEntity.Observation!=newEntity.Observation)
+	currentEntity.Observation = newEntity.Observation;
+
+if(currentEntity.Amount!=newEntity.Amount)
+	currentEntity.Amount = newEntity.Amount;
+
+if(currentEntity.Peridicity!=newEntity.Peridicity)
+	currentEntity.Peridicity = newEntity.Peridicity;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Experience
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.CompanyName!=newEntity.CompanyName)
+	currentEntity.CompanyName = newEntity.CompanyName;
+
+if(currentEntity.Picture!=newEntity.Picture)
+	currentEntity.Picture = newEntity.Picture;
+
+if(currentEntity.JobTitle!=newEntity.JobTitle)
+	currentEntity.JobTitle = newEntity.JobTitle;
+
+if(currentEntity.JobDescription!=newEntity.JobDescription)
+	currentEntity.JobDescription = newEntity.JobDescription;
+
+if(currentEntity.StartDate!=newEntity.StartDate)
+	currentEntity.StartDate = newEntity.StartDate;
+
+if(currentEntity.EndDate!=newEntity.EndDate)
+	currentEntity.EndDate = newEntity.EndDate;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Feedback
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Company!=newEntity.Company)
+	currentEntity.Company = newEntity.Company;
+
+if(currentEntity.Picture!=newEntity.Picture)
+	currentEntity.Picture = newEntity.Picture;
+
+if(currentEntity.Message!=newEntity.Message)
+	currentEntity.Message = newEntity.Message;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Goals
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Title!=newEntity.Title)
+	currentEntity.Title = newEntity.Title;
+
+if(currentEntity.Content!=newEntity.Content)
+	currentEntity.Content = newEntity.Content;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Hobby
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
 /// UPDATE CHECK  Language
 //////////////////////////////////////////////////////////
 if(currentEntity.Id!=newEntity.Id)
@@ -62,4 +519,155 @@ if(currentEntity.Code!=newEntity.Code)
 
 if(currentEntity.Name!=newEntity.Name)
 	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Language Skill
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Profiency!=newEntity.Profiency)
+	currentEntity.Profiency = newEntity.Profiency;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Mailing
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Email!=newEntity.Email)
+	currentEntity.Email = newEntity.Email;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Personal Info
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.BirthDate!=newEntity.BirthDate)
+	currentEntity.BirthDate = newEntity.BirthDate;
+
+if(currentEntity.Address!=newEntity.Address)
+	currentEntity.Address = newEntity.Address;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Email!=newEntity.Email)
+	currentEntity.Email = newEntity.Email;
+
+if(currentEntity.PhoneNumber!=newEntity.PhoneNumber)
+	currentEntity.PhoneNumber = newEntity.PhoneNumber;
+
+if(currentEntity.Site!=newEntity.Site)
+	currentEntity.Site = newEntity.Site;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Personal Quality
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.CssIcon!=newEntity.CssIcon)
+	currentEntity.CssIcon = newEntity.CssIcon;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Resume
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.PersonalInfoId!=newEntity.PersonalInfoId)
+	currentEntity.PersonalInfoId = newEntity.PersonalInfoId;
+
+if(currentEntity.AboutId!=newEntity.AboutId)
+	currentEntity.AboutId = newEntity.AboutId;
+
+if(currentEntity.GoalsId!=newEntity.GoalsId)
+	currentEntity.GoalsId = newEntity.GoalsId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Skill
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.Level!=newEntity.Level)
+	currentEntity.Level = newEntity.Level;
+
+if(currentEntity.Description!=newEntity.Description)
+	currentEntity.Description = newEntity.Description;
+
+if(currentEntity.ResumeId!=newEntity.ResumeId)
+	currentEntity.ResumeId = newEntity.ResumeId;
+
+if(currentEntity.LanguageId!=newEntity.LanguageId)
+	currentEntity.LanguageId = newEntity.LanguageId;
+
+
+//////////////////////////////////////////////////////////
+/// UPDATE CHECK  Social Network
+//////////////////////////////////////////////////////////
+if(currentEntity.Id!=newEntity.Id)
+	currentEntity.Id = newEntity.Id;
+
+if(currentEntity.Name!=newEntity.Name)
+	currentEntity.Name = newEntity.Name;
+
+if(currentEntity.CssIcon!=newEntity.CssIcon)
+	currentEntity.CssIcon = newEntity.CssIcon;
+
+if(currentEntity.Url!=newEntity.Url)
+	currentEntity.Url = newEntity.Url;
+
+if(currentEntity.Active!=newEntity.Active)
+	currentEntity.Active = newEntity.Active;
 

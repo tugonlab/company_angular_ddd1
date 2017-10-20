@@ -13,10 +13,10 @@ export class HttpService {
     options: RequestOptions;
 
     constructor(private http: Http, private config: Config, private _auth: AuthService, private _route: Router) {
-        this.setHeader("Content-Type", "application/json");
-        this.setHeader('Access-Control-Allow-Origin', this.config.siteUrl)
+        this.setHeader('Content-Type', 'application/json');
+        this.setHeader('Access-Control-Allow-Origin', this.config.siteUrl);
         this._auth.onLogout.subscribe(result => {
-            this.headers.delete("Authorization");
+            this.headers.delete('Authorization');
         });
     }
 
@@ -31,41 +31,41 @@ export class HttpService {
 
     appendToken() {
         if (this._auth.isLoggedIn()) {
-            if (!this.headers.get("Authorization"))
-                this.headers.append("Authorization", "Bearer " + this._auth.getToken())
+            if (!this.headers.get('Authorization'))
+                this.headers.append('Authorization', 'Bearer ' + this._auth.getToken());
         }
 
         this.options = new RequestOptions({ headers: this.headers });
     }
 
     prepareUrl(url): string {
-        if (url.indexOf("://") === -1)
+        if (url.indexOf('://') === -1)
             return this.config.apiAddress + url;
         return url;
     }
 
     upload(url: string, files, obj: any) {
-        var formData = this.loadData(files, obj);
-        this.setHeader("Content-Type", undefined);
-        this.setHeader("enctype", "multipart/form-data");
+        const formData = this.loadData(files, obj);
+        this.setHeader('Content-Type', undefined);
+        this.setHeader('enctype', 'multipart/form-data');
 
         return this.http.post(this.prepareUrl(url), formData, this.options).map(x => {
-            this.headers.delete("enctype");
-            this.setHeader("Content-Type", "application/json");
+            this.headers.delete('enctype');
+            this.setHeader('Content-Type', 'application/json');
             return x;
-        })
+        });
 
 
     }
 
     private loadData(files, obj: any) {
-        var data = new FormData();
+        const data = new FormData();
         if (obj) {
-            data.append("model", JSON.stringify(obj));
+            data.append('model', JSON.stringify(obj));
         }
         if (files && files.length > 0) {
-            for (var i = 0; i < files.length; i++) {
-                data.append("file" + i, files[i]);
+            for (let i = 0; i < files.length; i++) {
+                data.append('file' + i, files[i]);
             }
         }
         return data;
@@ -75,27 +75,28 @@ export class HttpService {
         this.appendToken();
         return this.http.post(this.prepareUrl(url), JSON.stringify(object), this.options)
             .map(res => {
-                if (res.url && res.url.toLowerCase().indexOf("login") >= 0) {
+                if (res.url && res.url.toLowerCase().indexOf('login') >= 0) {
                     window.location.href = res.url;
                 }
                 return res;
             })
             .catch((error: Response) => {
-                return this.handleRequest(error)
+                return this.handleRequest(error);
             });
     }
 
     get(url: string, params?: any) {
         this.appendToken();
-        return this.http.get(this.prepareUrl(url + (params ? "?" + $.param(params) : '')), this.options)
+        return this.http.get(this.prepareUrl(url + (params ? '?' + $.param(params) : '')), this.options)
             .map(res => {
-                if (res.url && res.url.toLowerCase().indexOf("login") >= 0) {
+                if (res.url && res.url.toLowerCase().indexOf('login') >= 0) {
                     window.location.href = res.url;
                 }
                 return res;
             })
             .catch((error: Response) => {
-                return this.handleRequest(error)
+                error.text;
+                return this.handleRequest(error);
             });
     }
 
@@ -104,10 +105,6 @@ export class HttpService {
             console.log('The authentication session expires or the user is not authorised. Force refresh of the current page.');
             this._auth.login();
         }
-        return Observable.throw(error);
+        return Observable.throw(error.text());
     }
 }
-
-
-
-

@@ -1,27 +1,29 @@
 ﻿import { Component, NgModule, Input, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AboutCustomService } from '../../services/custom/About';
+import { About } from '../../models/About';
 
 
 @Component({    
     templateUrl: './about.html',
-    providers: []
+    providers: [AboutCustomService]
 })
 
 export class AboutComponent implements OnInit {
+    about: About;
 
-    constructor(
+    constructor(private _aboutService: AboutCustomService) {
 
-
-    ) {
-        this.load();
     }
 
     ngOnInit() {
-
+        this.load();
     }
 
     load() {
-
+        this._aboutService.getById(1).subscribe(result => {
+            this.about = result;
+        })
        
     }
 }

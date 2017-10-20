@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 // from jsrasiign
 declare var KJUR: any;
@@ -34,7 +34,7 @@ export class OidcSecurityValidation {
         let decoded: any;
         decoded = this.GetPayloadFromToken(token, false);
 
-        let tokenExpirationDate = this.getTokenExpirationDate(decoded);
+        const tokenExpirationDate = this.getTokenExpirationDate(decoded);
         offsetSeconds = offsetSeconds || 0;
 
         if (tokenExpirationDate == null) {
@@ -88,7 +88,7 @@ export class OidcSecurityValidation {
     public GetPayloadFromToken(token: any, encode: boolean) {
         let data = {};
         if (typeof token !== 'undefined') {
-            let encoded = token.split('.')[1];
+            const encoded = token.split('.')[1];
             if (encode) {
                 return encoded;
             }
@@ -101,7 +101,7 @@ export class OidcSecurityValidation {
     public GetHeaderFromToken(token: any, encode: boolean) {
         let data = {};
         if (typeof token !== 'undefined') {
-            let encoded = token.split('.')[0];
+            const encoded = token.split('.')[0];
             if (encode) {
                 return encoded;
             }
@@ -114,7 +114,7 @@ export class OidcSecurityValidation {
     public GetSignatureFromToken(token: any, encode: boolean) {
         let data = {};
         if (typeof token !== 'undefined') {
-            let encoded = token.split('.')[2];
+            const encoded = token.split('.')[2];
             if (encode) {
                 return encoded;
             }
@@ -132,9 +132,9 @@ export class OidcSecurityValidation {
             return false;
         }
 
-        let header_data = this.GetHeaderFromToken(id_token, false);
-        let kid = header_data.kid;
-        let alg = header_data.alg;
+        const header_data = this.GetHeaderFromToken(id_token, false);
+        const kid = header_data.kid;
+        const alg = header_data.alg;
 
         if ('RS256' != alg) {
             console.log('Only RS256 supported');
@@ -143,9 +143,9 @@ export class OidcSecurityValidation {
 
         let isValid = false;
 
-        for (let key of jwtkeys.keys) {
+        for (const key of jwtkeys.keys) {
             if (key.kid === kid) {
-                let publickey = KEYUTIL.getKey(key);
+                const publickey = KEYUTIL.getKey(key);
                 isValid = KJUR.jws.JWS.verify(id_token, publickey, ['RS256']);
                 return isValid;
             }
@@ -160,9 +160,9 @@ export class OidcSecurityValidation {
     // access_token C3: The value of at_hash in the ID Token MUST match the value produced in the previous step if at_hash is present in the ID Token.
     public Validate_id_token_at_hash(access_token: any, at_hash: any): boolean {
 
-        let hash = KJUR.crypto.Util.hashString(access_token, 'sha256');
-        let first128bits = (hash) ? hash.substr(0, hash.length / 2) : '';
-        let testdata = hextob64u(first128bits);
+        const hash = KJUR.crypto.Util.hashString(access_token, 'sha256');
+        const first128bits = (hash) ? hash.substr(0, hash.length / 2) : '';
+        const testdata = hextob64u(first128bits);
 
         if (testdata === at_hash) {
             return true; // isValid;
@@ -176,7 +176,7 @@ export class OidcSecurityValidation {
             return null;
         }
 
-        let date = new Date(0); // The 0 here is the key, which sets the date to the epoch
+        const date = new Date(0); // The 0 here is the key, which sets the date to the epoch
         date.setUTCSeconds(dataIdToken.exp);
 
         return date;
@@ -201,7 +201,7 @@ export class OidcSecurityValidation {
                 output += '=';
                 break;
             default:
-                throw 'Illegal base64url string!';
+                throw new Error('Illegal base64url string!');
         }
 
         return window.atob(output);

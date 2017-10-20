@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
+using System.Collections.Generic;
+
 namespace Application.ViewModels
 {
     public class ContactViewModel

@@ -3,13 +3,9 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, NgModel, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { Http, Headers, RequestOptions, HttpModule } from '@angular/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpService, BaseService } from '../services/services';
-import { inRoleDirective } from '../directives/inRoleDirective';
-import { replaceDirective } from '../directives/replaceDirective';
-import { scrollTopDirective } from '../directives/scrollTopDirective';
-import { claimDirective } from '../directives/claimDirective';
 import { Config } from '../config';
 import { MyNgbDateParserFormatter } from './util/myNgbDatePickerFormat';
 
@@ -18,23 +14,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { AgmCoreModule } from '@agm/core';
 
-import { AsideToggleDirective } from '../directives/aside.directive';
 import { BreadcrumbsComponent } from '../directives/breadcrumb.component';
-import { NAV_DROPDOWN_DIRECTIVES } from '../directives/nav-dropdown.directive';
-import { SIDEBAR_TOGGLE_DIRECTIVES } from '../directives/sidebar.directive';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { ProgressBarModule } from 'angular2-progressbar';
+import { DirectivesModule } from '../directives/directives.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
     declarations: [
-        inRoleDirective,
-        replaceDirective,
-        claimDirective,
-        scrollTopDirective,
+
+
         imgResizeComponent,
         BreadcrumbsComponent,
-        SIDEBAR_TOGGLE_DIRECTIVES,
-        NAV_DROPDOWN_DIRECTIVES,
-        AsideToggleDirective,
+
     ],
     providers: [
         Config,
@@ -43,37 +37,40 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         ToasterService,
     ],
     imports: [
+        CommonModule,
+        HttpModule,
+        HttpClientModule,
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule,
-        CommonModule,
         FormsModule,
         NgbModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBwO1dtoYSoiT4TmgNE4983QBOge-Q3II0'
         }),
-        ToasterModule
+        ToasterModule,
+        //ProgressBarModule,
+        DirectivesModule,
+        PipesModule,
     ],
     exports: [
+        CommonModule,
+        HttpModule,
+        HttpClientModule,
         BrowserModule,
         RouterModule,
-        NgbModule,
-        RouterModule,
-        CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        NgbModule,
         TranslateModule,        
-        inRoleDirective,
-        replaceDirective,
-        claimDirective,
-        scrollTopDirective,
+        //ProgressBarModule,
+        DirectivesModule,
+        PipesModule,
         imgResizeComponent,
         ToasterModule,
         AgmCoreModule,
         BreadcrumbsComponent,
-        SIDEBAR_TOGGLE_DIRECTIVES,
-        NAV_DROPDOWN_DIRECTIVES,
-        AsideToggleDirective,
+
     ],
 
 })

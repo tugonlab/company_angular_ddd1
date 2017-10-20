@@ -42,7 +42,7 @@
 		<button type="button" class="close" (click)="hideModal()">×</button>		
 	</div>
 	<div class="modal-body">
-		<form-Contact [modal]="contactModal" [(contact)]="contact" [obj]="this" (onSave)="save(contact,this)" ></form-Contact>
+		<app-form-contact [modal]="contactModal" [(contact)]="contact" [obj]="this" (onSave)="save(contact,this)" ></app-form-contact>
 	</div>
 	<div class="modal-footer">
 		<button type="button" (click)="save(contact)" class="btn btn-success">{{'CONTACT.FORM.BUTTON.SAVE' | translate }}</button>

@@ -1,6 +1,6 @@
 ﻿import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { HttpService } from './services';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -12,7 +12,7 @@ import { Config } from '../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/filter';
 
 interface BroadcastEvent {
     key: any;
@@ -29,60 +29,54 @@ export class BaseService<T>{
         orderBy: 'Id',
         orderDirection: 'DESC',
         maxSize: 10
-    }
+    };
     protected _controller: string;
-    private _emitter: EventEmitter<BroadcastEvent>
+    private _emitter: EventEmitter<BroadcastEvent>;
 
     constructor(protected http: HttpService) {
         this._emitter = new EventEmitter<BroadcastEvent>();
+        if (!this._controller) {
+            let comp: T = Object.assign({}, <T>{}, {});
+            console.log(comp);
+            this._controller = (<T>comp).constructor.name;
+        }
     }    
 
     getAll(): Observable<T[]> {
-
-        return this.http.get(this._controller + "/GetAll")
+        let comp: T = Object.assign({}, <T>{}, {id:0});
+        console.log(comp);
+        return this.http.get(this._controller + '/GetAll')
             .map((response: Response) => <T[]>response.json());
 
     }
 
     getPage(page: PagingModel<T>): Observable<PagingModel<T>> {
         this.page = page;
-        return this.http.post(this._controller + "/getAllPage", this.page)
+        return this.http.post(this._controller + '/getAllPage', this.page)
             .map((response: Response) => {
-                var result = response.json();
+                const result = response.json();
                 return result;
-            })
-    }
-
-    getPage2(page: PagingModel<T>): Observable<PagingModel<T>> {
-        this.page = page;
-        return this.http.get(this._controller + "/getAllPage/" + page.number + "/" + page.size + "/" + page.orderBy + "/" + page.orderDirection)
-            .map((response: Response) => {
-                var result = response.json();
-                this.page.totalCount = result.item2;
-                this.page.list = <Array<T>>result.item1;
-                return this.page;
-            })
+            });
     }
 
     getById(id: any): Observable<T> {
 
-        return this.http.get(this._controller + "/GetById/" + id)
-
+        return this.http.get(this._controller + '/GetById/' + id)
             .map((response: Response) => {
-                let obj = <T>response.json();
+                const obj = <T>response.json();
                 this.emit('getById', obj);
                 return obj;
-            })
+            });
     }
 
     upload(inputFiles: any[], entity: any): Observable<UploadModel> {
-        var props = Object.getOwnPropertyNames(entity);
+        const props = Object.getOwnPropertyNames(entity);
         ///files=inputFiles
-        var files = [];
-        var fields: Array<FileModel> = new Array<FileModel>();
+        let files = [];
+        let fields: Array<FileModel> = new Array<FileModel>();
 
-        let i = 0
-        for (let obj of inputFiles) {
+        let i = 0;
+        for (const obj of inputFiles) {
 
             fields.push(<FileModel>{
                 id: obj.id,
@@ -92,19 +86,19 @@ export class BaseService<T>{
             });
             i++;
 
-            for (let file of obj.files) {
+            for (const file of obj.files) {
                 files.push(file);
             }
         }
 
         if (files && files.length > 0) {
-            return this.http.upload(this._controller + "/upload", files, { entity: entity, files: fields })
+            return this.http.upload(this._controller + '/upload', files, { entity: entity, files: fields })
                 .map((response: Response) => {
-                    let obj = <UploadModel>response.json();
+                    const obj = <UploadModel>response.json();
                     if (obj) {
                         let i = 0;
-                        for (let file of obj.files) {
-                            var splitted = file.inputFileField.split('.');
+                        for (const file of obj.files) {
+                            const splitted = file.inputFileField.split('.');
                             file.name = splitted[splitted.length - 1];
                             i++;
                         }
@@ -112,28 +106,28 @@ export class BaseService<T>{
                         files = [];
                         fields = [];
 
-                        var props = Object.getOwnPropertyNames(entity);
-                        for (let file of obj.files) {
+                        const props = Object.getOwnPropertyNames(entity);
+                        for (const file of obj.files) {
                             if (props.indexOf(file.inputFileField))
-                                eval("obj.entity." + file.inputFileField + "= file.fileName");
+                                eval('obj.entity.' + file.inputFileField + '= file.fileName');
                         }
                         return obj;
                     }
                     return null;
-                })
+                });
         }
 
         return new Observable<UploadModel>(x => {
-            x.next(<UploadModel>{ entity: entity, files: fields })
+            x.next(<UploadModel>{ entity: entity, files: fields });
         });
     }
     image(fileName: string, controller?: string, w?: number, h?: number, base64: boolean = false) {
-        return this.http.get((controller || this._controller) + "/image/" + fileName, { w: w || 0, h: h || 0, base64: base64 })
+        return this.http.get((controller || this._controller) + '/image/' + fileName, { w: w || 0, h: h || 0, base64: base64 })
             .map((response: Response) => {
                 if (base64)
-                    return (<any>response)._body
+                    return (<any>response)._body;
                 else
-                    return <T>response.json()
+                    return <T>response.json();
             }
             );
     }
@@ -146,36 +140,36 @@ export class BaseService<T>{
                 this.upload(inputFiles, entity).subscribe(
                     (result) => {
                         this.callSave(result.entity).subscribe(x => {
-                            t.next(x)
-                        })
+                            t.next(x);
+                        });
                     }
-                )
+                );
 
             });
 
         } else {
-            return this.callSave(entity)
+            return this.callSave(entity);
         }
 
     }
     private callSave(entity: T): Observable<T> {
-        return this.http.post(this._controller + "/Save", entity)
+        return this.http.post(this._controller + '/Save', entity)
             .map((response: Response) => {
-                let obj = <T>response.json();
+                const obj = <T>response.json();
                 this.emit('save', obj);
                 return obj;
-            })
+            });
     }
 
     remove(entity: any) {
-        return this.http.post(this._controller + "/Remove", entity)
+        return this.http.post(this._controller + '/Remove', entity)
             .map(() => {
                 this.emit('remove', entity);
-            })
+            });
     }
 
     on(key: any): Observable<any> {
-        var observer = this._emitter.asObservable();
+        const observer = this._emitter.asObservable();
         return observer.filter(event => {
             return event.key === key;
         })
@@ -187,12 +181,7 @@ export class BaseService<T>{
     }
 
     emit(key: any, data?: any) {
-        //teste
         this._emitter.emit({ key, data });
-    }
-
-    private handleError(error: Response) {
-
     }
 
     public setObjectCache<TT>(key: string, value: TT) {
@@ -200,7 +189,7 @@ export class BaseService<T>{
     }
 
     public getObjectCache<TT>(key: string) {
-        var result = sessionStorage.getItem(key);
+        const result = sessionStorage.getItem(key);
         if (result)
             return <TT>JSON.parse(result);
     }
@@ -215,5 +204,9 @@ export class BaseService<T>{
 
     public removeCache(key: string) {
         sessionStorage.removeItem(key);
+    }
+
+    public setControler(controller: string): void {
+        this._controller = controller;
     }
 }

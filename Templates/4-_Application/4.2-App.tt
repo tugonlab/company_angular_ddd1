@@ -11,7 +11,7 @@ var manager = TemplateFileManager.Create(this);
 var classSet = new ClassSet();
 var classesAll = classSet.Load().Classes;
 var classes = classesAll.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Application\\Services\\_generated\\");	
+CreateDirectory("..\\..\\..\\Application\\Services\\_generated\\");	
 foreach(var classModel in classes){#>
 <#
 var camelCaseName = classSet.ToCamelCase(classModel.Name);
@@ -27,7 +27,7 @@ namespace Application.Services
 {
     public partial class <#=classModel.Name#>AppService : BaseAppService<<#=classModel.Name#>,<#=classModel.Name#>ViewModel>, I<#=classModel.Name#>AppService
     {
-
+		I<#=classModel.Name#>Service _service;
         public <#=classModel.Name#>AppService(I<#=classModel.Name#>Service service, IUnitOfWork uow)
 		:base(service, uow)
         {

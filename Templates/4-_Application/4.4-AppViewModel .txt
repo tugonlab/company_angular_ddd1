@@ -1,11 +1,43 @@
 ﻿
 
 //////////////
+            CreateMap<About, AboutViewModel>();
+            CreateMap<Certificate, CertificateViewModel>();
             CreateMap<Contact, ContactViewModel>();
+            CreateMap<Course, CourseViewModel>();
+            CreateMap<Education, EducationViewModel>();
+            CreateMap<ExpectedSalary, ExpectedSalaryViewModel>();
+            CreateMap<Experience, ExperienceViewModel>();
+            CreateMap<Feedback, FeedbackViewModel>();
+            CreateMap<Goals, GoalsViewModel>();
+            CreateMap<Hobby, HobbyViewModel>();
             CreateMap<Language, LanguageViewModel>();
+            CreateMap<LanguageSkill, LanguageSkillViewModel>();
+            CreateMap<Mailing, MailingViewModel>();
+            CreateMap<PersonalInfo, PersonalInfoViewModel>();
+            CreateMap<PersonalQuality, PersonalQualityViewModel>();
+            CreateMap<Resume, ResumeViewModel>();
+            CreateMap<Skill, SkillViewModel>();
+            CreateMap<SocialNetwork, SocialNetworkViewModel>();
 
 ////////////////////
+            CreateMap<AboutViewModel, About>();
+            CreateMap<CertificateViewModel, Certificate>();
             CreateMap<ContactViewModel, Contact>();
+            CreateMap<CourseViewModel, Course>();
+            CreateMap<EducationViewModel, Education>();
+            CreateMap<ExpectedSalaryViewModel, ExpectedSalary>();
+            CreateMap<ExperienceViewModel, Experience>();
+            CreateMap<FeedbackViewModel, Feedback>();
+            CreateMap<GoalsViewModel, Goals>();
+            CreateMap<HobbyViewModel, Hobby>();
             CreateMap<LanguageViewModel, Language>();
+            CreateMap<LanguageSkillViewModel, LanguageSkill>();
+            CreateMap<MailingViewModel, Mailing>();
+            CreateMap<PersonalInfoViewModel, PersonalInfo>();
+            CreateMap<PersonalQualityViewModel, PersonalQuality>();
+            CreateMap<ResumeViewModel, Resume>();
+            CreateMap<SkillViewModel, Skill>();
+            CreateMap<SocialNetworkViewModel, SocialNetwork>();
 
 

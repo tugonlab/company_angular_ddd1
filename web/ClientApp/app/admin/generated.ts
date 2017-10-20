@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CanActivateViaAuthGuard, AuthService } from '../auth/auth';
 import { IndexComponent } from './_layout/index/index.component';
-import { AdminLayoutModule } from './_layout/adminLayoutModule'
+import { AdminLayoutModule } from './_layout/adminLayoutModule';
 import { SharedModule } from '../shared/shared.module';
 import { CombosModule } from '../combos/combos.module';
 import { Config } from '../config';

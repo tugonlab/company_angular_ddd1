@@ -1,24 +1,24 @@
-﻿import { Directive, ElementRef, HostListener, Input, OnInit, AfterViewInit } from '@angular/core';
-declare var $: any
+import { Directive, ElementRef, HostListener, Input, OnInit, AfterViewInit } from '@angular/core';
+declare var $: any;
 @Directive({
     selector: '[replace]'
 })
 export class replaceDirective implements AfterViewInit {
-    userRoles = ["operator"]
+    userRoles = ['operator'];
 
     constructor(private el: ElementRef) {
 
     }
 
     ngAfterViewInit() {
-        this.performReplace()
+        this.performReplace();
     }
 
     private performReplace() {
-        
-        var el = $(this.el.nativeElement)
-        var parent = $(el[0].parentElement);
-        var inner = el.html();
+
+        const el = $(this.el.nativeElement);
+        const parent = $(el[0].parentElement);
+        const inner = el.html();
         el.detach();
         parent.append(inner);
     }

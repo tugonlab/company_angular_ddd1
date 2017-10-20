@@ -25,7 +25,7 @@ foreach(var classModel in classes){#>
 	//manager.IsAutoIndentEnabled=true;
 	manager.CanOverrideExistingFile = true;
 
-	System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Web\\ClientApp\\app\\admin\\_generated\\"+classModel.Name+"\\");	
+	CreateDirectory("..\\..\\..\\Web\\ClientApp\\app\\admin\\_generated\\"+classModel.Name+"\\");	
 	
 	manager.StartNewFile("ClientApp/app/admin/_generated/"+classModel.Name+"/Edit.html","web","");
 #>
@@ -50,7 +50,7 @@ foreach(var field in classModel.Fields.OrderByDescending(x=>x.DataType)){#>
 #>
 						<div class=" form-group col-md-6">
 							<label class="control-label">{{'<#=underscoreName#>.FORM.LABEL.<#= classSet.ToUnderscore(field.Name).ToUpper() #>' | translate }}<#if(field.IsParent){#> <i class="fa fa-file-o"></i><#}#></label>
-							<combo-<#=classSet.ToDash(field.DataType)#> value-field="id" cssClass="form-control" load-on-start="false" [(model)]="<#=camelCaseName#>.<#=classSet.ToCamelCase(field.Name)#>Id" name="<#=classSet.ToCamelCase(field.Name)#>Id"></combo-<#=classSet.ToDash(field.DataType)#> >
+							<app-combo-<#=classSet.ToDash(field.DataType)#> value-field="id" cssClass="form-control" load-on-start="false" [(model)]="<#=camelCaseName#>.<#=classSet.ToCamelCase(field.Name)#>Id" name="<#=classSet.ToCamelCase(field.Name)#>Id"></app-combo-<#=classSet.ToDash(field.DataType)#> >
 						</div>
 <#
 	break;
@@ -101,25 +101,22 @@ manager.EndBlock();
 manager.StartNewFile("ClientApp/app/admin/_generated/"+classModel.Name+"/Edit.ts","web","");
 #>
 import { Component, NgModule, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { <#=classModel.Name#>Service } from '../../../services/generated/<#=classModel.Name#>Service';
 import { <#=classModel.Name#> } from '../../../models/<#=classModel.Name#>';
-import { TranslateService } from 'ng2-translate';
 
-@Component({    
-	selector:'form-<#=classSet.ToUnderscore(classModel.Name)#>',
+@Component({
+	selector:'app-form-<#=classSet.ToDash(classModel.Name)#>',
     templateUrl: './Edit.html',
     providers: [<#=classModel.Name#>Service]
 })
-export class <#=classModel.Name#>Edit implements OnInit {
+export class <#=classModel.Name#>EditComponent implements OnInit {
 
-    constructor(private _service: <#=classModel.Name#>Service, public translate: TranslateService) {
-		
-    }
-	@Input() obj?:any;
-	@Input() modal?:any;
+    constructor(private _service: <#=classModel.Name#>Service) { }
+	@Input() obj?: any;
+	@Input() modal?: any;
 
-	@Output() onSave?:EventEmitter<<#=classModel.Name#>> = new EventEmitter();
+	@Output() onSave?: EventEmitter<<#=classModel.Name#>> = new EventEmitter();
 
 	@Input()
     <#=camelCaseName#>: <#=classModel.Name#>;
@@ -132,7 +129,7 @@ export class <#=classModel.Name#>Edit implements OnInit {
 		this.onSave.emit(<#=camelCaseName#>);
     }
 
-	public closeEdit(){
+	public closeEdit() {
 		this.modal.hide();
 	}
 

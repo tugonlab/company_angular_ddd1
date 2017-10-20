@@ -14,7 +14,7 @@ manager.CanOverrideExistingFile = false;
 //manager.IsAutoIndentEnabled=true;
 var classSet = new ClassSet();
 var classes = new ClassSet().Load(true).Classes.OrderBy(u => u.Name);
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\ClientApp\\app\\services\\custom\\");	
+CreateDirectory("..\\..\\..\\web\\ClientApp\\app\\services\\custom\\");	
 
 foreach(var classModel in classes){
 
@@ -23,8 +23,8 @@ foreach(var classModel in classes){
 		var controller = classSet.ToCamelCase(classModel.Name)+"Controller";
 		var spacedName = classSet.ToSpacedName(classModel.Name);
 		var underscoreName = classSet.ToUnderscore(classModel.Name).ToUpper();
-		var parents = classModel.Fields?.Where(x=>x.IsParent);
-		var classChild = classModel.Fields?.Where(x=>x.IsCollection);	
+		var parents = (classModel.Fields!=null)?classModel.Fields.Where(x=>x.IsParent):null;
+		var classChild = (classModel.Fields!=null)?classModel.Fields.Where(x=>x.IsCollection):null;
 
 #>
 <#	

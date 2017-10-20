@@ -4,17 +4,17 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
-import "angular2-toaster/toaster.css"; 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'angular2-toaster/toaster.css';
 
-console.log("env", environment);
+console.log('env', environment);
 if (module['hot']) {
    
-    console.log("dev");
+    console.log('dev');
     module['hot'].accept();
     module['hot'].dispose(() => {
-        var rootElemTagName: string = "app";
+        const rootElemTagName = 'app';
         const oldRootElem = document.querySelector(rootElemTagName);
         const newRootElem = document.createElement(rootElemTagName);
         oldRootElem.parentNode.insertBefore(newRootElem, oldRootElem);

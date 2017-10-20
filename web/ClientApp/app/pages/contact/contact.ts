@@ -59,17 +59,17 @@ export class ContactComponent implements OnInit {
 
     validate(contact: Contact) {
         if (!contact.name) {
-            this.errorMessage = "Preencha o campo nome";
+            this.errorMessage = 'Preencha o campo nome';
             return false;
         }
 
         if (!contact.email) {
-            this.errorMessage = "Preencha o campo email";
+            this.errorMessage = 'Preencha o campo email';
             return false;
         }
 
         if (!contact.message) {
-            this.errorMessage = "Preencha o campo mensagem";
+            this.errorMessage = 'Preencha o campo mensagem';
             return false;
         }
 
@@ -82,14 +82,14 @@ export class ContactComponent implements OnInit {
             this._service.sendEmail(contact).subscribe(result => {
                 this.name = contact.name;
                 this.contact = new Contact();
-                this.open()
+                this.open();
             },
                 error => {
-                    this.errorMessage = "Problema no envio da mensagem, tente novamente";
-                    this._toasterService.pop("error", "Erro", this.errorMessage);
+                    this.errorMessage = 'Problema no envio da mensagem, tente novamente';
+                    this._toasterService.pop('error', 'Erro', this.errorMessage);
                 });
         } else {
-            this._toasterService.pop("error", "Erro", this.errorMessage);
+            this._toasterService.pop('error', 'Erro', this.errorMessage);
         }
     }
 }

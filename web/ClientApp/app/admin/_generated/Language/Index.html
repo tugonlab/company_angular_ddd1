@@ -42,7 +42,7 @@
 		<button type="button" class="close" (click)="hideModal()">×</button>		
 	</div>
 	<div class="modal-body">
-		<form-Language [modal]="languageModal" [(language)]="language" [obj]="this" (onSave)="save(language,this)" ></form-Language>
+		<app-form-language [modal]="languageModal" [(language)]="language" [obj]="this" (onSave)="save(language,this)" ></app-form-language>
 	</div>
 	<div class="modal-footer">
 		<button type="button" (click)="save(language)" class="btn btn-success">{{'LANGUAGE.FORM.BUTTON.SAVE' | translate }}</button>

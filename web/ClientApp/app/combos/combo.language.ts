@@ -4,7 +4,7 @@ import { Language } from '../models/Language';
 
 @Component({
     
-    selector: 'combo-language',
+    selector: 'app-combo-language',
     template: `
 	<select [ngModel]=model (ngModelChange)="updateData($event)"  name="language" class="{{cssClass}}" >
 		<option *ngFor="let language of languageList" [value]="language.id">{{language.name}}</option>
@@ -18,8 +18,7 @@ export class ComboLanguageComponent implements OnInit{
 
 	@Input() cssClass?:string;
 
-	@Input() 
-	model:any;
+	@Input() model: any;
 	
 	@Output() modelChange: any = new EventEmitter();   
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, UrlSegment } from '@angular/router';
-import { ContactComponent, AboutComponent, HomeComponent } from "./pages/pages";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

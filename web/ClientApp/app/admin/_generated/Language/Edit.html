@@ -10,6 +10,13 @@
 							<label class="control-label">{{'LANGUAGE.FORM.LABEL.NAME' | translate }}</label>
 							<input type="text" class="form-control" [(ngModel)]="language.name" name="language.name" autofocus />
 						</div>
+			
+						<div class=" form-group col-md-6">
+							<label>
+								<input type="checkbox" [(ngModel)]="language.active" name="activeId" />
+								{{'LANGUAGE.FORM.LABEL.ACTIVE' | translate }}
+							</label>
+						</div>
 					</div>
 
 

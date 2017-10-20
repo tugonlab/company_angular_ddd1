@@ -7,10 +7,10 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ImgService extends BaseService<string> {
-    controller:string
+    controller: string;
     constructor(private _http: HttpService) {
         super(_http);
-        this._controller="";
+        this._controller = '';
     }
 
     

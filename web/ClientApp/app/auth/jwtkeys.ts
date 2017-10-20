@@ -1,4 +1,4 @@
-﻿export class JwtKeys {
+export class JwtKeys {
     keys: JwtKey[];
 }
 

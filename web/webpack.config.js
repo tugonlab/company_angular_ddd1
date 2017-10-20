@@ -206,6 +206,9 @@ module.exports = (env) => {
                     "tsConfigPath": "ClientApp/tsconfig.app.json",
                     "skipCodeGeneration": isDevBuild
                 }),
+                new webpack.DefinePlugin({
+                    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+                }),
                 new webpack.LoaderOptionsPlugin({
                     minimize: true,
                     debug: false
@@ -241,7 +244,14 @@ module.exports = (env) => {
             "setImmediate": false
         },
         "devServer": {
-            "historyApiFallback": true
+            "historyApiFallback": true,
+            "stats": {
+                "warnings": false
+            },
+            "warnings": false
+        },
+        "stats": {
+            "warnings": false
         }
     }
     return [clientBundleConfig];

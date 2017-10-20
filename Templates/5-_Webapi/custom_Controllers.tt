@@ -13,7 +13,7 @@ var classSet = new ClassSet();
 var classes = classSet.Load().Classes.OrderBy(u => u.Name);
 var projectName = "api";
 var path="Controllers";
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\"+path+"\\");
+CreateDirectory("..\\..\\..\\"+projectName+"\\"+path+"\\");
 
 foreach(var classModel in classes){#>
 <#	

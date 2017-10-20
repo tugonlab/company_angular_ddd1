@@ -2,5 +2,21 @@
 // Generated helper templates
 // curriculum_adilson\main\Application\Interfaces\_generated\4.1-AppInterfaces.txt4
 // Generated items
+// curriculum_adilson\main\Application\Interfaces\_generated\ISocialNetworkAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\ISkillAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IResumeAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IPersonalQualityAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IPersonalInfoAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IMailingAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\ILanguageSkillAppService.cs
 // curriculum_adilson\main\Application\Interfaces\_generated\ILanguageAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IHobbyAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IGoalsAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IFeedbackAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IExperienceAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IExpectedSalaryAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IEducationAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\ICourseAppService.cs
 // curriculum_adilson\main\Application\Interfaces\_generated\IContactAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\ICertificateAppService.cs
+// curriculum_adilson\main\Application\Interfaces\_generated\IAboutAppService.cs

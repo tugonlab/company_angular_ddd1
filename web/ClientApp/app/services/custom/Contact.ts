@@ -15,7 +15,7 @@ export class ContactCustomService extends ContactService {
     }
     
     sendEmail(contact: Contact) :Observable<any>{
-        return this._http.post(this._controller + "/sendEmail/", contact);
+        return this._http.post(this._controller + '/sendEmail/', contact);
            // .map((response: Response) => <Contact[]>response.json());
     }
 }

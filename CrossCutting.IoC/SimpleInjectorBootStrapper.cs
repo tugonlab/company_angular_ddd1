@@ -1,6 +1,6 @@
 ﻿using Application.AutoMapper;
-using Application.Services;
 using AutoMapper;
+using CrossCutting.Services;
 using Data.UoW;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Http;

@@ -16,5 +16,6 @@ namespace Application.Interfaces
         TViewModel GetById(int id);
         void Remove(T model);
         TViewModel Update(T model);
+        void Dispose();
     }
 }

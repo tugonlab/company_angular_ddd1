@@ -3,36 +3,212 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export { AboutEdit } from './About/Edit';
+export { AboutIndex } from './About/Index';
+export { CertificateEdit } from './Certificate/Edit';
+export { CertificateIndex } from './Certificate/Index';
 export { ContactEdit } from './Contact/Edit';
 export { ContactIndex } from './Contact/Index';
+export { CourseEdit } from './Course/Edit';
+export { CourseIndex } from './Course/Index';
+export { EducationEdit } from './Education/Edit';
+export { EducationIndex } from './Education/Index';
+export { ExpectedSalaryEdit } from './ExpectedSalary/Edit';
+export { ExpectedSalaryIndex } from './ExpectedSalary/Index';
+export { ExperienceEdit } from './Experience/Edit';
+export { ExperienceIndex } from './Experience/Index';
+export { FeedbackEdit } from './Feedback/Edit';
+export { FeedbackIndex } from './Feedback/Index';
+export { GoalsEdit } from './Goals/Edit';
+export { GoalsIndex } from './Goals/Index';
+export { HobbyEdit } from './Hobby/Edit';
+export { HobbyIndex } from './Hobby/Index';
 export { LanguageEdit } from './Language/Edit';
 export { LanguageIndex } from './Language/Index';
+export { LanguageSkillEdit } from './LanguageSkill/Edit';
+export { LanguageSkillIndex } from './LanguageSkill/Index';
+export { MailingEdit } from './Mailing/Edit';
+export { MailingIndex } from './Mailing/Index';
+export { PersonalInfoEdit } from './PersonalInfo/Edit';
+export { PersonalInfoIndex } from './PersonalInfo/Index';
+export { PersonalQualityEdit } from './PersonalQuality/Edit';
+export { PersonalQualityIndex } from './PersonalQuality/Index';
+export { ResumeEdit } from './Resume/Edit';
+export { ResumeIndex } from './Resume/Index';
+export { SkillEdit } from './Skill/Edit';
+export { SkillIndex } from './Skill/Index';
+export { SocialNetworkEdit } from './SocialNetwork/Edit';
+export { SocialNetworkIndex } from './SocialNetwork/Index';
 
+export { AboutService } from './AboutService';
+export { CertificateService } from './CertificateService';
 export { ContactService } from './ContactService';
+export { CourseService } from './CourseService';
+export { EducationService } from './EducationService';
+export { ExpectedSalaryService } from './ExpectedSalaryService';
+export { ExperienceService } from './ExperienceService';
+export { FeedbackService } from './FeedbackService';
+export { GoalsService } from './GoalsService';
+export { HobbyService } from './HobbyService';
 export { LanguageService } from './LanguageService';
+export { LanguageSkillService } from './LanguageSkillService';
+export { MailingService } from './MailingService';
+export { PersonalInfoService } from './PersonalInfoService';
+export { PersonalQualityService } from './PersonalQualityService';
+export { ResumeService } from './ResumeService';
+export { SkillService } from './SkillService';
+export { SocialNetworkService } from './SocialNetworkService';
 
 
 
 <!-- menu items -->
 <!-- menu items -->
 
+export { AboutService } from './AboutService';
+export { CertificateService } from './CertificateService';
 export { ContactService } from './ContactService';
+export { CourseService } from './CourseService';
+export { EducationService } from './EducationService';
+export { ExpectedSalaryService } from './ExpectedSalaryService';
+export { ExperienceService } from './ExperienceService';
+export { FeedbackService } from './FeedbackService';
+export { GoalsService } from './GoalsService';
+export { HobbyService } from './HobbyService';
 export { LanguageService } from './LanguageService';
+export { LanguageSkillService } from './LanguageSkillService';
+export { MailingService } from './MailingService';
+export { PersonalInfoService } from './PersonalInfoService';
+export { PersonalQualityService } from './PersonalQualityService';
+export { ResumeService } from './ResumeService';
+export { SkillService } from './SkillService';
+export { SocialNetworkService } from './SocialNetworkService';
 
 // admin routes
+{ path: 'admin/about', component: AboutIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/about/:id', component: AboutEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/about/new', component: AboutEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/certificate', component: CertificateIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/certificate/:id', component: CertificateEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/certificate/new', component: CertificateEdit, canActivate: [CanActivateViaAuthGuard] },
 { path: 'admin/contact', component: ContactIndex, canActivate: [CanActivateViaAuthGuard]},
 { path: 'admin/contact/:id', component: ContactEdit, canActivate: [CanActivateViaAuthGuard]},
 { path: 'admin/contact/new', component: ContactEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/course', component: CourseIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/course/:id', component: CourseEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/course/new', component: CourseEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/education', component: EducationIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/education/:id', component: EducationEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/education/new', component: EducationEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/expectedSalary', component: ExpectedSalaryIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/expectedSalary/:id', component: ExpectedSalaryEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/expectedSalary/new', component: ExpectedSalaryEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/experience', component: ExperienceIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/experience/:id', component: ExperienceEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/experience/new', component: ExperienceEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/feedback', component: FeedbackIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/feedback/:id', component: FeedbackEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/feedback/new', component: FeedbackEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/goals', component: GoalsIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/goals/:id', component: GoalsEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/goals/new', component: GoalsEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/hobby', component: HobbyIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/hobby/:id', component: HobbyEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/hobby/new', component: HobbyEdit, canActivate: [CanActivateViaAuthGuard] },
 { path: 'admin/language', component: LanguageIndex, canActivate: [CanActivateViaAuthGuard]},
 { path: 'admin/language/:id', component: LanguageEdit, canActivate: [CanActivateViaAuthGuard]},
 { path: 'admin/language/new', component: LanguageEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/languageSkill', component: LanguageSkillIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/languageSkill/:id', component: LanguageSkillEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/languageSkill/new', component: LanguageSkillEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/mailing', component: MailingIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/mailing/:id', component: MailingEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/mailing/new', component: MailingEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/personalInfo', component: PersonalInfoIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/personalInfo/:id', component: PersonalInfoEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/personalInfo/new', component: PersonalInfoEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/personalQuality', component: PersonalQualityIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/personalQuality/:id', component: PersonalQualityEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/personalQuality/new', component: PersonalQualityEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/resume', component: ResumeIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/resume/:id', component: ResumeEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/resume/new', component: ResumeEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/skill', component: SkillIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/skill/:id', component: SkillEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/skill/new', component: SkillEdit, canActivate: [CanActivateViaAuthGuard] },
+{ path: 'admin/socialNetwork', component: SocialNetworkIndex, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/socialNetwork/:id', component: SocialNetworkEdit, canActivate: [CanActivateViaAuthGuard]},
+{ path: 'admin/socialNetwork/new', component: SocialNetworkEdit, canActivate: [CanActivateViaAuthGuard] },
 
 //admin imports
 import {
+			AboutIndex,
+			AboutEdit,
+			CertificateIndex,
+			CertificateEdit,
 			ContactIndex,
 			ContactEdit,
+			CourseIndex,
+			CourseEdit,
+			EducationIndex,
+			EducationEdit,
+			ExpectedSalaryIndex,
+			ExpectedSalaryEdit,
+			ExperienceIndex,
+			ExperienceEdit,
+			FeedbackIndex,
+			FeedbackEdit,
+			GoalsIndex,
+			GoalsEdit,
+			HobbyIndex,
+			HobbyEdit,
 			LanguageIndex,
 			LanguageEdit,
+			LanguageSkillIndex,
+			LanguageSkillEdit,
+			MailingIndex,
+			MailingEdit,
+			PersonalInfoIndex,
+			PersonalInfoEdit,
+			PersonalQualityIndex,
+			PersonalQualityEdit,
+			ResumeIndex,
+			ResumeEdit,
+			SkillIndex,
+			SkillEdit,
+			SocialNetworkIndex,
+			SocialNetworkEdit,
 } from '.pages/admin'
 
 
@@ -43,8 +219,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
+import { About } from './About';
+import { Certificate } from './Certificate';
 import { Contact } from './Contact';
+import { Course } from './Course';
+import { Education } from './Education';
+import { ExpectedSalary } from './ExpectedSalary';
+import { Experience } from './Experience';
+import { Feedback } from './Feedback';
+import { Goals } from './Goals';
+import { Hobby } from './Hobby';
 import { Language } from './Language';
+import { LanguageSkill } from './LanguageSkill';
+import { Mailing } from './Mailing';
+import { PersonalInfo } from './PersonalInfo';
+import { PersonalQuality } from './PersonalQuality';
+import { Resume } from './Resume';
+import { Skill } from './Skill';
+import { SocialNetwork } from './SocialNetwork';
 @NgModule({
     declarations: [
 

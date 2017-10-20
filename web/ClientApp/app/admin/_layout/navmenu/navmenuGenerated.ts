@@ -1,10 +1,10 @@
-﻿import { Component,Directive } from "@angular/core";
+import { Component, Directive } from '@angular/core';
 
 @Component({
-    selector: "menu-generated",
+    selector: 'menu-generated',
     styleUrls: ['./navmenuGenerated.css'],
     templateUrl: './navmenuGenerated.html',
-    
+
 })
 export class NavMenuAdminGeneratedComponent{
 

@@ -1,10 +1,10 @@
-﻿import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
-declare var $: any
+import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+declare var $: any;
 @Directive({
     selector: '[inRole]'
 })
 export class inRoleDirective implements OnInit {
-    userRoles = ["operator"]
+    userRoles = ['operator'];
     @Input('inRole') roles: Array<string> = [];
 
     constructor(private el: ElementRef) {
@@ -12,11 +12,11 @@ export class inRoleDirective implements OnInit {
     }
 
     ngOnInit() {
-        this.checkRoles()
+        this.checkRoles();
     }
 
     private checkRoles() {
-        var i = 0
+        let i = 0;
         //this.el.nativeElement.style.display = "none";
         this.roles.forEach((obj, index) => {
             if (this.userRoles.indexOf(this.roles[index]) >= 0) {
@@ -25,7 +25,7 @@ export class inRoleDirective implements OnInit {
             }
         });
         if (i == 0) {
-            var el = $(this.el.nativeElement)
+            const el = $(this.el.nativeElement);
             el.detach();
         }
     }

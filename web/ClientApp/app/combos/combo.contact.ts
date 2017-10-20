@@ -4,7 +4,7 @@ import { Contact } from '../models/Contact';
 
 @Component({
     
-    selector: 'combo-contact',
+    selector: 'app-combo-contact',
     template: `
 	<select [ngModel]=model (ngModelChange)="updateData($event)"  name="contact" class="{{cssClass}}" >
 		<option *ngFor="let contact of contactList" [value]="contact.id">{{contact.name}}</option>
@@ -16,10 +16,9 @@ export class ComboContactComponent implements OnInit{
     contact: Contact;
 	contactList: Contact[];
 
-	@Input() cssClass?:string;
+	@Input() cssClass?: string;
 
-	@Input() 
-	model:any;
+	@Input() model: any;
 	
 	@Output() modelChange: any = new EventEmitter();   
 
@@ -27,7 +26,7 @@ export class ComboContactComponent implements OnInit{
  
     }
 
-	updateData(event){
+	updateData(event) {
 		this.model = event;
 		this.modelChange.emit(event);
 	}

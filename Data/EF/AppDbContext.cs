@@ -38,6 +38,12 @@ namespace Data.EF
         public override int SaveChanges()
         {
             foreach (var entry in ChangeTracker.Entries()
+             .Where(e => e.State == EntityState.Added))
+            {
+                entry.Property("AddedIn").CurrentValue = DateTime.Now;
+            }
+
+            foreach (var entry in ChangeTracker.Entries()
              .Where(e => e.State == EntityState.Added ||
                          e.State == EntityState.Modified))
             {

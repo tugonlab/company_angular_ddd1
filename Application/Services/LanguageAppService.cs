@@ -12,8 +12,7 @@ namespace Application.Services
         public LanguageAppService(ILanguageService service, IUnitOfWork uow)
 		:base(service, uow)
         {
-			_uow = uow;
-            _service = service;
+			_uow = uow            _service = service;
         }
 		*/
 

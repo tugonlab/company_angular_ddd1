@@ -8,7 +8,7 @@ namespace Application.Services
 {
     public partial class ContactAppService : BaseAppService<Contact,ContactViewModel>, IContactAppService
     {
-
+		IContactService _service;
         public ContactAppService(IContactService service, IUnitOfWork uow)
 		:base(service, uow)
         {

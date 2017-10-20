@@ -1,7 +1,8 @@
 ﻿
-export class Language{
+export class Language {
 
-	//properties
+	// properties
+	active;
 	code: string;
 	id;
 	name: string;

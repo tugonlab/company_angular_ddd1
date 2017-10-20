@@ -8,7 +8,7 @@ namespace Application.Services
 {
     public partial class LanguageAppService : BaseAppService<Language,LanguageViewModel>, ILanguageAppService
     {
-
+		ILanguageService _service;
         public LanguageAppService(ILanguageService service, IUnitOfWork uow)
 		:base(service, uow)
         {

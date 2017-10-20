@@ -1,23 +1,20 @@
 ﻿import { Component, NgModule, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LanguageService } from '../../../services/generated/LanguageService';
 import { Language } from '../../../models/Language';
-import { TranslateService } from 'ng2-translate';
 
-@Component({    
-	selector:'form-Language',
+@Component({
+	selector:'app-form-language',
     templateUrl: './Edit.html',
     providers: [LanguageService]
 })
-export class LanguageEdit implements OnInit {
+export class LanguageEditComponent implements OnInit {
 
-    constructor(private _service: LanguageService, public translate: TranslateService) {
-		
-    }
-	@Input() obj?:any;
-	@Input() modal?:any;
+    constructor(private _service: LanguageService) { }
+	@Input() obj?: any;
+	@Input() modal?: any;
 
-	@Output() onSave?:EventEmitter<Language> = new EventEmitter();
+	@Output() onSave?: EventEmitter<Language> = new EventEmitter();
 
 	@Input()
     language: Language;
@@ -30,7 +27,7 @@ export class LanguageEdit implements OnInit {
 		this.onSave.emit(language);
     }
 
-	public closeEdit(){
+	public closeEdit() {
 		this.modal.hide();
 	}
 

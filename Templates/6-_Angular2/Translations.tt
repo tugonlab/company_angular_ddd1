@@ -13,7 +13,7 @@ var classSet = new ClassSet();
 var classes = new ClassSet().Load().Classes.OrderBy(u => u.Name);
 var languages = new string[]{"pt","en"};
 foreach(var lang in languages){
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\web\\wwwroot\\assets\\i18n\\");
+CreateDirectory("..\\..\\..\\web\\wwwroot\\assets\\i18n\\");
 manager.StartNewFile("wwwroot\\assets\\i18n\\"+lang+".json","web","",null); 
 #>
 {
@@ -29,8 +29,8 @@ var classUnderscore = classSet.ToUnderscore(classModel.Name).ToUpper();
 			"COLUMN" : {		
 <# foreach(var field in classModel.Fields){
 	    if(!field.IsClass) {
-		var fieldSpaced = classSet.ToSpacedName(field.Name).ToUpper();
-	   var fieldUnderscore = classSet.ToUnderscore(field.Name).ToUpper();
+			var fieldSpaced = classSet.ToSpacedName(field.Name).ToUpper();
+			var fieldUnderscore = classSet.ToUnderscore(field.Name).ToUpper();
 #>
 				"<#=fieldUnderscore#>":"<#=fieldSpaced#>",
 <#}#>

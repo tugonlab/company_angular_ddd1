@@ -25,7 +25,7 @@ export class MyNgbDateParserFormatter extends NgbDateParserFormatter {
             returnVal = null;
         } else {
             try {
-                let dateParts = this.datePipe.transform(value, 'M-d-y').split('-');
+                const dateParts = this.datePipe.transform(value, 'M-d-y').split('-');
                 returnVal = { year: parseInt(dateParts[2]), month: parseInt(dateParts[0]), day: parseInt(dateParts[1]) };
             } catch (e) {
                 returnVal = null;

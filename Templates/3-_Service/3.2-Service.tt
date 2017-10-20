@@ -10,7 +10,7 @@
 var manager = TemplateFileManager.Create(this);
 var classesAll = new ClassSet().Load().Classes;
 var classes = new ClassSet().Load().Classes.Where(x=> x.Name!=""  ).OrderBy(u => u.Name);
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\Domain\\Services\\_generated");	
+CreateDirectory("..\\..\\..\\Domain\\Services\\_generated");	
 
 foreach(var classModel in classes){#>
 <#

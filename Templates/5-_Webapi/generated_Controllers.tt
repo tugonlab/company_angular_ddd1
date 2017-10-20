@@ -12,7 +12,7 @@ var classSet = new ClassSet();
 var classes = classSet.Load().Classes.OrderBy(u => u.Name);
 var projectName="api";
 var path="Controllers\\_generated";
-System.IO.Directory.CreateDirectory(GetCurrentDirectory()+"..\\..\\..\\"+projectName+"\\"+path);	
+CreateDirectory("..\\..\\..\\"+projectName+"\\"+path);	
 
 foreach(var classModel in classes){#>
 <#
@@ -28,16 +28,18 @@ using Application.AutoMapper;
 using Application.Interfaces;
 using Application.ViewModels;
 using Application.ViewModels.Common;
+using CrossCutting.Extensions;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
+using System.Threading.Tasks;
 
 namespace api.Controllers
 {
-	[Authorize]
+	//[Authorize]
     [Route("api/[controller]")]
     public partial class <#= classModel.Name #>Controller : BaseController
     {
@@ -59,9 +61,9 @@ namespace api.Controllers
 		[Route("getById/{id}")]
         [HttpGet]
 		[AllowAnonymous]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var model = _service.GetById(id);
+            var model = await Task.FromResult(_service.GetById(id));
             return Ok(model);
         }
 
@@ -69,18 +71,18 @@ namespace api.Controllers
 		[Route("getBy<#=parent.Name#>Id/{id}")]
         [HttpGet]
 		[AllowAnonymous]
-        public IActionResult GetBy<#=parent.Name#>Id(int id)
+        public async Task<IActionResult> GetBy<#=parent.Name#>Id(int id)
         {
-            var model = _service.Find(x=>x.<#=parent.Name#>.Id == id);
+            var model = await Task.FromResult(_service.Find(x=>x.<#=parent.Name#>.Id == id));
             return Ok(model);
         }
 
 		[Route("getBy<#=parent.Name#>Id/{id}/{pageNumber}/{pageSize}/{orderBy?}/{orderDirection?}")]
         [HttpGet]
 		[AllowAnonymous]
-        public IActionResult GetBy<#=parent.Name#>Id(int id,int pageSize, int pageNumber, string orderBy, string orderDirection)
+        public async Task<IActionResult> GetBy<#=parent.Name#>Id(int id,int pageSize, int pageNumber, string orderBy, string orderDirection)
         {
-            var model = _service.Find(x=>x.<#=parent.Name#>.Id == id).Paging(pageNumber, pageSize, orderBy, orderDirection);
+            var model = await Task.FromResult(_service.Find(x=>x.<#=parent.Name#>.Id == id).Paging(pageNumber, pageSize, orderBy, orderDirection));
             return Ok(model);
         }
 <#}#>
@@ -88,24 +90,24 @@ namespace api.Controllers
         [Route("getAll")]
         [HttpGet]
 		[AllowAnonymous]
-        public IActionResult GetByAll()
+        public async Task<IActionResult> GetByAll()
         {
-            var model = _service.GetAll();
+            var model = await Task.FromResult(_service.GetAll());
             return Ok(model);
         }
 
 		[Route("getAllPage")]
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult GetByAllPage([FromBody] PagingViewModel<<#= classModel.Name #>ViewModel> page)
+        public async Task<IActionResult> GetByAllPage([FromBody] PagingViewModel<<#= classModel.Name #>ViewModel> page)
         {
-            var model = _service.GetByAllPage(page);
+            var model = await Task.FromResult(_service.GetByAllPage(page));
             return Ok(model);
         }
 
         [Route("save")]
         [HttpPost]
-        public IActionResult Save([FromBody] <#= classModel.Name #>ViewModel model)
+        public async Task<IActionResult> Save([FromBody] <#= classModel.Name #>ViewModel model)
         {
 			<#= classModel.Name #>ViewModel result;
             try
@@ -116,9 +118,9 @@ namespace api.Controllers
 <#}else{#>
 				if(model.Id==0)
 <#}#>
-					result = _service.Add(model.MapTo<<#= classModel.Name #>>());
+					result = await Task.FromResult(_service.Add(model.MapTo<<#= classModel.Name #>>()));
 				else
-					result = _service.Update(model.MapTo<<#= classModel.Name #>>());
+					result = await Task.FromResult(_service.Update(model.MapTo<<#= classModel.Name #>>()));
 <#}else{#>
                 result = model.MapTo<<#= classModel.Name #>>();
 <#}#>
@@ -132,11 +134,11 @@ namespace api.Controllers
 
 		[Route("remove")]
         [HttpPost]
-        public IActionResult Remove([FromBody] <#= classModel.Name #>ViewModel model)
+        public async Task<IActionResult> Remove([FromBody] <#= classModel.Name #>ViewModel model)
         {
             try
             {
-                _service.Remove(model.MapTo<<#= classModel.Name #>>());
+                await Task.Run(() => _service.Remove(model.MapTo<<#= classModel.Name #>>()));
                 return Ok();
             }
             catch
@@ -146,10 +148,10 @@ namespace api.Controllers
         }
 
 		protected override void Dispose(bool disposing)
-      {
-         //_repository.Dispose();
-         base.Dispose(disposing);
-      }
+		{
+			_service.Dispose();
+			base.Dispose(disposing);
+		}
 
     }
 }
